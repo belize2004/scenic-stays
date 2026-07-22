@@ -11,6 +11,8 @@ export type Residence = {
   coverAlt: string;
   caption: string;
   coordinate: string;
+  /** WGS84 for LodgingBusiness geo — keep in sync with mapLabel. */
+  geo: { latitude: number; longitude: number };
   rateFrom: number;
   sleeps: number;
   beds: number;
@@ -39,6 +41,7 @@ export const residences: Record<string, Residence> = {
     coverAlt: 'Minimalist modern beach house with floor-to-ceiling glass facing the Gulf.',
     caption: 'Fig. 01 — The Glass House, dusk',
     coordinate: '30.32° N — Seacrest Beach',
+    geo: { latitude: 30.32, longitude: -86.12 },
     rateFrom: 685,
     sleeps: 12,
     beds: 6,

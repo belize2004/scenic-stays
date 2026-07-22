@@ -1,4 +1,6 @@
 ---
+import FolioMarker from '../FolioMarker.astro';
+
 interface Column {
   heading: string;
   items: string[];
@@ -6,13 +8,16 @@ interface Column {
 
 interface Props {
   columns: Column[];
+  folio?: { number: string; name: string };
 }
 
-const { columns } = Astro.props;
+const { columns, folio = { number: '02', name: 'The Particulars' } } = Astro.props;
 ---
 
 <section class="particulars" aria-labelledby="particulars-title">
-  <h2 class="type-label-caps particulars__title" id="particulars-title">The Particulars</h2>
+  <h2 class="particulars__title" id="particulars-title">
+    <FolioMarker number={folio.number} name={folio.name} />
+  </h2>
   <div class="particulars__grid">
     {
       columns.map((col) => (
@@ -43,7 +48,8 @@ const { columns } = Astro.props;
 
   .particulars__title {
     margin: 0 0 var(--stack-md);
-    opacity: 0.55;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .particulars__grid {

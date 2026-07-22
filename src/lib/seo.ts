@@ -60,7 +60,14 @@ export function lodgingBusinessJsonLd(opts: {
   image: string;
   addressLocality: string;
   addressRegion?: string;
+  /** Nightly rate floor — rendered as "From $N". */
+  priceFrom?: number;
+  latitude?: number;
+  longitude?: number;
   numberOfRooms?: number;
+  /** Max guest count. */
+  occupancy?: number;
+  amenities?: string[];
   petsAllowed?: boolean;
   site?: string;
 }) {
@@ -77,7 +84,36 @@ export function lodgingBusinessJsonLd(opts: {
       addressRegion: opts.addressRegion ?? 'FL',
       addressCountry: 'US',
     },
+    ...(opts.priceFrom != null
+      ? { priceRange: `From $${opts.priceFrom.toLocaleString('en-US')}` }
+      : {}),
+    ...(opts.latitude != null && opts.longitude != null
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: opts.latitude,
+            longitude: opts.longitude,
+          },
+        }
+      : {}),
     ...(opts.numberOfRooms ? { numberOfRooms: opts.numberOfRooms } : {}),
+    ...(opts.occupancy != null
+      ? {
+          occupancy: {
+            '@type': 'QuantitativeValue',
+            maxValue: opts.occupancy,
+          },
+        }
+      : {}),
+    ...(opts.amenities?.length
+      ? {
+          amenityFeature: opts.amenities.map((name) => ({
+            '@type': 'LocationFeatureSpecification',
+            name,
+            value: true,
+          })),
+        }
+      : {}),
     ...(opts.petsAllowed != null ? { petsAllowed: opts.petsAllowed } : {}),
   };
 }

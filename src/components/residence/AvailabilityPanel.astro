@@ -1,4 +1,5 @@
 ---
+import FolioMarker from '../FolioMarker.astro';
 import type { AvailabilitySnapshot } from '../../lib/booking/types';
 
 /**
@@ -7,9 +8,10 @@ import type { AvailabilitySnapshot } from '../../lib/booking/types';
  */
 interface Props {
   snapshot: AvailabilitySnapshot;
+  folio?: { number: string; name: string };
 }
 
-const { snapshot } = Astro.props;
+const { snapshot, folio = { number: '03', name: 'Availability' } } = Astro.props;
 
 const byMonth = new Map<string, typeof snapshot.calendar>();
 for (const day of snapshot.calendar) {
@@ -26,7 +28,9 @@ const monthLabel = new Date(y, m - 1, 1).toLocaleString('en-US', { month: 'long'
 
 <section class="reserve" id="reserve" aria-labelledby="reserve-title">
   <div class="reserve__frame">
-    <p class="type-label-caps" id="reserve-title">Reserve</p>
+    <h2 class="reserve__folio" id="reserve-title">
+      <FolioMarker number={folio.number} name={folio.name} />
+    </h2>
     <p class="type-body-md reserve__note">
       Availability from the booking provider interface (mock data until Guesty is connected).
     </p>
@@ -112,6 +116,12 @@ const monthLabel = new Date(y, m - 1, 1).toLocaleString('en-US', { month: 'long'
   .reserve__frame {
     border: var(--hairline) solid var(--ink);
     padding: var(--stack-md);
+  }
+
+  .reserve__folio {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .reserve__note {

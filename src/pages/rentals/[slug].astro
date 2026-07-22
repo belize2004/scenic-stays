@@ -65,6 +65,7 @@ if (residence) {
     { label: residence.name, href: path },
   ];
   resCanonical = absoluteUrl(path);
+  const amenityNames = residence.amenities.flatMap((col) => col.items);
   resJsonLd = [
     breadcrumbJsonLd(resCrumbs),
     lodgingBusinessJsonLd({
@@ -73,7 +74,12 @@ if (residence) {
       url: path,
       image: residence.coverImage,
       addressLocality: residence.destinationLabel,
+      priceFrom: residence.rateFrom,
+      latitude: residence.geo.latitude,
+      longitude: residence.geo.longitude,
       numberOfRooms: residence.beds,
+      occupancy: residence.sleeps,
+      amenities: amenityNames,
     }),
   ];
   nearbyListings = residence.nearby
