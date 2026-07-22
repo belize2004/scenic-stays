@@ -1,0 +1,162 @@
+---
+import { cfImg } from '../../lib/cfImg';
+
+type GalleryItem = {
+  src: string;
+  alt: string;
+  caption: string;
+  layout: 'full' | 'pair' | 'detail';
+};
+
+interface Props {
+  items: GalleryItem[];
+  totalCount?: number;
+}
+
+const { items, totalCount } = Astro.props;
+const count = totalCount ?? items.length;
+
+/** Pair layout pairs consecutive pair items; others render alone. */
+const blocks: { kind: 'full' | 'detail' | 'pair'; items: GalleryItem[] }[] = [];
+let i = 0;
+while (i < items.length) {
+  const item = items[i];
+  if (item.layout === 'pair') {
+    const next = items[i + 1];
+    if (next?.layout === 'pair') {
+      blocks.push({ kind: 'pair', items: [item, next] });
+      i += 2;
+    } else {
+      blocks.push({ kind: 'full', items: [item] });
+      i += 1;
+    }
+  } else {
+    blocks.push({ kind: item.layout, items: [item] });
+    i += 1;
+  }
+}
+---
+
+<section class="gallery" aria-label="Photographs">
+  {
+    blocks.map((block) =>
+      block.kind === 'pair' ? (
+        <div class="gallery__pair">
+          {block.items.map((g) => {
+            const img = cfImg(g.src);
+            return (
+              <figure class="gallery__fig">
+                <img
+                  src={img.src}
+                  srcset={img.srcset}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  alt={g.alt}
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="type-label-caps">{g.caption}</figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      ) : (
+        (() => {
+          const g = block.items[0];
+          const img = cfImg(g.src);
+          return (
+            <figure class:list={['gallery__fig', `gallery__fig--${block.kind}`]}>
+              <img
+                src={img.src}
+                srcset={img.srcset}
+                sizes={block.kind === 'detail' ? '(min-width: 768px) 40vw, 100vw' : '100vw'}
+                alt={g.alt}
+                width={block.kind === 'detail' ? '900' : '1920'}
+                height={block.kind === 'detail' ? '900' : '1080'}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="type-label-caps">{g.caption}</figcaption>
+            </figure>
+          );
+        })()
+      ),
+    )
+  }
+  <p class="type-label-caps gallery__all">
+    <a class="link-gold" href="#reserve">View all {count} photographs</a>
+  </p>
+</section>
+
+<style>
+  .gallery {
+    padding-bottom: var(--stack-lg);
+  }
+
+  .gallery__fig {
+    margin: 0;
+    position: relative;
+  }
+
+  .gallery__fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .gallery__fig--full img {
+    min-height: 70svh;
+    max-height: 90svh;
+    object-fit: cover;
+  }
+
+  .gallery__fig--detail {
+    max-width: 28rem;
+    margin-inline: auto;
+    padding: var(--stack-md) var(--margin-mobile);
+  }
+
+  .gallery__fig figcaption {
+    padding: 0.85rem var(--margin-mobile) var(--stack-md);
+    opacity: 0.55;
+  }
+
+  @media (min-width: 768px) {
+    .gallery__fig figcaption {
+      padding-inline: var(--margin-desktop);
+    }
+
+    .gallery__fig--detail {
+      padding-inline: 0;
+    }
+
+    .gallery__fig--detail figcaption {
+      padding-inline: 0;
+    }
+  }
+
+  .gallery__pair {
+    display: grid;
+    gap: var(--gutter);
+    padding: var(--stack-md) var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .gallery__pair {
+      grid-template-columns: 1fr 1fr;
+      padding-inline: var(--margin-desktop);
+    }
+
+    .gallery__pair .gallery__fig figcaption {
+      padding-inline: 0;
+    }
+  }
+
+  .gallery__all {
+    text-align: center;
+    margin: 0;
+    padding: var(--stack-md);
+  }
+</style>

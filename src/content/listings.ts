@@ -30,9 +30,11 @@ export const listings: Listing[] = [
   {
     slug: 'azure-retreat',
     name: 'Azure Retreat',
+    // TODO: Destin page listing tagged Miramar Beach — confirm geography or move to Miramar destination.
     whisper: 'Miramar Beach · Sleeps 10 · Private pool',
     prose: 'Mid-century elegance meets coastal serenity. A secluded courtyard with a basalt-lined pool.',
     rateFrom: 550,
+    // TODO: distinct placeholder per property — currently reuses glass-house.jpg
     image: '/images/placeholders/glass-house.jpg',
     alt: 'Coastal residence with a private courtyard pool.',
     destination: 'destin',
@@ -63,6 +65,7 @@ export const listings: Listing[] = [
     whisper: 'Crystal Beach · Sleeps 14 · Gulf front',
     prose: 'Dark volcanic stone and bleached oak against the Gulf — an architectural contrast.',
     rateFrom: 720,
+    // TODO: distinct placeholder per property
     image: '/images/placeholders/sundestin.jpg',
     alt: 'Gulf-front residence with contrasting stone and wood textures.',
     destination: 'destin',
@@ -73,6 +76,7 @@ export const listings: Listing[] = [
     whisper: 'Destin Harbor · Sleeps 8 · Harbor view',
     prose: 'Front-row seats to the fleet returning at dusk over the historic harbor.',
     rateFrom: 395,
+    // TODO: distinct placeholder per property — currently reuses film-destin.jpg
     image: '/images/placeholders/film-destin.jpg',
     alt: 'Harbor-facing residence overlooking Destin Harbor.',
     destination: 'destin',

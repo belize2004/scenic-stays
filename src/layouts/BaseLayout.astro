@@ -5,13 +5,19 @@ interface Props {
   title?: string;
   description?: string;
   preloadBodoni?: boolean;
+  canonical?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = 'SCENIC STAYS',
   description = 'Luxury vacation rentals on the Florida Gulf Coast.',
   preloadBodoni = true,
+  canonical,
+  jsonLd,
 } = Astro.props;
+
+const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!doctype html>
@@ -20,6 +26,7 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {
       preloadBodoni && (
@@ -33,6 +40,11 @@ const {
       )
     }
     <title>{title}</title>
+    {
+      schemas.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
   </head>
   <body>
     <a class="skip-link type-label-caps" href="#main">Skip to content</a>

@@ -1,0 +1,64 @@
+---
+/**
+ * Map placeholder — hairline frame, muted field, gold pin, caption-treated coordinates.
+ * Swap for a real map tile/embed later without changing the page shell.
+ */
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<section class="map" aria-label="Location">
+  <div class="map__frame">
+    <div class="map__field" aria-hidden="true">
+      <span class="map__pin" />
+    </div>
+    <p class="type-label-caps map__caption">{label}</p>
+  </div>
+</section>
+
+<style>
+  .map {
+    padding: var(--stack-lg) var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .map {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .map__frame {
+    border: var(--hairline) solid var(--ink);
+    padding: 1rem;
+  }
+
+  .map__field {
+    position: relative;
+    min-height: 40svh;
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--vellum) 80%, var(--ink)) 0%,
+        var(--vellum) 45%,
+        color-mix(in srgb, var(--paper) 70%, var(--ink)) 100%
+      );
+  }
+
+  .map__pin {
+    position: absolute;
+    left: 52%;
+    top: 48%;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    transform: translate(-50%, -50%);
+  }
+
+  .map__caption {
+    margin: 1rem 0 0;
+    opacity: 0.55;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+/**
+ * Typeset breadcrumb trail — DNA page-templates §10.
+ * "The Collection — Destin — Emerald Towers 1101" (em dash, no chevrons).
+ */
+import type { Crumb } from '../lib/seo';
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="crumbs type-label-caps" aria-label="Breadcrumb">
+  <ol>
+    {
+      items.map((item, i) => (
+        <li>
+          {i > 0 && <span class="crumbs__sep" aria-hidden="true"> — </span>}
+          {item.href && i < items.length - 1 ? (
+            <a href={item.href}>{item.label}</a>
+          ) : (
+            <span aria-current={i === items.length - 1 ? 'page' : undefined}>{item.label}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .crumbs {
+    padding: 1rem var(--margin-mobile) 0;
+  }
+
+  @media (min-width: 768px) {
+    .crumbs {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .crumbs ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .crumbs li {
+    display: inline;
+  }
+
+  .crumbs a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: var(--hairline) solid transparent;
+  }
+
+  .crumbs a:hover {
+    border-bottom-color: var(--ink);
+  }
+
+  .crumbs__sep {
+    opacity: 0.45;
+  }
+
+  .crumbs [aria-current='page'] {
+    opacity: 0.55;
+  }
+</style>

@@ -1,0 +1,371 @@
+---
+/**
+ * Unified /rentals/[slug] — destination index (T2) or residence feature (T3).
+ */
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Frame from '../../components/Frame.astro';
+import EditorialHero from '../../components/EditorialHero.astro';
+import WorkingStrip from '../../components/catalog/WorkingStrip.astro';
+import PropertyRow from '../../components/catalog/PropertyRow.astro';
+import EditorialBreak from '../../components/catalog/EditorialBreak.astro';
+import Pagination from '../../components/catalog/Pagination.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FolioMarker from '../../components/FolioMarker.astro';
+import PropertySpread from '../../components/PropertySpread.astro';
+import FactsStrip from '../../components/residence/FactsStrip.astro';
+import Gallery from '../../components/residence/Gallery.astro';
+import Particulars from '../../components/residence/Particulars.astro';
+import AvailabilityPanel from '../../components/residence/AvailabilityPanel.astro';
+import ResidenceGuestbook from '../../components/residence/ResidenceGuestbook.astro';
+import ResidenceMap from '../../components/residence/ResidenceMap.astro';
+import { destinations, listings, filterChips } from '../../content/listings';
+import { residences } from '../../content/residences';
+import { bookingProvider } from '../../lib/booking';
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  lodgingBusinessJsonLd,
+  type Crumb,
+} from '../../lib/seo';
+
+export function getStaticPaths() {
+  const destPaths = Object.keys(destinations).map((slug) => ({ params: { slug } }));
+  const resPaths = Object.keys(residences).map((slug) => ({ params: { slug } }));
+  return [...destPaths, ...resPaths];
+}
+
+const { slug } = Astro.params;
+const dest = destinations[slug as keyof typeof destinations];
+const residence = residences[slug as string];
+
+if (!dest && !residence) {
+  return Astro.redirect('/rentals');
+}
+
+/** —— T3 residence —— */
+let resCrumbs: Crumb[] = [];
+let resCanonical = '';
+let resJsonLd: Record<string, unknown>[] = [];
+let snapshot = null as Awaited<ReturnType<typeof bookingProvider.getAvailability>> | null;
+let nearbyListings: typeof listings = [];
+
+if (residence) {
+  const from = new Date();
+  from.setDate(1);
+  const to = new Date(from);
+  to.setMonth(to.getMonth() + 1);
+  to.setDate(0);
+  snapshot = await bookingProvider.getAvailability(residence.slug, from, to);
+
+  const path = `/rentals/${residence.slug}`;
+  resCrumbs = [
+    { label: 'The Collection', href: '/rentals' },
+    { label: residence.destinationLabel, href: `/rentals/${residence.destination}` },
+    { label: residence.name, href: path },
+  ];
+  resCanonical = absoluteUrl(path);
+  resJsonLd = [
+    breadcrumbJsonLd(resCrumbs),
+    lodgingBusinessJsonLd({
+      name: residence.name,
+      description: residence.dek,
+      url: path,
+      image: residence.coverImage,
+      addressLocality: residence.destinationLabel,
+      numberOfRooms: residence.beds,
+    }),
+  ];
+  nearbyListings = residence.nearby
+    .map((s) => listings.find((l) => l.slug === s))
+    .filter((l): l is (typeof listings)[number] => Boolean(l));
+}
+
+/** —— T2 destination —— */
+let destResults: typeof listings = [];
+let destCrumbs: Crumb[] = [];
+let destCanonical = '';
+let destJsonLd: Record<string, unknown>[] = [];
+let destPath = '';
+const BREAK_AFTER = 2;
+const page = 1;
+const totalPages = 8;
+
+if (dest) {
+  destResults = listings.filter((l) => l.destination === dest.slug);
+  destPath = `/rentals/${dest.slug}`;
+  destCrumbs = [
+    { label: 'The Collection', href: '/rentals' },
+    { label: dest.name.replace(/\.$/, ''), href: destPath },
+  ];
+  destCanonical = absoluteUrl(destPath);
+  destJsonLd = [
+    breadcrumbJsonLd(destCrumbs),
+    itemListJsonLd(
+      `Scenic Stays — ${dest.name.replace(/\.$/, '')}`,
+      destResults.map((l, i) => ({
+        name: l.name,
+        url: `/rentals/${l.slug}`,
+        image: l.image,
+        position: i + 1,
+      })),
+    ),
+  ];
+}
+---
+
+{
+  residence && snapshot ? (
+    <SiteLayout
+      title={`${residence.name} | SCENIC STAYS`}
+      description={residence.dek}
+      active="rentals"
+      canonical={resCanonical}
+      jsonLd={resJsonLd}
+    >
+      <main id="main">
+        <Breadcrumbs items={resCrumbs} />
+
+        <Frame variant="loud" background="paper" class="res-cover">
+          <div class="res-cover__inner">
+            <EditorialHero
+              image={residence.coverImage}
+              alt={residence.coverAlt}
+              headline={residence.name}
+              polarity="dark"
+              scrimStrength={0.35}
+              caption={residence.caption}
+              coordinate={residence.coordinate}
+            />
+          </div>
+          <div class="res-cover__whisper">
+            <p class="type-label-caps">{residence.whisper}</p>
+          </div>
+        </Frame>
+
+        <FactsStrip rateFrom={residence.rateFrom} />
+
+        <Frame variant="quiet" background="paper" flow>
+          <div class="res-intro">
+            <FolioMarker number="01" name="The House" />
+            {residence.intro.map((p) => (
+              <p class="type-body-lg">{p}</p>
+            ))}
+          </div>
+        </Frame>
+
+        <Gallery items={residence.gallery} totalCount={24} />
+
+        <Particulars columns={residence.amenities} />
+
+        <AvailabilityPanel snapshot={snapshot} />
+
+        <Frame variant="quiet" background="vellum">
+          <ResidenceGuestbook reviews={residence.reviews} />
+        </Frame>
+
+        <ResidenceMap label={residence.mapLabel} />
+
+        <Frame variant="quiet" background="paper" flow>
+          <div class="res-nearby">
+            <FolioMarker number="05" name="Nearby in the collection" />
+            {nearbyListings.map((l, i) => (
+              <PropertySpread
+                name={l.name}
+                whisper={l.whisper}
+                prose={l.prose}
+                image={l.image}
+                alt={l.alt}
+                cta={{ label: 'Discover the interiors', href: `/rentals/${l.slug}` }}
+                overlap={i % 2 === 0 ? 'end' : 'start'}
+              />
+            ))}
+            <p class="type-headline-lg res-nearby__line">
+              <em>The collection continues.</em>
+            </p>
+          </div>
+        </Frame>
+      </main>
+    </SiteLayout>
+  ) : dest ? (
+    <SiteLayout
+      title={`${dest.name.replace(/\.$/, '')} | SCENIC STAYS`}
+      description={dest.dek}
+      active="rentals"
+      canonical={destCanonical}
+      jsonLd={destJsonLd}
+    >
+      <main id="main">
+        <Breadcrumbs items={destCrumbs} />
+
+        <Frame variant="loud" background="paper" minHeight="70svh" class="dest-cover">
+          <div class="dest-cover__inner">
+            <EditorialHero
+              image={dest.image}
+              alt={dest.alt}
+              headline={dest.name}
+              polarity={dest.polarity}
+              scrimStrength={dest.scrimStrength}
+              caption={dest.caption}
+              coordinate={dest.coordinate}
+            />
+            <p class="type-headline-md dest-cover__dek">{dest.dek}</p>
+          </div>
+        </Frame>
+
+        <Frame variant="quiet" background="paper" flow>
+          <div class="dest-prose">
+            <p class="type-body-lg">{dest.prose}</p>
+          </div>
+        </Frame>
+
+        <WorkingStrip
+          chips={filterChips}
+          basePath={destPath}
+          resultCount={destResults.length}
+          resultNoun="homes"
+          sortLabel="Featured"
+        />
+
+        <Frame variant="quiet" background="paper" flow>
+          <div class="dest-results">
+            {destResults.map((l, i) => (
+              <>
+                <PropertyRow
+                  name={l.name}
+                  whisper={l.whisper}
+                  prose={l.prose}
+                  rateFrom={l.rateFrom}
+                  href={`/rentals/${l.slug}`}
+                  image={l.image}
+                  alt={l.alt}
+                  photoSide={i % 2 === 0 ? 'left' : 'right'}
+                />
+                {i === BREAK_AFTER - 1 && i < destResults.length - 1 && (
+                  <EditorialBreak
+                    image="/images/placeholders/film-destin.jpg"
+                    alt="Aerial view of Destin Harbor from above."
+                    label="No. 02 — The harbor, from above"
+                  />
+                )}
+              </>
+            ))}
+          </div>
+          <Pagination page={page} totalPages={totalPages} nextHref={`${destPath}?page=2`} />
+        </Frame>
+
+        <Frame variant="quiet" background="vellum">
+          <div class="dest-close">
+            <p class="type-headline-lg">
+              <em>The harbor awaits.</em>
+            </p>
+            <a class="btn-ghost" href="/rentals">
+              View all properties
+            </a>
+          </div>
+        </Frame>
+      </main>
+    </SiteLayout>
+  ) : null
+}
+
+<style>
+  .dest-cover__inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 70svh;
+    position: relative;
+  }
+
+  .dest-cover__dek {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin: -2rem auto var(--stack-md);
+    max-width: 28ch;
+    padding-inline: var(--margin-mobile);
+  }
+
+  .dest-prose {
+    padding: var(--stack-md) var(--margin-mobile);
+    max-width: 42rem;
+  }
+
+  @media (min-width: 768px) {
+    .dest-prose {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .dest-results {
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  .dest-close {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--stack-md);
+    text-align: center;
+    padding: var(--stack-xl) var(--margin-mobile);
+  }
+
+  .res-cover__inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 85svh;
+  }
+
+  .res-cover__whisper {
+    padding: 1.5rem var(--margin-mobile) var(--stack-md);
+    background: var(--paper);
+  }
+
+  @media (min-width: 768px) {
+    .res-cover__whisper {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .res-intro {
+    padding: var(--stack-lg) var(--margin-mobile);
+    max-width: 42rem;
+  }
+
+  .res-intro .folio {
+    margin-bottom: var(--stack-md);
+  }
+
+  .res-intro p {
+    margin: 0 0 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .res-intro {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .res-nearby {
+    padding-bottom: var(--stack-xl);
+  }
+
+  .res-nearby .folio {
+    padding: var(--stack-lg) var(--margin-mobile) 0;
+  }
+
+  @media (min-width: 768px) {
+    .res-nearby .folio {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .res-nearby__line {
+    text-align: center;
+    margin: var(--stack-lg) 0 0;
+  }
+</style>

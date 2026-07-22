@@ -1,0 +1,85 @@
+---
+import FolioMarker from '../FolioMarker.astro';
+
+type Review = { quote: string; attribution: string };
+
+interface Props {
+  folio?: { number: string; name: string };
+  reviews: Review[];
+}
+
+const { folio = { number: '04', name: 'The Guestbook' }, reviews } = Astro.props;
+const [lead, ...rest] = reviews;
+---
+
+<section class="rguestbook">
+  <FolioMarker number={folio.number} name={folio.name} />
+  {
+    lead && (
+      <>
+        <blockquote class="type-headline-lg rguestbook__quote">
+          <em>{lead.quote}</em>
+        </blockquote>
+        <p class="type-label-caps rguestbook__by">{lead.attribution}</p>
+      </>
+    )
+  }
+  {
+    rest.length > 0 && (
+      <ul class="rguestbook__rows">
+        {rest.map((r) => (
+          <li>
+            <p class="type-body-lg">{r.quote}</p>
+            <p class="type-label-caps">{r.attribution}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>
+
+<style>
+  .rguestbook {
+    padding: var(--stack-lg) var(--margin-mobile);
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .rguestbook {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .rguestbook__quote {
+    margin: var(--stack-md) auto 1rem;
+    max-width: 22ch;
+  }
+
+  .rguestbook__by {
+    margin: 0 0 var(--stack-md);
+    opacity: 0.55;
+  }
+
+  .rguestbook__rows {
+    list-style: none;
+    margin: var(--stack-md) auto 0;
+    padding: 0;
+    max-width: 40rem;
+    text-align: left;
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  .rguestbook__rows li {
+    padding: 1.25rem 0;
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  .rguestbook__rows p {
+    margin: 0;
+  }
+
+  .rguestbook__rows .type-label-caps {
+    margin-top: 0.5rem;
+    opacity: 0.55;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+interface Column {
+  heading: string;
+  items: string[];
+}
+
+interface Props {
+  columns: Column[];
+}
+
+const { columns } = Astro.props;
+---
+
+<section class="particulars" aria-labelledby="particulars-title">
+  <h2 class="type-label-caps particulars__title" id="particulars-title">The Particulars</h2>
+  <div class="particulars__grid">
+    {
+      columns.map((col) => (
+        <div class="particulars__col">
+          <h3 class="type-label-caps">{col.heading}</h3>
+          <ul>
+            {col.items.map((item) => (
+              <li class="type-body-md">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .particulars {
+    padding: var(--stack-lg) var(--margin-mobile);
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  @media (min-width: 768px) {
+    .particulars {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .particulars__title {
+    margin: 0 0 var(--stack-md);
+    opacity: 0.55;
+  }
+
+  .particulars__grid {
+    display: grid;
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 700px) {
+    .particulars__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .particulars__col {
+      padding-inline: 1.25rem;
+      border-left: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    }
+
+    .particulars__col:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+
+  .particulars__col h3 {
+    margin: 0 0 1rem;
+  }
+
+  .particulars__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .particulars__col li {
+    padding: 0.4rem 0;
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 10%, transparent);
+  }
+
+  .particulars__col li:last-child {
+    border-bottom: 0;
+  }
+</style>

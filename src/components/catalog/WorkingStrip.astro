@@ -10,15 +10,38 @@ interface Props {
   chips: readonly Chip[];
   activeId?: string;
   basePath: string;
+  resultCount: number;
+  resultNoun?: string;
+  sortLabel?: string;
 }
 
-const { chips, activeId = 'all', basePath } = Astro.props;
+const {
+  chips,
+  activeId = 'all',
+  basePath,
+  resultCount,
+  resultNoun = 'homes',
+  sortLabel = 'Featured',
+} = Astro.props;
+
+const countLabel = `${resultCount} ${resultNoun}`;
 ---
 
 <div class="working">
   <div class="working__inner">
-    <p class="type-label-caps working__label">Filter the collection</p>
-    <div class="working__chips">
+    <div class="working__meta">
+      <p class="type-label-caps working__count">{countLabel}</p>
+      <div class="working__sort">
+        <label class="type-label-caps" for="catalog-sort">Sort:</label>
+        <select id="catalog-sort" class="working__sort-control type-label-caps" name="sort">
+          <option selected>{sortLabel}</option>
+          <option>Rate · low to high</option>
+          <option>Rate · high to low</option>
+          <option>Sleeps</option>
+        </select>
+      </div>
+    </div>
+    <div class="working__chips" role="list">
       {
         chips.map((c) => (
           <FilterChip
@@ -59,9 +82,37 @@ const { chips, activeId = 'all', basePath } = Astro.props;
     }
   }
 
-  .working__label {
+  .working__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 1.5rem;
+  }
+
+  .working__count {
     margin: 0;
+  }
+
+  .working__sort {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .working__sort label {
     opacity: 0.55;
+  }
+
+  /* Underlined text control — semantically a select, visually typeset */
+  .working__sort-control {
+    appearance: none;
+    border: 0;
+    border-bottom: var(--hairline) solid var(--ink);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    padding: 0.15rem 0;
+    cursor: pointer;
   }
 
   .working__chips {

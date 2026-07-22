@@ -1,0 +1,192 @@
+---
+import type { AvailabilitySnapshot } from '../../lib/booking/types';
+
+/**
+ * Catalog-register availability — native calendar + rate table against BookingProvider shape.
+ * Guesty API or embed swaps at the provider layer; this UI stays on-DNA.
+ */
+interface Props {
+  snapshot: AvailabilitySnapshot;
+}
+
+const { snapshot } = Astro.props;
+
+const byMonth = new Map<string, typeof snapshot.calendar>();
+for (const day of snapshot.calendar) {
+  const key = day.date.slice(0, 7);
+  const list = byMonth.get(key) ?? [];
+  list.push(day);
+  byMonth.set(key, list);
+}
+const monthKey = [...byMonth.keys()][0];
+const days = byMonth.get(monthKey) ?? [];
+const [y, m] = monthKey.split('-').map(Number);
+const monthLabel = new Date(y, m - 1, 1).toLocaleString('en-US', { month: 'long', year: 'numeric' });
+---
+
+<section class="reserve" id="reserve" aria-labelledby="reserve-title">
+  <div class="reserve__frame">
+    <p class="type-label-caps" id="reserve-title">Reserve</p>
+    <p class="type-body-md reserve__note">
+      Availability from the booking provider interface (mock data until Guesty is connected).
+    </p>
+
+    <div class="reserve__grid">
+      <div>
+        <h3 class="type-headline-md reserve__month">{monthLabel}</h3>
+        <div class="reserve__cal" role="grid" aria-label={`Availability for ${monthLabel}`}>
+          <div class="reserve__dow type-label-caps" role="row">
+            {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((d) => (
+              <span role="columnheader">{d}</span>
+            ))}
+          </div>
+          <div class="reserve__days" role="rowgroup">
+            {
+              (() => {
+                const first = new Date(days[0]?.date ?? `${monthKey}-01`);
+                const pad = first.getDay();
+                const cells: { label: string; available?: boolean; rate?: number }[] = [];
+                for (let i = 0; i < pad; i++) cells.push({ label: '' });
+                for (const day of days) {
+                  cells.push({
+                    label: String(Number(day.date.slice(-2))),
+                    available: day.available,
+                    rate: day.rate,
+                  });
+                }
+                return cells.map((c) => (
+                  <span
+                    class:list={[
+                      'reserve__day type-label-caps',
+                      c.label && (c.available ? 'is-open' : 'is-closed'),
+                    ]}
+                    title={c.rate ? `From $${c.rate}` : undefined}
+                  >
+                    {c.label}
+                  </span>
+                ));
+              })()
+            }
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="type-headline-md">Rates</h3>
+        <table class="reserve__rates">
+          <tbody>
+            {
+              snapshot.rates.map((r) => (
+                <tr>
+                  <th scope="row" class="type-label-caps">
+                    {r.label}
+                  </th>
+                  <td class="type-body-md">
+                    ${r.amount.toLocaleString('en-US')}
+                    {r.note && <span class="reserve__rate-note type-label-caps">{r.note}</span>}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+        <a class="btn-solid reserve__cta" href={`mailto:reservations@myscenicstays.com?subject=Inquiry`}>
+          Begin an inquiry
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reserve {
+    padding: var(--stack-lg) var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .reserve {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .reserve__frame {
+    border: var(--hairline) solid var(--ink);
+    padding: var(--stack-md);
+  }
+
+  .reserve__note {
+    opacity: 0.65;
+    max-width: 40ch;
+    margin: 0.75rem 0 var(--stack-md);
+  }
+
+  .reserve__grid {
+    display: grid;
+    gap: var(--stack-lg);
+  }
+
+  @media (min-width: 900px) {
+    .reserve__grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+
+  .reserve__month {
+    margin: 0 0 1rem;
+  }
+
+  .reserve__dow,
+  .reserve__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  .reserve__dow span {
+    text-align: center;
+    opacity: 0.45;
+    padding: 0.35rem 0;
+  }
+
+  .reserve__day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--hairline) solid transparent;
+  }
+
+  .reserve__day.is-open {
+    border-color: color-mix(in srgb, var(--ink) 25%, transparent);
+    background: var(--paper);
+  }
+
+  .reserve__day.is-closed {
+    opacity: 0.25;
+    text-decoration: line-through;
+  }
+
+  .reserve__rates {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 var(--stack-md);
+  }
+
+  .reserve__rates th,
+  .reserve__rates td {
+    text-align: left;
+    padding: 0.85rem 0;
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    font-weight: 400;
+  }
+
+  .reserve__rate-note {
+    display: block;
+    margin-top: 0.25rem;
+    opacity: 0.45;
+  }
+
+  .reserve__cta {
+    display: inline-flex;
+  }
+</style>

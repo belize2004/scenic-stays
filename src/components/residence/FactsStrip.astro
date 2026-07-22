@@ -1,0 +1,91 @@
+---
+/**
+ * Sticky facts strip — dates, guests, rate, solid CTA.
+ * Frosted-vellum on scroll (sticky).
+ */
+interface Props {
+  rateFrom: number;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { rateFrom, ctaLabel = 'Begin an inquiry', ctaHref = '#reserve' } = Astro.props;
+---
+
+<div class="facts">
+  <form class="facts__form" action={ctaHref} method="get">
+    <div class="facts__field">
+      <label class="type-label-caps" for="res-dates">Dates</label>
+      <input id="res-dates" name="dates" type="text" placeholder="Select dates" />
+    </div>
+    <div class="facts__field">
+      <label class="type-label-caps" for="res-guests">Guests</label>
+      <input id="res-guests" name="guests" type="text" placeholder="How many?" />
+    </div>
+    <div class="facts__rate">
+      <p class="type-label-caps">From</p>
+      <p class="type-headline-md">${rateFrom.toLocaleString('en-US')}<span class="type-label-caps"> / night</span></p>
+    </div>
+    <a class="btn-solid" href={ctaHref}>{ctaLabel}</a>
+  </form>
+</div>
+
+<style>
+  .facts {
+    position: sticky;
+    top: 4.5rem;
+    z-index: 30;
+    background: color-mix(in srgb, var(--vellum) 92%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  .facts__form {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem var(--margin-mobile);
+    align-items: end;
+  }
+
+  @media (min-width: 900px) {
+    .facts__form {
+      grid-template-columns: 1.2fr 0.8fr 1fr auto;
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .facts__field {
+    border-bottom: var(--hairline) solid var(--ink);
+    padding-bottom: 0.35rem;
+  }
+
+  .facts__field label {
+    display: block;
+    margin-bottom: 0.25rem;
+    opacity: 0.55;
+  }
+
+  .facts__field input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    font-family: var(--family-display);
+    font-size: 1.125rem;
+    font-style: italic;
+    font-weight: var(--weight-display);
+    font-variation-settings: 'opsz' var(--opsz-display);
+    color: var(--ink);
+    padding: 0.2rem 0;
+    border-radius: 0;
+  }
+
+  .facts__rate .type-headline-md {
+    margin: 0.15rem 0 0;
+  }
+
+  .facts__rate .type-label-caps {
+    margin: 0;
+    opacity: 0.55;
+  }
+</style>

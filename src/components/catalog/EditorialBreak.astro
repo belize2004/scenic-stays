@@ -1,0 +1,104 @@
+---
+import { cfImg } from '../../lib/cfImg';
+
+/**
+ * Full-bleed editorial interruption between catalog rows — DNA T2 §2.
+ * The "spread between index pages" that keeps long lists from feeling templated.
+ */
+interface Props {
+  image: string;
+  alt: string;
+  label: string;
+  href?: string;
+}
+
+const { image, alt, label, href } = Astro.props;
+const img = cfImg(image);
+---
+
+<section class="break">
+  {
+    href ? (
+      <a class="break__link" href={href}>
+        <img
+          src={img.src}
+          srcset={img.srcset}
+          sizes="100vw"
+          alt={alt}
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="break__scrim" aria-hidden="true">
+          <span class="grain-scrim" />
+        </span>
+        <span class="type-label-caps break__label">{label}</span>
+      </a>
+    ) : (
+      <div class="break__link">
+        <img
+          src={img.src}
+          srcset={img.srcset}
+          sizes="100vw"
+          alt={alt}
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="break__scrim" aria-hidden="true">
+          <span class="grain-scrim" />
+        </span>
+        <span class="type-label-caps break__label">{label}</span>
+      </div>
+    )
+  }
+</section>
+
+<style>
+  .break {
+    position: relative;
+    min-height: 70svh;
+    background: var(--ink);
+  }
+
+  .break__link {
+    position: relative;
+    display: block;
+    min-height: 70svh;
+    color: var(--paper);
+    text-decoration: none;
+  }
+
+  .break__link img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .break__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--ink) 65%, transparent),
+      transparent 40%
+    );
+  }
+
+  .break__label {
+    position: absolute;
+    right: var(--margin-mobile);
+    bottom: var(--stack-md);
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .break__label {
+      right: var(--margin-desktop);
+    }
+  }
+</style>
