@@ -1,23 +1,28 @@
 /* Scenic Stays — Design DNA tokens (docs/design-dna.md). Four colors only. */
 
+/*
+  Size-adjusted fallbacks — zero CLS on font swap.
+  Metrics tuned so Times/Arial occupy approximately the same box as Bodoni/Hanken.
+*/
 @font-face {
   font-family: 'Bodoni Moda Fallback';
   src: local('Times New Roman'), local('Times'), local('Georgia');
-  size-adjust: 112%;
-  ascent-override: 90%;
-  descent-override: 22%;
+  size-adjust: 118%;
+  ascent-override: 84%;
+  descent-override: 26%;
   line-gap-override: 0%;
 }
 
 @font-face {
   font-family: 'Hanken Grotesk Fallback';
-  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
-  size-adjust: 100%;
-  ascent-override: 92%;
+  src: local('Helvetica Neue'), local('Arial'), local('Helvetica');
+  size-adjust: 102%;
+  ascent-override: 90%;
   descent-override: 24%;
   line-gap-override: 0%;
 }
 
+/* Bodoni Moda — standard VF includes wght + opsz axes */
 @font-face {
   font-family: 'Bodoni Moda';
   font-style: normal;
@@ -103,7 +108,7 @@
 }
 
 :root {
-  /* Color — DNA §1 */
+  /* Color — DNA §1. Exactly four. No Material remnants. */
   --paper: #faf7f2;
   --vellum: #f3eee4;
   --ink: #141210;
@@ -114,8 +119,15 @@
   --family-body: 'Hanken Grotesk', 'Hanken Grotesk Fallback', 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
 
-  /* Type scale — DNA §2 */
-  --text-display-xl: clamp(56px, 9vw, 120px);
+  /* Display optical size locked — DNA review: not auto-opsz at 96 */
+  --opsz-display: 60;
+  --weight-display: 475;
+
+  /*
+    Type scale — DNA §2.
+    display-xl: clamp vw ceiling AND ~40svh cap so short laptop viewports keep eyebrow/caption.
+  */
+  --text-display-xl: min(clamp(56px, 9vw, 120px), 40svh);
   --lh-display-xl: 0.95;
   --text-headline-lg: clamp(40px, 5vw, 64px);
   --lh-headline-lg: 1;
@@ -139,7 +151,7 @@
   --stack-md: 40px;
   --hairline: 1px;
 
-  /* Motion — DNA §6 (one curve) */
+  /* Motion — DNA §6 (one curve; token always exists; animation gated by reduced-motion) */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-reveal: 500ms;
   --reveal-distance: 24px;
@@ -148,7 +160,10 @@
 
   /* Frame */
   --frame-peek-default: 50px;
-  --grain-opacity: 0.035;
+
+  /* Grain — DNA §3: cream ≤4% (felt, not seen); scrim 8–10% overlay */
+  --grain-opacity: 0.03;
+  --grain-scrim-opacity: 0.09;
 }
 
 @theme inline {
@@ -194,11 +209,12 @@ video {
   border-radius: 0;
 }
 
-/* Type utilities */
+/* Type utilities — display/headline lock opsz 60 + weight ~475 */
 .type-display-xl {
   font-family: var(--family-display);
   font-size: var(--text-display-xl);
-  font-weight: 400;
+  font-weight: var(--weight-display);
+  font-variation-settings: 'opsz' var(--opsz-display);
   line-height: var(--lh-display-xl);
   letter-spacing: -0.04em;
 }
@@ -206,7 +222,8 @@ video {
 .type-headline-lg {
   font-family: var(--family-display);
   font-size: var(--text-headline-lg);
-  font-weight: 400;
+  font-weight: var(--weight-display);
+  font-variation-settings: 'opsz' var(--opsz-display);
   line-height: var(--lh-headline-lg);
   letter-spacing: -0.02em;
 }
@@ -214,7 +231,8 @@ video {
 .type-headline-md {
   font-family: var(--family-display);
   font-size: var(--text-headline-md);
-  font-weight: 400;
+  font-weight: var(--weight-display);
+  font-variation-settings: 'opsz' var(--opsz-display);
   line-height: var(--lh-headline-md);
 }
 
@@ -319,10 +337,16 @@ video {
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
-/* Grain — DNA §3. Uses shared #grain-filter from BaseLayout (inline SVG, zero requests). */
+/*
+  Grain — DNA §3.
+  Filter defined once in BaseLayout (#grain-filter); classes only reference it.
+  Cream ≤4%; scrim 8–10% at mix-blend-mode: overlay.
+*/
 .grain,
 .grain-scrim {
   pointer-events: none;
@@ -342,7 +366,7 @@ video {
 }
 
 .grain-scrim::after {
-  opacity: 0.09;
+  opacity: var(--grain-scrim-opacity);
   mix-blend-mode: overlay;
 }
 

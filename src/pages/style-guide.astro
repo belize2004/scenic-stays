@@ -49,6 +49,10 @@ const spacing = [
 
     <section class="sg__section" aria-labelledby="type">
       <h2 id="type" class="type-headline-md">Typography</h2>
+      <p class="type-body-md sg__note">
+        Display/headline: weight 475 · font-variation-settings 'opsz' 60 · display-xl capped at
+        min(clamp, 40svh). Hard-reload with cache disabled to verify zero CLS on swap.
+      </p>
       <div class="sg__type-stack">
         <div>
           <p class="type-label-caps sg__meta">display-xl</p>
@@ -112,7 +116,10 @@ const spacing = [
 
     <section class="sg__section" aria-labelledby="grain">
       <h2 id="grain" class="type-headline-md">Grain</h2>
-      <p class="type-body-md sg__note">Cream surfaces only, ≤ 3–4% opacity. Shared inline SVG filter.</p>
+      <p class="type-body-md sg__note">
+        Cream at 3% (felt, not seen). Scrim class at 9% overlay. Filter #grain-filter defined once in
+        BaseLayout.
+      </p>
       <div class="sg__grain-sample">
         <div class="grain" aria-hidden="true" />
         <p class="type-label-caps">Paper + grain</p>
@@ -157,7 +164,10 @@ const spacing = [
     </section>
 
     <footer class="sg__footer">
-      <p class="type-label-caps">Easing · cubic-bezier(0.22, 1, 0.36, 1) · 500ms fade-up</p>
+      <p class="type-label-caps">
+        Easing token always present · cubic-bezier(0.22, 1, 0.36, 1) · 500ms fade-up · disabled under
+        prefers-reduced-motion
+      </p>
       <p class="type-body-md reveal">This line uses the single reveal motion.</p>
     </footer>
   </main>
