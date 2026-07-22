@@ -1,8 +1,8 @@
 ---
 /**
- * Global masthead + mega-nav — DNA §8.
- * Interactive: hover intent, click toggle, Escape to close, ARIA.
- * Not permanently open (Stitch mockup artifact).
+ * Global masthead + dual mega-nav — DNA §7–§8.
+ * Vacation Rentals (4 cols) + Guides (3 cols). Hover intent, click, Escape, focus trap Tab.
+ * Sticky frosted-vellum. Active underline is state-only. Mobile = full-screen paper overlay.
  */
 import { site } from '../data/site';
 
@@ -13,12 +13,12 @@ interface Props {
 const { active = null } = Astro.props;
 
 const primaryNav = [
-  { id: 'rentals', label: 'Vacation Rentals', href: '/rentals', mega: true },
-  { id: 'guides', label: 'Guides', href: '/journal', mega: false },
-  { id: 'deals', label: 'Vacation Deals', href: '/offers', mega: false },
-  { id: 'management', label: 'Property Management', href: '/management', mega: false },
-  { id: 'real-estate', label: 'Real Estate', href: '/real-estate', mega: false },
-] as const;
+  { id: 'rentals', label: 'Vacation Rentals', href: '/rentals', mega: 'rentals' as const },
+  { id: 'guides', label: 'Guides', href: '/journal', mega: 'guides' as const },
+  { id: 'deals', label: 'Vacation Deals', href: '/offers', mega: null },
+  { id: 'management', label: 'Property Management', href: '/management', mega: null },
+  { id: 'real-estate', label: 'Real Estate', href: '/real-estate', mega: null },
+];
 
 const destinations = [
   { label: '30A', href: '/rentals/30a' },
@@ -49,6 +49,20 @@ const indexLinks = [
   { label: 'A–Z Property List', href: '/rentals/a-z' },
   { label: 'All Properties', href: '/rentals' },
 ];
+
+const guideDestinations = [
+  { label: '30A', href: '/journal/guides/30a' },
+  { label: 'Destin', href: '/journal/guides/destin' },
+  { label: 'Navarre Beach', href: '/journal/guides/navarre' },
+  { label: 'Panama City Beach', href: '/journal/guides/panama-city-beach' },
+];
+
+const guideStories = [
+  { label: 'Destination Guides', href: '/journal/guides' },
+  { label: 'Things To Do', href: '/journal/things-to-do' },
+  { label: 'Weddings & Events', href: '/journal/weddings' },
+  { label: 'The Journal', href: '/journal' },
+];
 ---
 
 <header class="masthead" data-masthead>
@@ -59,27 +73,21 @@ const indexLinks = [
       <ul class="masthead__list">
         {
           primaryNav.map((item) => (
-            <li class="masthead__item">
+            <li class="masthead__item" data-nav-item={item.id}>
               {item.mega ? (
                 <button
                   type="button"
-                  class:list={[
-                    'masthead__link type-label-caps',
-                    active === item.id && 'is-active',
-                  ]}
-                  data-mega-trigger
+                  class:list={['masthead__link type-label-caps', active === item.id && 'is-active']}
+                  data-mega-trigger={item.mega}
                   aria-expanded="false"
-                  aria-controls="mega-panel-rentals"
-                  id="mega-trigger-rentals"
+                  aria-controls={`mega-panel-${item.mega}`}
+                  id={`mega-trigger-${item.mega}`}
                 >
                   {item.label}
                 </button>
               ) : (
                 <a
-                  class:list={[
-                    'masthead__link type-label-caps',
-                    active === item.id && 'is-active',
-                  ]}
+                  class:list={['masthead__link type-label-caps', active === item.id && 'is-active']}
                   href={item.href}
                 >
                   {item.label}
@@ -104,99 +112,139 @@ const indexLinks = [
     </button>
   </div>
 
+  {/* Vacation Rentals mega — 4 columns */}
   <div
     class="masthead__mega"
     id="mega-panel-rentals"
-    data-mega-panel
+    data-mega-panel="rentals"
     hidden
     role="region"
     aria-labelledby="mega-trigger-rentals"
   >
-    <div class="masthead__mega-grid">
+    <div class="masthead__mega-grid masthead__mega-grid--4">
       <div>
         <h2 class="type-label-caps masthead__mega-heading">Destinations</h2>
         <ul class="masthead__mega-links">
-          {
-            destinations.map((l) => (
-              <li>
-                <a class="masthead__mega-link" href={l.href}>
-                  {l.label}
-                </a>
-              </li>
-            ))
-          }
+          {destinations.map((l) => (
+            <li>
+              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+            </li>
+          ))}
         </ul>
       </div>
       <div>
         <h2 class="type-label-caps masthead__mega-heading">Resorts</h2>
         <ul class="masthead__mega-links">
-          {
-            resorts.map((l) => (
-              <li>
-                <a class="masthead__mega-link" href={l.href}>
-                  {l.label}
-                </a>
-              </li>
-            ))
-          }
+          {resorts.map((l) => (
+            <li>
+              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+            </li>
+          ))}
         </ul>
       </div>
       <div>
         <h2 class="type-label-caps masthead__mega-heading">The Collection</h2>
         <ul class="masthead__mega-links">
-          {
-            collections.map((l) => (
-              <li>
-                <a class="masthead__mega-link" href={l.href}>
-                  {l.label}
-                </a>
-              </li>
-            ))
-          }
+          {collections.map((l) => (
+            <li>
+              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+            </li>
+          ))}
         </ul>
       </div>
       <div class="masthead__mega-index">
         <h2 class="type-label-caps masthead__mega-heading">Index</h2>
         <ul class="masthead__mega-links">
-          {
-            indexLinks.map((l) => (
-              <li>
-                <a class="masthead__mega-link" href={l.href}>
-                  {l.label}
-                </a>
-              </li>
-            ))
-          }
+          {indexLinks.map((l) => (
+            <li>
+              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+            </li>
+          ))}
         </ul>
         <figure class="masthead__mega-fig">
-          <div class="masthead__mega-fig-frame" aria-hidden="true" />
+          <img
+            src="/images/placeholders/mega-fig.jpg"
+            alt=""
+            width="96"
+            height="128"
+            loading="lazy"
+            decoding="async"
+          />
           <figcaption class="type-label-caps">Fig. 04 — Seaside residence</figcaption>
         </figure>
       </div>
     </div>
   </div>
 
-  <nav class="masthead__mobile" id="mobile-nav" data-mobile-nav hidden aria-label="Mobile">
-    <ul>
-      {
-        primaryNav.map((item) => (
-          <li>
-            <a class="type-headline-md" href={item.href}>
-              {item.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+  {/* Guides mega — 3 columns + captioned photo */}
+  <div
+    class="masthead__mega"
+    id="mega-panel-guides"
+    data-mega-panel="guides"
+    hidden
+    role="region"
+    aria-labelledby="mega-trigger-guides"
+  >
+    <div class="masthead__mega-grid masthead__mega-grid--3">
+      <div>
+        <h2 class="type-label-caps masthead__mega-heading">Destination Guides</h2>
+        <ul class="masthead__mega-links">
+          {guideDestinations.map((l) => (
+            <li>
+              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="type-label-caps masthead__mega-heading">In the Journal</h2>
+        <ul class="masthead__mega-links">
+          {guideStories.map((l) => (
+            <li>
+              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="masthead__mega-index">
+        <h2 class="type-label-caps masthead__mega-heading">Featured</h2>
+        <figure class="masthead__mega-fig masthead__mega-fig--wide">
+          <img
+            src="/images/placeholders/film-30a.jpg"
+            alt=""
+            width="240"
+            height="160"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="type-label-caps">Fig. 12 — 30A, late afternoon</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  {/* Mobile — full-screen paper overlay, headline-md serif, hairline rows */}
+  <div class="masthead__mobile" id="mobile-nav" data-mobile-nav hidden>
+    <nav aria-label="Mobile">
+      <ul>
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a class="type-headline-md" href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
     <a class="type-label-caps masthead__mobile-phone" href={site.phoneHref}>{site.phone}</a>
-  </nav>
+  </div>
 </header>
 
 <script>
   const root = document.querySelector('[data-masthead]');
-  if (root) {
-    const trigger = root.querySelector('[data-mega-trigger]');
-    const panel = root.querySelector('[data-mega-panel]');
+  if (root instanceof HTMLElement) {
+    const triggers = [...root.querySelectorAll('[data-mega-trigger]')];
+    const panels = [...root.querySelectorAll('[data-mega-panel]')];
     const mobileToggle = root.querySelector('[data-mobile-toggle]');
     const mobileNav = root.querySelector('[data-mobile-nav]');
 
@@ -204,73 +252,95 @@ const indexLinks = [
     let closeTimer = 0;
     const OPEN_DELAY = 160;
     const CLOSE_DELAY = 280;
+    let openId = null;
 
-    function setMegaOpen(open) {
-      if (!trigger || !panel) return;
-      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        panel.removeAttribute('hidden');
-        root.classList.add('is-mega-open');
-      } else {
-        panel.setAttribute('hidden', '');
-        root.classList.remove('is-mega-open');
+    function panelFor(id) {
+      return root.querySelector(`[data-mega-panel="${id}"]`);
+    }
+
+    function triggerFor(id) {
+      return root.querySelector(`[data-mega-trigger="${id}"]`);
+    }
+
+    function setMegaOpen(id) {
+      window.clearTimeout(openTimer);
+      window.clearTimeout(closeTimer);
+      openId = id;
+      for (const t of triggers) {
+        const tid = t.getAttribute('data-mega-trigger');
+        const on = tid === id;
+        t.setAttribute('aria-expanded', on ? 'true' : 'false');
+        t.classList.toggle('is-open', on);
       }
+      for (const p of panels) {
+        const pid = p.getAttribute('data-mega-panel');
+        if (pid === id) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      }
+      root.classList.toggle('is-mega-open', Boolean(id));
+    }
+
+    function closeMega() {
+      setMegaOpen(null);
+    }
+
+    function scheduleOpen(id) {
+      window.clearTimeout(closeTimer);
+      openTimer = window.setTimeout(() => setMegaOpen(id), OPEN_DELAY);
+    }
+
+    function scheduleClose() {
+      window.clearTimeout(openTimer);
+      closeTimer = window.setTimeout(() => closeMega(), CLOSE_DELAY);
+    }
+
+    for (const t of triggers) {
+      const id = t.getAttribute('data-mega-trigger');
+      const panel = panelFor(id);
+      t.addEventListener('click', () => {
+        setMegaOpen(openId === id ? null : id);
+      });
+      t.addEventListener('mouseenter', () => scheduleOpen(id));
+      t.addEventListener('mouseleave', scheduleClose);
+      t.addEventListener('focus', () => scheduleOpen(id));
+      panel?.addEventListener('mouseenter', () => window.clearTimeout(closeTimer));
+      panel?.addEventListener('mouseleave', scheduleClose);
     }
 
     function setMobileOpen(open) {
-      if (!mobileToggle || !mobileNav) return;
+      if (!(mobileToggle instanceof HTMLElement) || !(mobileNav instanceof HTMLElement)) return;
       mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       mobileToggle.textContent = open ? 'Close' : 'Menu';
       if (open) {
         mobileNav.removeAttribute('hidden');
         root.classList.add('is-mobile-open');
+        document.documentElement.classList.add('nav-lock');
       } else {
         mobileNav.setAttribute('hidden', '');
         root.classList.remove('is-mobile-open');
+        document.documentElement.classList.remove('nav-lock');
       }
-    }
-
-    function scheduleOpen() {
-      window.clearTimeout(closeTimer);
-      openTimer = window.setTimeout(() => setMegaOpen(true), OPEN_DELAY);
-    }
-
-    function scheduleClose() {
-      window.clearTimeout(openTimer);
-      closeTimer = window.setTimeout(() => setMegaOpen(false), CLOSE_DELAY);
-    }
-
-    if (trigger && panel) {
-      trigger.addEventListener('click', () => {
-        const open = trigger.getAttribute('aria-expanded') === 'true';
-        setMegaOpen(!open);
-      });
-
-      trigger.addEventListener('mouseenter', scheduleOpen);
-      trigger.addEventListener('mouseleave', scheduleClose);
-      panel.addEventListener('mouseenter', () => window.clearTimeout(closeTimer));
-      panel.addEventListener('mouseleave', scheduleClose);
-
-      trigger.addEventListener('focus', scheduleOpen);
     }
 
     mobileToggle?.addEventListener('click', () => {
       const open = mobileToggle.getAttribute('aria-expanded') === 'true';
       setMobileOpen(!open);
-      if (!open) setMegaOpen(false);
+      if (!open) closeMega();
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        setMegaOpen(false);
+        const was = openId;
+        closeMega();
         setMobileOpen(false);
-        trigger?.focus();
+        if (was) triggerFor(was)?.focus();
+        else mobileToggle?.focus();
       }
     });
 
     document.addEventListener('click', (e) => {
       if (!root.contains(e.target)) {
-        setMegaOpen(false);
+        closeMega();
         setMobileOpen(false);
       }
     });
@@ -278,18 +348,24 @@ const indexLinks = [
 </script>
 
 <style>
+  :global(html.nav-lock) {
+    overflow: hidden;
+  }
+
   .masthead {
     position: sticky;
     top: 0;
     z-index: 50;
+    /* DNA §7 — frosted vellum, not solid fill / not glass */
     background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
   }
 
   .masthead__bar {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: var(--gutter);
     padding: 1.35rem var(--margin-mobile);
@@ -341,7 +417,9 @@ const indexLinks = [
     cursor: pointer;
   }
 
+  /* Active = current section OR open panel — never a permanent decoration */
   .masthead__link.is-active,
+  .masthead__link.is-open,
   .masthead__link[aria-expanded='true'] {
     border-bottom-color: var(--ink);
   }
@@ -392,12 +470,14 @@ const indexLinks = [
   .masthead__mega-grid {
     display: grid;
     gap: var(--gutter);
-    grid-template-columns: 1fr;
   }
 
   @media (min-width: 960px) {
-    .masthead__mega-grid {
+    .masthead__mega-grid--4 {
       grid-template-columns: repeat(4, 1fr);
+    }
+    .masthead__mega-grid--3 {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -434,37 +514,62 @@ const indexLinks = [
     margin: 2rem 0 0;
   }
 
-  .masthead__mega-fig-frame {
+  .masthead__mega-fig img {
+    display: block;
     width: 6rem;
     height: 8rem;
-    background: var(--vellum);
-    border: var(--hairline) solid color-mix(in srgb, var(--ink) 12%, transparent);
+    object-fit: cover;
     margin-bottom: 0.5rem;
   }
 
+  .masthead__mega-fig--wide img {
+    width: 100%;
+    max-width: 16rem;
+    height: 10rem;
+  }
+
+  /* Full-screen paper overlay — not a drawer */
   .masthead__mobile {
-    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    position: fixed;
+    inset: 0;
+    top: 0;
+    z-index: 60;
     background: var(--paper);
-    padding: var(--stack-md) var(--margin-mobile) var(--stack-lg);
+    padding: 5.5rem var(--margin-mobile) var(--stack-lg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .masthead__mobile[hidden] {
+    display: none;
+  }
+
+  .masthead.is-mobile-open .masthead__menu-toggle {
+    position: relative;
+    z-index: 70;
   }
 
   .masthead__mobile ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+  }
+
+  .masthead__mobile li {
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
   }
 
   .masthead__mobile a {
+    display: block;
     color: var(--ink);
     text-decoration: none;
+    padding: 1.25rem 0;
   }
 
   .masthead__mobile-phone {
     display: inline-block;
-    margin-top: var(--stack-md);
+    margin-top: auto;
+    padding-top: var(--stack-md);
     opacity: 0.72;
   }
 </style>

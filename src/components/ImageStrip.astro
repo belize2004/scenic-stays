@@ -1,0 +1,124 @@
+---
+import { cfImg } from '../lib/cfImg';
+
+interface Panel {
+  numeral: string;
+  name: string;
+  sublabel?: string;
+  href: string;
+  image: string;
+}
+
+interface Props {
+  panels: readonly Panel[];
+}
+
+const { panels } = Astro.props;
+---
+
+<div class="strip">
+  {
+    panels.map((p) => {
+      const img = cfImg(p.image);
+      return (
+        <a class="strip__panel" href={p.href}>
+          <img
+            src={img.src}
+            srcset={img.srcset}
+            sizes="(min-width: 768px) 33vw, 100vw"
+            alt=""
+            width="1200"
+            height="1600"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="strip__scrim" aria-hidden="true">
+            <span class="grain-scrim" />
+          </span>
+          <span class="strip__label">
+            <span class="type-headline-md">
+              {p.numeral} {p.name}
+            </span>
+            {p.sublabel && <span class="type-label-caps strip__sub">{p.sublabel}</span>}
+          </span>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style>
+  .strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex: 1;
+    min-height: inherit;
+    gap: 2px;
+    background: var(--ink);
+  }
+
+  @media (min-width: 768px) {
+    .strip {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .strip {
+      min-height: auto;
+    }
+    .strip__panel {
+      min-height: 70svh;
+    }
+  }
+
+  .strip__panel {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: var(--paper);
+    text-decoration: none;
+  }
+
+  .strip__panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--duration-image-hover) var(--ease-editorial);
+  }
+
+  .strip__panel:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strip__panel img {
+      transition: none;
+    }
+    .strip__panel:hover img {
+      transform: none;
+    }
+  }
+
+  .strip__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, color-mix(in srgb, var(--ink) 70%, transparent), transparent 45%);
+  }
+
+  .strip__label {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 2rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+
+  .strip__sub {
+    opacity: 0.8;
+  }
+</style>

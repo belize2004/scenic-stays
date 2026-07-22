@@ -1,0 +1,115 @@
+---
+import FolioMarker from './FolioMarker.astro';
+
+interface Item {
+  n: string;
+  name: string;
+  whisper: string;
+  href: string;
+}
+
+interface Props {
+  folio: { number: string; name: string };
+  headline: string;
+  items: readonly Item[];
+}
+
+const { folio, headline, items } = Astro.props;
+---
+
+<div class="resorts">
+  <FolioMarker number={folio.number} name={folio.name} class="resorts__folio" />
+  <h2 class="type-headline-lg resorts__headline">{headline}</h2>
+  <ul class="resorts__list">
+    {
+      items.map((item) => (
+        <li>
+          <a class="resorts__row" href={item.href}>
+            <span class="resorts__left">
+              <span class="type-label-caps resorts__n">{item.n}</span>
+              <span class="type-headline-md">{item.name}</span>
+            </span>
+            <span class="type-label-caps resorts__whisper">{item.whisper}</span>
+            <span class="type-label-caps resorts__cta link-gold">Explore</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .resorts {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--stack-lg) var(--margin-mobile);
+    max-width: 48rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .resorts {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .resorts__folio {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .resorts__headline {
+    text-align: center;
+    margin: 0 0 var(--stack-lg);
+  }
+
+  .resorts__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: var(--hairline) solid var(--ink);
+  }
+
+  .resorts__row {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.75rem 0;
+    border-top: var(--hairline) solid var(--ink);
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  @media (min-width: 768px) {
+    .resorts__row {
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  .resorts__left {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+  }
+
+  .resorts__n {
+    opacity: 0.45;
+  }
+
+  .resorts__whisper {
+    opacity: 0.55;
+  }
+
+  .resorts__cta {
+    opacity: 0;
+  }
+
+  .resorts__row:hover .resorts__cta,
+  .resorts__row:focus-visible .resorts__cta {
+    opacity: 1;
+  }
+</style>

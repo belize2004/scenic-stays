@@ -1,0 +1,88 @@
+---
+interface Column {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  headline: string;
+  columns: readonly Column[];
+}
+
+const { headline, columns } = Astro.props;
+---
+
+<div class="diff">
+  <h2 class="type-headline-md diff__headline">{headline}</h2>
+  <div class="diff__grid">
+    {
+      columns.map((c, i) => (
+        <div class:list={['diff__col', i === 1 && 'diff__col--center', i === 2 && 'diff__col--end']}>
+          <h3 class="type-label-caps">{c.title}</h3>
+          <p class="type-body-md">{c.body}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .diff {
+    padding: var(--stack-lg) var(--margin-mobile);
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  @media (min-width: 768px) {
+    .diff {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .diff__headline {
+    text-align: center;
+    margin: 0 0 var(--stack-lg);
+  }
+
+  .diff__grid {
+    display: grid;
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 768px) {
+    .diff__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+  }
+
+  .diff__col {
+    padding: var(--stack-md) 0;
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  @media (min-width: 768px) {
+    .diff__col {
+      padding: 0 2rem;
+      border-bottom: 0;
+      border-right: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    }
+    .diff__col:last-child {
+      border-right: 0;
+    }
+    .diff__col--center {
+      text-align: center;
+    }
+    .diff__col--end {
+      text-align: right;
+    }
+  }
+
+  .diff__col h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  .diff__col p {
+    margin: 0;
+    opacity: 0.72;
+  }
+</style>

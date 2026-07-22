@@ -1,71 +1,111 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Frame from '../components/Frame.astro';
+import EditorialHero from '../components/EditorialHero.astro';
+import BookingStrip from '../components/BookingStrip.astro';
+import FolioMarker from '../components/FolioMarker.astro';
+import PropertySpread from '../components/PropertySpread.astro';
+import ImageStrip from '../components/ImageStrip.astro';
+import Guestbook from '../components/Guestbook.astro';
+import DifferenceStrip from '../components/DifferenceStrip.astro';
+import ResortIndex from '../components/ResortIndex.astro';
+import ClosingFrame from '../components/ClosingFrame.astro';
+import { homeContent as c } from '../content/home';
 ---
 
 <SiteLayout title="SCENIC STAYS | The Emerald Coast, properly.">
-  <main>
+  <main id="main">
     <Frame variant="loud" peek={50} background="paper">
-      <div class="home-hero">
-        <p class="type-label-caps home-hero__eyebrow">Destin — 30A — Navarre — Panama City Beach</p>
-        <h1 class="type-display-xl">
-          The Emerald Coast, <em>properly</em>.
-        </h1>
-        <p class="type-body-lg home-hero__note">
-          Global shell in place. Homepage components land in Step 3.
-        </p>
-      </div>
+      <EditorialHero
+        image={c.hero.image}
+        headline={c.hero.headline}
+        italicWord={c.hero.italicWord}
+        eyebrow={c.hero.eyebrow}
+        polarity={c.hero.polarity}
+        scrimStrength={c.hero.scrimStrength}
+        caption={c.hero.caption}
+        coordinate={c.hero.coordinate}
+      />
     </Frame>
 
     <Frame variant="quiet" background="vellum">
-      <div class="home-rest">
-        <p class="type-label-caps">No. 01 — The Private Homes</p>
-        <p class="type-headline-lg"><em>Chosen slowly, and only once.</em></p>
+      <div class="quiet-intro">
+        <BookingStrip fields={c.booking.fields} submit={c.booking.submit} />
+        <div class="quiet-intro__folio">
+          <div>
+            <FolioMarker number={c.privateHomes.folio.number} name={c.privateHomes.folio.name} />
+            <h2 class="type-headline-lg"><em>{c.privateHomes.headline}</em></h2>
+          </div>
+          <a class="link-gold" href={c.privateHomes.cta.href}>{c.privateHomes.cta.label}</a>
+        </div>
       </div>
+    </Frame>
+
+    {
+      c.properties.map((p) => (
+        <Frame variant="loud" peek={0} background={p.background}>
+          <PropertySpread
+            name={p.name}
+            whisper={p.whisper}
+            prose={p.prose}
+            cta={p.cta}
+            image={p.image}
+            overlap={p.overlap}
+          />
+        </Frame>
+      ))
+    }
+
+    <Frame variant="loud" peek={0} background="paper">
+      <ImageStrip panels={c.filmstrip} />
+    </Frame>
+
+    <Frame variant="quiet" background="vellum">
+      <Guestbook folio={c.guestbook.folio} quote={c.guestbook.quote} attribution={c.guestbook.attribution} />
+    </Frame>
+
+    <Frame variant="quiet" background="paper" flow>
+      <DifferenceStrip headline={c.difference.headline} columns={c.difference.columns} />
+    </Frame>
+
+    <Frame variant="quiet" background="vellum">
+      <ResortIndex folio={c.resorts.folio} headline={c.resorts.headline} items={c.resorts.items} />
+    </Frame>
+
+    <Frame variant="quiet" background="paper">
+      <ClosingFrame quiz={c.closing.quiz} line={c.closing.line} columns={c.closing.columns} />
     </Frame>
   </main>
 </SiteLayout>
 
 <style>
-  .home-hero {
+  .quiet-intro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quiet-intro__folio {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: var(--stack-md);
     padding: var(--stack-lg) var(--margin-mobile);
-    max-width: 48rem;
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 10%, transparent);
   }
 
   @media (min-width: 768px) {
-    .home-hero {
-      padding-left: var(--margin-desktop);
-      padding-right: var(--margin-desktop);
+    .quiet-intro__folio {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-inline: var(--margin-desktop);
     }
   }
 
-  .home-hero__eyebrow {
-    margin-bottom: var(--stack-md);
-    letter-spacing: 0.35em;
-  }
-
-  .home-hero__note {
-    margin-top: var(--stack-md);
-    max-width: 28rem;
-  }
-
-  .home-rest {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.25rem;
-    padding: var(--stack-md) var(--margin-mobile);
-  }
-
-  @media (min-width: 768px) {
-    .home-rest {
-      padding-left: var(--margin-desktop);
-      padding-right: var(--margin-desktop);
-    }
+  .quiet-intro__folio h2 {
+    margin: 1rem 0 0;
+    max-width: 16ch;
   }
 </style>

@@ -1,0 +1,97 @@
+---
+interface Column {
+  title: string;
+  body: string;
+  cta: { label: string; href: string };
+}
+
+interface Props {
+  quiz: { prompt: string; linkLabel: string; href: string };
+  line: string;
+  columns: readonly Column[];
+}
+
+const { quiz, line, columns } = Astro.props;
+---
+
+<div class="closing">
+  <div class="closing__hero">
+    <p class="type-headline-md closing__quiz">
+      {quiz.prompt}{' '}
+      <a class="closing__quiz-link" href={quiz.href}>{quiz.linkLabel}</a>
+    </p>
+    <p class="type-headline-lg closing__line"><em>{line}</em></p>
+  </div>
+  <div class="closing__cols">
+    {
+      columns.map((c) => (
+        <div>
+          <h2 class="type-headline-md">{c.title}</h2>
+          <p class="type-body-md">{c.body}</p>
+          <a class="link-gold" href={c.cta.href}>{c.cta.label}</a>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .closing {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--stack-lg) var(--margin-mobile);
+    gap: var(--stack-lg);
+  }
+
+  @media (min-width: 768px) {
+    .closing {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .closing__hero {
+    text-align: center;
+    padding: var(--stack-lg) 0;
+  }
+
+  .closing__quiz {
+    margin: 0 0 1rem;
+  }
+
+  .closing__quiz-link {
+    font-style: italic;
+    color: var(--gold);
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--gold) 40%, transparent);
+    text-decoration: none;
+  }
+
+  .closing__line {
+    margin: 0;
+  }
+
+  .closing__cols {
+    display: grid;
+    gap: var(--stack-md);
+    border-top: var(--hairline) solid var(--ink);
+    padding-top: var(--stack-md);
+  }
+
+  @media (min-width: 768px) {
+    .closing__cols {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--stack-lg);
+    }
+  }
+
+  .closing__cols h2 {
+    margin: 0 0 0.75rem;
+  }
+
+  .closing__cols p {
+    margin: 0 0 1.25rem;
+    max-width: 28ch;
+    opacity: 0.72;
+  }
+</style>

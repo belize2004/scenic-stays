@@ -1,0 +1,151 @@
+---
+import { cfImg } from '../lib/cfImg';
+
+interface Props {
+  image: string;
+  headline: string;
+  italicWord?: string;
+  eyebrow?: string;
+  polarity?: 'dark' | 'light';
+  scrimStrength?: number;
+  caption?: string;
+  coordinate?: string;
+}
+
+const {
+  image,
+  headline,
+  italicWord,
+  eyebrow,
+  polarity = 'dark',
+  scrimStrength = 0.35,
+  caption,
+  coordinate,
+} = Astro.props;
+
+const img = cfImg(image);
+const typeColor = polarity === 'dark' ? 'var(--paper)' : 'var(--ink)';
+---
+
+<div class="hero" data-polarity={polarity} style={`--hero-type:${typeColor}; --scrim:${scrimStrength}`}>
+  <div class="hero__media">
+    <img
+      src={img.src}
+      srcset={img.srcset}
+      sizes={img.sizes}
+      alt=""
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="hero__scrim" aria-hidden="true">
+      <div class="grain-scrim"></div>
+    </div>
+  </div>
+  <div class="hero__copy">
+    {eyebrow && <p class="type-label-caps hero__eyebrow">{eyebrow}</p>}
+    <h1 class="type-display-xl hero__headline">
+      {headline}
+      {italicWord && (
+        <>
+          {' '}
+          <em>{italicWord}</em>
+        </>
+      )}
+    </h1>
+  </div>
+  {
+    (caption || coordinate) && (
+      <div class="hero__furniture">
+        {caption && <p class="type-label-caps">{caption}</p>}
+        {coordinate && <p class="type-label-caps">{coordinate}</p>}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .hero {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: inherit;
+    color: var(--hero-type);
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: var(--stack-md) var(--margin-mobile);
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .hero__media {
+      left: var(--margin-desktop);
+      right: var(--margin-desktop);
+    }
+  }
+
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--ink) calc(var(--scrim) * 100%), transparent),
+      transparent 55%
+    );
+  }
+
+  .hero[data-polarity='light'] .hero__scrim {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--paper) calc(var(--scrim) * 80%), transparent),
+      transparent 50%
+    );
+  }
+
+  .hero__copy {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: var(--stack-lg) var(--margin-mobile);
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--stack-md);
+    letter-spacing: 0.35em;
+  }
+
+  .hero__headline {
+    max-width: 14ch;
+    margin-inline: auto;
+  }
+
+  .hero__furniture {
+    position: absolute;
+    z-index: 1;
+    left: var(--margin-mobile);
+    right: var(--margin-mobile);
+    bottom: var(--stack-md);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero__furniture {
+      left: var(--margin-desktop);
+      right: var(--margin-desktop);
+    }
+  }
+</style>

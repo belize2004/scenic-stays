@@ -1,0 +1,49 @@
+---
+import FolioMarker from './FolioMarker.astro';
+
+interface Props {
+  folio: { number: string; name: string };
+  quote: string;
+  attribution: string;
+}
+
+const { folio, quote, attribution } = Astro.props;
+---
+
+<div class="guestbook">
+  <FolioMarker number={folio.number} name={folio.name} />
+  {/* DNA §8 — no quotation marks; scale + italic already say quote */}
+  <blockquote class="type-headline-lg guestbook__quote">
+    <em>{quote}</em>
+  </blockquote>
+  <p class="type-label-caps guestbook__by">{attribution}</p>
+</div>
+
+<style>
+  .guestbook {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--stack-lg) var(--margin-mobile);
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 768px) {
+    .guestbook {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .guestbook__quote {
+    margin: 0;
+    max-width: 22ch;
+    font-weight: var(--weight-display);
+  }
+
+  .guestbook__by {
+    opacity: 0.55;
+  }
+</style>

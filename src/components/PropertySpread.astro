@@ -1,0 +1,144 @@
+---
+import { cfImg } from '../lib/cfImg';
+
+interface Props {
+  name: string;
+  whisper: string;
+  prose?: string;
+  cta: { label: string; href: string };
+  image: string;
+  overlap?: 'start' | 'end';
+}
+
+const { name, whisper, prose = '', cta, image, overlap = 'end' } = Astro.props;
+const img = cfImg(image);
+---
+
+<div class:list={['spread', `spread--${overlap}`]}>
+  <div class="spread__media">
+    <img
+      src={img.src}
+      srcset={img.srcset}
+      sizes="(min-width: 768px) 66vw, 100vw"
+      alt=""
+      width="1600"
+      height="1200"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="spread__panel">
+    <h2 class="type-headline-lg spread__name">{name}</h2>
+    <p class="type-label-caps spread__whisper">{whisper}</p>
+    {prose && <p class="type-body-md spread__prose">{prose}</p>}
+    <a class="link-gold" href={cta.href}>{cta.label}</a>
+  </div>
+</div>
+
+<style>
+  .spread {
+    position: relative;
+    flex: 1;
+    display: grid;
+    align-items: center;
+    padding: var(--stack-lg) var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .spread {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gutter);
+    }
+  }
+
+  .spread__media {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+
+  @media (min-width: 768px) {
+    .spread--end .spread__media {
+      grid-column: 1 / span 8;
+      min-height: 60svh;
+      aspect-ratio: auto;
+      height: 100%;
+    }
+    .spread--start .spread__media {
+      grid-column: 4 / span 7;
+      min-height: 55svh;
+      aspect-ratio: auto;
+      height: 100%;
+    }
+  }
+
+  .spread__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--duration-image-hover) var(--ease-editorial);
+  }
+
+  .spread__media:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spread__media img {
+      transition: none;
+    }
+    .spread__media:hover img {
+      transform: none;
+    }
+  }
+
+  .spread__panel {
+    position: relative;
+    z-index: 2;
+    margin-top: -2.5rem;
+    background: var(--paper);
+    border: var(--hairline) solid color-mix(in srgb, var(--ink) 15%, transparent);
+    padding: 2rem;
+    max-width: 22rem;
+  }
+
+  @media (min-width: 768px) {
+    .spread--end .spread__panel {
+      position: absolute;
+      right: var(--margin-desktop);
+      bottom: 8%;
+      margin: 0;
+    }
+    .spread--start .spread__panel {
+      position: absolute;
+      left: var(--margin-desktop);
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+    }
+  }
+
+  .spread__name {
+    /* Overlap: name crosses the photo edge */
+    margin: 0 0 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .spread--end .spread__name {
+      margin-left: -3rem;
+      white-space: nowrap;
+    }
+  }
+
+  .spread__whisper {
+    margin: 0 0 1rem;
+    opacity: 0.72;
+  }
+
+  .spread__prose {
+    margin: 0 0 1.25rem;
+    opacity: 0.8;
+  }
+</style>

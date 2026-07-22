@@ -1,0 +1,17 @@
+---
+interface Props {
+  number: string;
+  name: string;
+  class?: string;
+}
+
+const { number, name, class: className = '' } = Astro.props;
+---
+
+<p class:list={['folio type-label-caps', className]}>No. {number} — {name}</p>
+
+<style>
+  .folio {
+    margin: 0;
+  }
+</style>

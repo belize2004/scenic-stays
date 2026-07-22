@@ -1,0 +1,88 @@
+---
+interface Field {
+  id: string;
+  label: string;
+  placeholder: string;
+}
+
+interface Props {
+  fields: readonly Field[];
+  submit: string;
+  action?: string;
+}
+
+const { fields, submit, action = '/rentals' } = Astro.props;
+---
+
+<form class="booking" method="get" action={action}>
+  <div class="booking__grid">
+    {
+      fields.map((f) => (
+        <div class="booking__field">
+          <label class="type-label-caps" for={f.id}>
+            {f.label}
+          </label>
+          <input id={f.id} name={f.id} type="text" placeholder={f.placeholder} />
+        </div>
+      ))
+    }
+    <div class="booking__submit">
+      <button type="submit" class="btn-ghost">{submit}</button>
+    </div>
+  </div>
+</form>
+
+<style>
+  .booking {
+    width: 100%;
+    border-block: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    padding: var(--stack-md) 0;
+  }
+
+  .booking__grid {
+    display: grid;
+    gap: var(--gutter);
+    padding-inline: var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .booking__grid {
+      grid-template-columns: repeat(4, 1fr);
+      padding-inline: var(--margin-desktop);
+      align-items: end;
+    }
+  }
+
+  .booking__field {
+    border-bottom: var(--hairline) solid var(--ink);
+    padding-bottom: 0.5rem;
+  }
+
+  .booking__field label {
+    display: block;
+    margin-bottom: 0.35rem;
+    opacity: 0.55;
+  }
+
+  .booking__field input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--family-display);
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-style: italic;
+    font-weight: var(--weight-display);
+    font-variation-settings: 'opsz' var(--opsz-display);
+    padding: 0.25rem 0;
+    border-radius: 0;
+  }
+
+  .booking__field input::placeholder {
+    color: color-mix(in srgb, var(--ink) 40%, transparent);
+  }
+
+  .booking__submit .btn-ghost {
+    width: 100%;
+  }
+</style>
