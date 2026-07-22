@@ -7,6 +7,7 @@ interface Panel {
   sublabel?: string;
   href: string;
   image: string;
+  alt: string;
 }
 
 interface Props {
@@ -26,7 +27,7 @@ const { panels } = Astro.props;
             src={img.src}
             srcset={img.srcset}
             sizes="(min-width: 768px) 33vw, 100vw"
-            alt=""
+            alt={p.alt}
             width="1200"
             height="1600"
             loading="lazy"

@@ -115,6 +115,13 @@ The page is a sequence of composed spreads, not a continuous scroll.
 
 **Folio markers**: format is "No. 0X — Section Name" ("No. 01 — The Private Homes"). Never the word "Folio" spelled out.
 
+**§8a — Homepage folio order (reading order):**
+1. No. 01 — The Private Homes
+2. No. 02 — The Guestbook
+3. No. 03 — The Resorts
+
+Do not reuse Stitch export numbering when it conflicts with reading order.
+
 **Filmstrip** (`ImageStrip.astro`): equal-height full-bleed panels, ≤2px gap, serif numeral names ("I. Thirty-A"), character sublabels ("The villages", "The harbor", "The longest pier" — no compass directions), universal bottom scrim. **A panel contains one photograph and one label — never nested UI, cards, or body text.**
 
 **Booking strip**: label-caps field labels, serif italic placeholders ("Where to?"), bare 1px baseline inputs, ghost search button. Reads as a magazine subscription card, not a booking engine.

@@ -15,6 +15,8 @@ interface Props {
    * Quiet ≠ flow. Quiet is the rest-beat frame and still gets min-height.
    */
   flow?: boolean;
+  /** Override composed min-height (e.g. destination cover ~70svh). Still svh-based. */
+  minHeight?: string;
   class?: string;
   as?: 'section' | 'div' | 'header' | 'footer';
 }
@@ -24,6 +26,7 @@ const {
   peek = variant === 'loud' ? 50 : 0,
   background = 'paper',
   flow = false,
+  minHeight: minHeightProp,
   class: className = '',
   as: Tag = 'section',
 } = Astro.props;
@@ -35,7 +38,8 @@ const style: Record<string, string> = {
 };
 
 if (!flow) {
-  const frameHeight = peek > 0 ? `calc(100svh - ${peek}px)` : '100svh';
+  const frameHeight =
+    minHeightProp ?? (peek > 0 ? `calc(100svh - ${peek}px)` : '100svh');
   style.minHeight = frameHeight;
 }
 ---

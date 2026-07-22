@@ -1,0 +1,146 @@
+---
+import { cfImg } from '../../lib/cfImg';
+
+interface Props {
+  name: string;
+  whisper: string;
+  prose?: string;
+  rateFrom: number;
+  href: string;
+  image: string;
+  alt: string;
+  /** Alternate photo side for print rhythm on desktop */
+  photoSide?: 'left' | 'right';
+}
+
+const {
+  name,
+  whisper,
+  prose = '',
+  rateFrom,
+  href,
+  image,
+  alt,
+  photoSide = 'left',
+} = Astro.props;
+
+const img = cfImg(image);
+const rate = `From $${rateFrom.toLocaleString('en-US')} / night`;
+---
+
+<article class:list={['row', `row--photo-${photoSide}`]}>
+  <a class="row__media" href={href} aria-label={name}>
+    <img
+      src={img.src}
+      srcset={img.srcset}
+      sizes="(min-width: 768px) 50vw, 100vw"
+      alt={alt}
+      width="1200"
+      height="1200"
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+  <div class="row__body">
+    <p class="type-label-caps row__whisper">{whisper}</p>
+    <h2 class="type-headline-md">
+      <a href={href} tabindex="-1">{name}</a>
+    </h2>
+    {prose && <p class="type-body-md row__prose">{prose}</p>}
+    <p class="type-label-caps row__rate">{rate}</p>
+    <a class="link-gold" href={href}>Discover</a>
+  </div>
+</article>
+
+<style>
+  .row {
+    display: grid;
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  @media (min-width: 768px) {
+    .row {
+      grid-template-columns: 1fr 1fr;
+      min-height: 28rem;
+    }
+    .row--photo-right .row__media {
+      order: 2;
+    }
+    .row--photo-right .row__body {
+      order: 1;
+    }
+  }
+
+  .row__media {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+
+  @media (min-width: 768px) {
+    .row__media {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 28rem;
+    }
+  }
+
+  .row__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--duration-image-hover) var(--ease-editorial);
+  }
+
+  .row:hover .row__media img {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row__media img {
+      transition: none;
+    }
+    .row:hover .row__media img {
+      transform: none;
+    }
+  }
+
+  .row__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: var(--stack-md) var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .row__body {
+      padding: var(--stack-lg);
+    }
+  }
+
+  .row__body h2 {
+    margin: 0;
+  }
+
+  .row__body h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .row__whisper {
+    margin: 0;
+    opacity: 0.55;
+  }
+
+  .row__prose {
+    margin: 0;
+    max-width: 36ch;
+    opacity: 0.8;
+  }
+
+  .row__rate {
+    margin: 0.5rem 0 0;
+  }
+</style>

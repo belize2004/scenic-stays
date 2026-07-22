@@ -1,0 +1,65 @@
+---
+interface Props {
+  page: number;
+  totalPages: number;
+  prevHref?: string | null;
+  nextHref?: string | null;
+}
+
+const { page, totalPages, prevHref = null, nextHref = null } = Astro.props;
+---
+
+<nav class="pager type-label-caps" aria-label="Pagination">
+  {
+    prevHref ? (
+      <a href={prevHref}>Previous</a>
+    ) : (
+      <span class="pager__disabled" aria-disabled="true">Previous</span>
+    )
+  }
+  <span class="pager__status">
+    Page {page} of {totalPages}
+  </span>
+  {
+    nextHref ? (
+      <a href={nextHref}>Next</a>
+    ) : (
+      <span class="pager__disabled" aria-disabled="true">Next</span>
+    )
+  }
+</nav>
+
+<style>
+  .pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: var(--stack-lg) var(--margin-mobile);
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  @media (min-width: 768px) {
+    .pager {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .pager a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: var(--hairline) solid transparent;
+  }
+
+  .pager a:hover {
+    border-bottom-color: var(--ink);
+  }
+
+  .pager__status {
+    opacity: 0.45;
+  }
+
+  .pager__disabled {
+    opacity: 0.3;
+  }
+</style>

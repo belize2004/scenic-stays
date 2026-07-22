@@ -1,0 +1,40 @@
+---
+interface Props {
+  label: string;
+  href?: string;
+  active?: boolean;
+  as?: 'a' | 'button';
+}
+
+const { label, href = '#', active = false, as: Tag = 'a' } = Astro.props;
+---
+
+{
+  Tag === 'button' ? (
+    <button type="button" class:list={['chip type-label-caps', active && 'is-active']}>
+      {label}
+    </button>
+  ) : (
+    <a class:list={['chip type-label-caps', active && 'is-active']} href={href}>
+      {label}
+    </a>
+  )
+}
+
+<style>
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.9rem;
+    border: var(--hairline) solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .chip.is-active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+</style>

@@ -4,7 +4,7 @@
  * Vacation Rentals (4 cols) + Guides (3 cols). Hover intent, click, Escape, focus trap Tab.
  * Sticky frosted-vellum. Active underline is state-only. Mobile = full-screen paper overlay.
  */
-import { site } from '../data/site';
+import { site, resorts } from '../data/site';
 
 interface Props {
   active?: 'rentals' | 'guides' | 'deals' | 'management' | 'real-estate' | null;
@@ -26,15 +26,6 @@ const destinations = [
   { label: 'Navarre Beach', href: '/rentals/navarre' },
   { label: 'Okaloosa Island', href: '/rentals/okaloosa-island' },
   { label: 'Panama City Beach', href: '/rentals/panama-city-beach' },
-];
-
-const resorts = [
-  { label: 'SunDestin Beach Resort', href: '/resorts/sundestin' },
-  { label: 'One Seagrove Place', href: '/resorts/one-seagrove-place' },
-  { label: 'The Crescent', href: '/resorts/the-crescent' },
-  { label: 'Emerald Towers', href: '/resorts/emerald-towers' },
-  { label: 'High Pointe Beach Resort', href: '/resorts/high-pointe' },
-  { label: 'Amalfi Coast', href: '/resorts/amalfi-coast' },
 ];
 
 const collections = [
@@ -137,7 +128,7 @@ const guideStories = [
         <ul class="masthead__mega-links">
           {resorts.map((l) => (
             <li>
-              <a class="masthead__mega-link" href={l.href}>{l.label}</a>
+              <a class="masthead__mega-link" href={l.href}>{l.name}</a>
             </li>
           ))}
         </ul>

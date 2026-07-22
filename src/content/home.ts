@@ -1,3 +1,5 @@
+import { resorts } from '../data/site';
+
 /** Homepage placeholder content — swap without touching components. Fiction until CMS/API. */
 export const homeContent = {
   hero: {
@@ -7,6 +9,7 @@ export const homeContent = {
     caption: 'Fig. 01 — Seagrove, first light',
     coordinate: '30.32° N',
     image: '/images/placeholders/hero-gulf.jpg',
+    alt: 'Wide view of the Florida Gulf Coast shoreline at first light, pale water meeting white sand.',
     polarity: 'light' as const,
     scrimStrength: 0.15,
   },
@@ -30,15 +33,17 @@ export const homeContent = {
       prose: 'An exercise in transparency. Floor-to-ceiling glass curated for the unhurried traveler.',
       cta: { label: 'Discover the interiors', href: '/rentals/the-glass-house' },
       image: '/images/placeholders/glass-house.jpg',
+      alt: 'Minimalist modern beach house with floor-to-ceiling glass facing the Gulf.',
       overlap: 'end' as const,
       background: 'paper' as const,
     },
     {
       name: 'Morning Star',
       whisper: 'Alys Beach · Sleeps 8 · Steps to sand',
-      prose: '',
+      prose: 'White stucco and quiet rooms, a short walk from the public beach access.',
       cta: { label: 'Discover the interiors', href: '/rentals/morning-star' },
       image: '/images/placeholders/morning-star.jpg',
+      alt: 'Luxury minimalist living room with floor-to-ceiling windows and soft coastal light.',
       overlap: 'start' as const,
       background: 'vellum' as const,
     },
@@ -50,6 +55,7 @@ export const homeContent = {
       sublabel: 'The villages',
       href: '/rentals/30a',
       image: '/images/placeholders/film-30a.jpg',
+      alt: 'Editorial view of a 30A beach town street in late afternoon light.',
     },
     {
       numeral: 'II.',
@@ -57,6 +63,7 @@ export const homeContent = {
       sublabel: 'The harbor',
       href: '/rentals/destin',
       image: '/images/placeholders/film-destin.jpg',
+      alt: 'Empty Destin beach stretching toward the horizon under a clear sky.',
     },
     {
       numeral: 'III.',
@@ -64,10 +71,11 @@ export const homeContent = {
       sublabel: 'The longest pier',
       href: '/rentals/navarre',
       image: '/images/placeholders/film-navarre.jpg',
+      alt: 'Sea oats and sand dunes along the Florida Gulf Coast near Navarre.',
     },
   ],
   guestbook: {
-    folio: { number: '03', name: 'The Guestbook' },
+    folio: { number: '02', name: 'The Guestbook' },
     quote: 'Sink into the sofa, the linens, the emerald waves coming to shore — life can\'t be any better.',
     attribution: 'Camille · July, One Seagrove Place',
   },
@@ -89,20 +97,22 @@ export const homeContent = {
     ],
   },
   resorts: {
-    folio: { number: '02', name: 'The Resorts' },
+    folio: { number: '03', name: 'The Resorts' },
     headline: 'The Resort Collection',
-    items: [
-      { n: '01', name: 'SunDestin', whisper: 'Oceanfront Gulf suites', href: '/resorts/sundestin' },
-      { n: '02', name: 'Emerald Towers', whisper: 'The height of luxury', href: '/resorts/emerald-towers' },
-      { n: '03', name: 'Silver Shells', whisper: 'Sandestin exclusives', href: '/resorts/silver-shells' },
-    ],
+    /** First three of the canonical list for the homepage index strip */
+    items: resorts.slice(0, 3).map((r, i) => ({
+      n: String(i + 1).padStart(2, '0'),
+      name: r.shortName,
+      whisper: r.whisper,
+      href: r.href,
+    })),
   },
   closing: {
     quiz: { prompt: 'Which beach are you?', linkLabel: 'Take the quiz', href: '/journal/beach-quiz' },
     line: "The season's quietest luxury is time.",
     columns: [
       {
-        title: 'Locally owned.',
+        title: 'Our story.',
         body: "We don't manage from a distance. We live where you vacation.",
         cta: { label: 'Our story', href: '/about' },
       },

@@ -1,0 +1,68 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Frame from '../../components/Frame.astro';
+---
+
+<SiteLayout title="The Collection | SCENIC STAYS" active="rentals">
+  <main id="main">
+    <Frame variant="quiet" background="vellum">
+      <div class="rentals-index">
+        <p class="type-label-caps">The Collection</p>
+        <h1 class="type-headline-lg">Where will you stay?</h1>
+        <ul class="rentals-index__list">
+          <li>
+            <a class="type-headline-md" href="/rentals/destin">II. Destin</a>
+          </li>
+          <li>
+            <a class="type-headline-md" href="/rentals/30a">I. Thirty-A</a>
+          </li>
+          <li>
+            <a class="type-headline-md" href="/rentals/navarre">III. Navarre</a>
+          </li>
+        </ul>
+      </div>
+    </Frame>
+  </main>
+</SiteLayout>
+
+<style>
+  .rentals-index {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--stack-lg) var(--margin-mobile);
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 768px) {
+    .rentals-index {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .rentals-index h1 {
+    margin: 0;
+  }
+
+  .rentals-index__list {
+    list-style: none;
+    margin: var(--stack-md) 0 0;
+    padding: 0;
+  }
+
+  .rentals-index__list li {
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  .rentals-index__list a {
+    display: block;
+    padding: 1.25rem 0;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .rentals-index__list li:last-child {
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+</style>

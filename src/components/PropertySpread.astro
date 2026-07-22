@@ -7,10 +7,11 @@ interface Props {
   prose?: string;
   cta: { label: string; href: string };
   image: string;
+  alt: string;
   overlap?: 'start' | 'end';
 }
 
-const { name, whisper, prose = '', cta, image, overlap = 'end' } = Astro.props;
+const { name, whisper, prose = '', cta, image, alt, overlap = 'end' } = Astro.props;
 const img = cfImg(image);
 ---
 
@@ -20,7 +21,7 @@ const img = cfImg(image);
       src={img.src}
       srcset={img.srcset}
       sizes="(min-width: 768px) 66vw, 100vw"
-      alt=""
+      alt={alt}
       width="1600"
       height="1200"
       loading="lazy"
