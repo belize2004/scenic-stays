@@ -1,0 +1,96 @@
+---
+/**
+ * Thin placeholder for primary masthead routes not yet templated (T5/T7/T8).
+ * Keeps the pitch clickable without pretending the full templates exist.
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Frame from '../components/Frame.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { absoluteUrl, breadcrumbJsonLd } from '../lib/seo';
+
+type Stub = {
+  path: string;
+  title: string;
+  dek: string;
+  active: 'rentals' | 'guides' | 'deals' | 'management' | 'real-estate' | null;
+};
+
+export function getStaticPaths() {
+  const stubs: Stub[] = [
+    {
+      path: 'offers',
+      title: 'The Offers.',
+      dek: 'Quiet months, generous rates — editions forthcoming.',
+      active: 'deals',
+    },
+    {
+      path: 'management',
+      title: 'Property Management.',
+      dek: 'Management worthy of the house — prospectus forthcoming.',
+      active: 'management',
+    },
+    {
+      path: 'real-estate',
+      title: 'Real Estate.',
+      dek: 'Invest in the coastline, properly — bridge page forthcoming.',
+      active: 'real-estate',
+    },
+    {
+      path: 'journal',
+      title: 'The Journal.',
+      dek: 'Guides and notes from the coast — first issue forthcoming.',
+      active: 'guides',
+    },
+  ];
+  return stubs.map((stub) => ({ params: { stub: stub.path }, props: { stub } }));
+}
+
+const { stub } = Astro.props as { stub: Stub };
+const crumbs = [
+  { label: 'SCENIC STAYS', href: '/' },
+  { label: stub.title.replace(/\.$/, '') },
+];
+const path = `/${stub.path}`;
+---
+
+<SiteLayout
+  title={`${stub.title.replace(/\.$/, '')} | SCENIC STAYS`}
+  description={stub.dek}
+  active={stub.active}
+  canonical={absoluteUrl(path)}
+  jsonLd={breadcrumbJsonLd(crumbs)}
+>
+  <main id="main">
+    <Breadcrumbs items={crumbs} />
+    <Frame variant="quiet" background="vellum">
+      <div class="stub">
+        <p class="type-label-caps">Forthcoming</p>
+        <h1 class="type-headline-lg">{stub.title}</h1>
+        <p class="type-body-lg">{stub.dek}</p>
+        <a class="btn-ghost" href="/rentals">Browse the collection</a>
+      </div>
+    </Frame>
+  </main>
+</SiteLayout>
+
+<style>
+  .stub {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--stack-md);
+    padding: var(--stack-xl) var(--margin-mobile);
+    max-width: 36rem;
+  }
+
+  @media (min-width: 768px) {
+    .stub {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .stub h1 {
+    margin: 0;
+  }
+</style>

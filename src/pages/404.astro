@@ -1,0 +1,55 @@
+---
+/**
+ * Editorial 404 — DNA page-templates §10.
+ * Catches mega-nav / colophon routes not yet built (T4–T9 stubs still pending).
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Frame from '../components/Frame.astro';
+---
+
+<SiteLayout title="Lost, pleasantly. | SCENIC STAYS">
+  <main id="main">
+    <Frame variant="quiet" background="paper">
+      <div class="lost">
+        <p class="type-label-caps">Page not found</p>
+        <h1 class="type-display-xl">Lost, <em>pleasantly.</em></h1>
+        <p class="type-body-lg">
+          This page isn’t in the issue yet. Return to the collection, or begin again at the cover.
+        </p>
+        <div class="lost__actions">
+          <a class="btn-ghost" href="/rentals">The Collection</a>
+          <a class="link-gold" href="/">Return home</a>
+        </div>
+      </div>
+    </Frame>
+  </main>
+</SiteLayout>
+
+<style>
+  .lost {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--stack-md);
+    padding: var(--stack-xl) var(--margin-mobile);
+    max-width: 36rem;
+  }
+
+  @media (min-width: 768px) {
+    .lost {
+      padding-inline: var(--margin-desktop);
+    }
+  }
+
+  .lost h1 {
+    margin: 0;
+  }
+
+  .lost__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+  }
+</style>

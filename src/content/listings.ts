@@ -24,6 +24,32 @@ export const destinations = {
     prose:
       'Destin sits between the Gulf and the Choctawhatchee Bay — a working harbor that still returns the fleet at dusk, and a shoreline of quartz sand that stays pale even in high summer. The collection here runs from harbor-view suites to gulf-front houses, chosen for the same reason we choose anywhere: the rooms earn the view.',
   },
+  '30a': {
+    slug: '30a',
+    name: '30A.',
+    dek: 'The scenic highway, village to village.',
+    caption: 'Fig. 12 — 30A, late afternoon',
+    coordinate: '30.29° N',
+    image: '/images/placeholders/film-30a.jpg',
+    alt: 'Aerial view along Scenic Highway 30A and the Gulf shoreline.',
+    polarity: 'dark' as const,
+    scrimStrength: 0.4,
+    prose:
+      'Thirty-A threads the coastal villages — Seaside, WaterColor, Alys, Rosemary — where dune walks and quiet streets set the pace. The collection here favors houses within a short walk of the sand, chosen for architecture that belongs to the place.',
+  },
+  navarre: {
+    slug: 'navarre',
+    name: 'Navarre.',
+    dek: 'The quieter stretch of the Emerald Coast.',
+    caption: 'Fig. 09 — Navarre Beach, from the gulf',
+    coordinate: '30.38° N',
+    image: '/images/placeholders/film-navarre.jpg',
+    alt: 'Wide view of Navarre Beach and the Gulf of Mexico.',
+    polarity: 'dark' as const,
+    scrimStrength: 0.4,
+    prose:
+      'Navarre keeps a longer horizon and a slower rhythm — miles of beach with fewer interruptions. Homes here are chosen for space, light, and a direct relationship to the water.',
+  },
 } as const;
 
 export const listings: Listing[] = [
