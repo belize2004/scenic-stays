@@ -1,0 +1,19 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Masthead from '../components/Masthead.astro';
+import Colophon from '../components/Colophon.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: 'rentals' | 'guides' | 'deals' | 'management' | 'real-estate' | null;
+}
+
+const { title, description, active = null } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Masthead active={active} />
+  <slot />
+  <Colophon />
+</BaseLayout>

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 import Frame from '../components/Frame.astro';
 
 const colors = [
@@ -20,7 +20,7 @@ const spacing = [
 ] as const;
 ---
 
-<BaseLayout title="Style Guide — SCENIC STAYS" description="Editorial design system tokens and components.">
+<SiteLayout title="Style Guide — SCENIC STAYS" description="Editorial design system tokens and components.">
   <main class="sg">
     <header class="sg__header">
       <p class="type-label-caps">SCENIC STAYS · Design DNA</p>
@@ -50,8 +50,8 @@ const spacing = [
     <section class="sg__section" aria-labelledby="type">
       <h2 id="type" class="type-headline-md">Typography</h2>
       <p class="type-body-md sg__note">
-        Display/headline: weight 475 · font-variation-settings 'opsz' 60 · display-xl capped at
-        min(clamp, 40svh). Hard-reload with cache disabled to verify zero CLS on swap.
+        Display/headline: weight 475 · font-variation-settings 'opsz' 60 · display-xl =
+        min(clamp, calc(40svh / 3)) · tracking -0.02em.
       </p>
       <div class="sg__type-stack">
         <div>
@@ -117,8 +117,7 @@ const spacing = [
     <section class="sg__section" aria-labelledby="grain">
       <h2 id="grain" class="type-headline-md">Grain</h2>
       <p class="type-body-md sg__note">
-        Cream at 3% (felt, not seen). Scrim class at 9% overlay. Filter #grain-filter defined once in
-        BaseLayout.
+        Cream at 3%. Scrim at 9% overlay. Filter #grain-filter defined once in BaseLayout.
       </p>
       <div class="sg__grain-sample">
         <div class="grain" aria-hidden="true" />
@@ -130,28 +129,29 @@ const spacing = [
       <div class="sg__section-pad">
         <h2 class="type-headline-md">Frames</h2>
         <p class="type-body-md sg__note">
-          Loud = composed viewport (svh − peek). Quiet = rest beat with hairline. No scroll-snap.
+          Loud / quiet are both composed frames (min-height svh). Catalog register uses flow.
+          Fixed height is banned so content never clips.
         </p>
       </div>
 
       <Frame variant="loud" peek={50} background="paper">
         <div class="sg__frame-demo">
           <p class="type-label-caps">loud · paper · peek 50</p>
-          <p class="type-headline-lg">100svh − 50px</p>
+          <p class="type-headline-lg">min-height: 100svh − 50px</p>
         </div>
       </Frame>
 
       <Frame variant="quiet" background="vellum">
         <div class="sg__frame-demo sg__frame-demo--quiet">
           <p class="type-label-caps">quiet · vellum</p>
-          <p class="type-headline-md">A rest beat after the hero.</p>
+          <p class="type-headline-md">A rest beat after the hero — still one viewport.</p>
         </div>
       </Frame>
 
       <Frame variant="loud" peek={0} background="vellum">
         <div class="sg__frame-demo">
           <p class="type-label-caps">loud · vellum · peek 0</p>
-          <p class="type-headline-lg">Full 100svh</p>
+          <p class="type-headline-lg">Full 100svh min-height</p>
         </div>
       </Frame>
 
@@ -161,17 +161,24 @@ const spacing = [
           <p class="type-body-lg">Hairline anchors the cream so space reads composed, not empty.</p>
         </div>
       </Frame>
+
+      <Frame variant="quiet" background="paper" flow>
+        <div class="sg__frame-demo sg__frame-demo--quiet">
+          <p class="type-label-caps">flow · catalog register</p>
+          <p class="type-body-lg">No viewport min-height — listing bodies, tables, review rows.</p>
+        </div>
+      </Frame>
     </section>
 
-    <footer class="sg__footer">
+    <div class="sg__footer">
       <p class="type-label-caps">
         Easing token always present · cubic-bezier(0.22, 1, 0.36, 1) · 500ms fade-up · disabled under
         prefers-reduced-motion
       </p>
       <p class="type-body-md reveal">This line uses the single reveal motion.</p>
-    </footer>
+    </div>
   </main>
-</BaseLayout>
+</SiteLayout>
 
 <style>
   .sg {

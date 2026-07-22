@@ -1,0 +1,470 @@
+---
+/**
+ * Global masthead + mega-nav — DNA §8.
+ * Interactive: hover intent, click toggle, Escape to close, ARIA.
+ * Not permanently open (Stitch mockup artifact).
+ */
+import { site } from '../data/site';
+
+interface Props {
+  active?: 'rentals' | 'guides' | 'deals' | 'management' | 'real-estate' | null;
+}
+
+const { active = null } = Astro.props;
+
+const primaryNav = [
+  { id: 'rentals', label: 'Vacation Rentals', href: '/rentals', mega: true },
+  { id: 'guides', label: 'Guides', href: '/journal', mega: false },
+  { id: 'deals', label: 'Vacation Deals', href: '/offers', mega: false },
+  { id: 'management', label: 'Property Management', href: '/management', mega: false },
+  { id: 'real-estate', label: 'Real Estate', href: '/real-estate', mega: false },
+] as const;
+
+const destinations = [
+  { label: '30A', href: '/rentals/30a' },
+  { label: 'Destin', href: '/rentals/destin' },
+  { label: 'Navarre Beach', href: '/rentals/navarre' },
+  { label: 'Okaloosa Island', href: '/rentals/okaloosa-island' },
+  { label: 'Panama City Beach', href: '/rentals/panama-city-beach' },
+];
+
+const resorts = [
+  { label: 'SunDestin Beach Resort', href: '/resorts/sundestin' },
+  { label: 'One Seagrove Place', href: '/resorts/one-seagrove-place' },
+  { label: 'The Crescent', href: '/resorts/the-crescent' },
+  { label: 'Emerald Towers', href: '/resorts/emerald-towers' },
+  { label: 'High Pointe Beach Resort', href: '/resorts/high-pointe' },
+  { label: 'Amalfi Coast', href: '/resorts/amalfi-coast' },
+];
+
+const collections = [
+  { label: 'Gulf Front Homes', href: '/rentals/collections/gulf-front' },
+  { label: 'Private Pools', href: '/rentals/collections/private-pools' },
+  { label: 'Pet Friendly', href: '/rentals/collections/pet-friendly' },
+  { label: 'Golf Cart Included', href: '/rentals/collections/golf-cart' },
+  { label: 'The 100 Collection', href: '/rentals/collections/100' },
+];
+
+const indexLinks = [
+  { label: 'A–Z Property List', href: '/rentals/a-z' },
+  { label: 'All Properties', href: '/rentals' },
+];
+---
+
+<header class="masthead" data-masthead>
+  <div class="masthead__bar">
+    <a class="masthead__wordmark type-headline-md" href="/">{site.brand}</a>
+
+    <nav class="masthead__nav" aria-label="Primary">
+      <ul class="masthead__list">
+        {
+          primaryNav.map((item) => (
+            <li class="masthead__item">
+              {item.mega ? (
+                <button
+                  type="button"
+                  class:list={[
+                    'masthead__link type-label-caps',
+                    active === item.id && 'is-active',
+                  ]}
+                  data-mega-trigger
+                  aria-expanded="false"
+                  aria-controls="mega-panel-rentals"
+                  id="mega-trigger-rentals"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <a
+                  class:list={[
+                    'masthead__link type-label-caps',
+                    active === item.id && 'is-active',
+                  ]}
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="masthead__phone type-label-caps" href={site.phoneHref}>{site.phone}</a>
+
+    <button
+      type="button"
+      class="masthead__menu-toggle type-label-caps"
+      data-mobile-toggle
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      Menu
+    </button>
+  </div>
+
+  <div
+    class="masthead__mega"
+    id="mega-panel-rentals"
+    data-mega-panel
+    hidden
+    role="region"
+    aria-labelledby="mega-trigger-rentals"
+  >
+    <div class="masthead__mega-grid">
+      <div>
+        <h2 class="type-label-caps masthead__mega-heading">Destinations</h2>
+        <ul class="masthead__mega-links">
+          {
+            destinations.map((l) => (
+              <li>
+                <a class="masthead__mega-link" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="type-label-caps masthead__mega-heading">Resorts</h2>
+        <ul class="masthead__mega-links">
+          {
+            resorts.map((l) => (
+              <li>
+                <a class="masthead__mega-link" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="type-label-caps masthead__mega-heading">The Collection</h2>
+        <ul class="masthead__mega-links">
+          {
+            collections.map((l) => (
+              <li>
+                <a class="masthead__mega-link" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="masthead__mega-index">
+        <h2 class="type-label-caps masthead__mega-heading">Index</h2>
+        <ul class="masthead__mega-links">
+          {
+            indexLinks.map((l) => (
+              <li>
+                <a class="masthead__mega-link" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <figure class="masthead__mega-fig">
+          <div class="masthead__mega-fig-frame" aria-hidden="true" />
+          <figcaption class="type-label-caps">Fig. 04 — Seaside residence</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <nav class="masthead__mobile" id="mobile-nav" data-mobile-nav hidden aria-label="Mobile">
+    <ul>
+      {
+        primaryNav.map((item) => (
+          <li>
+            <a class="type-headline-md" href={item.href}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="type-label-caps masthead__mobile-phone" href={site.phoneHref}>{site.phone}</a>
+  </nav>
+</header>
+
+<script>
+  const root = document.querySelector('[data-masthead]');
+  if (root) {
+    const trigger = root.querySelector('[data-mega-trigger]');
+    const panel = root.querySelector('[data-mega-panel]');
+    const mobileToggle = root.querySelector('[data-mobile-toggle]');
+    const mobileNav = root.querySelector('[data-mobile-nav]');
+
+    let openTimer = 0;
+    let closeTimer = 0;
+    const OPEN_DELAY = 160;
+    const CLOSE_DELAY = 280;
+
+    function setMegaOpen(open) {
+      if (!trigger || !panel) return;
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        panel.removeAttribute('hidden');
+        root.classList.add('is-mega-open');
+      } else {
+        panel.setAttribute('hidden', '');
+        root.classList.remove('is-mega-open');
+      }
+    }
+
+    function setMobileOpen(open) {
+      if (!mobileToggle || !mobileNav) return;
+      mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mobileToggle.textContent = open ? 'Close' : 'Menu';
+      if (open) {
+        mobileNav.removeAttribute('hidden');
+        root.classList.add('is-mobile-open');
+      } else {
+        mobileNav.setAttribute('hidden', '');
+        root.classList.remove('is-mobile-open');
+      }
+    }
+
+    function scheduleOpen() {
+      window.clearTimeout(closeTimer);
+      openTimer = window.setTimeout(() => setMegaOpen(true), OPEN_DELAY);
+    }
+
+    function scheduleClose() {
+      window.clearTimeout(openTimer);
+      closeTimer = window.setTimeout(() => setMegaOpen(false), CLOSE_DELAY);
+    }
+
+    if (trigger && panel) {
+      trigger.addEventListener('click', () => {
+        const open = trigger.getAttribute('aria-expanded') === 'true';
+        setMegaOpen(!open);
+      });
+
+      trigger.addEventListener('mouseenter', scheduleOpen);
+      trigger.addEventListener('mouseleave', scheduleClose);
+      panel.addEventListener('mouseenter', () => window.clearTimeout(closeTimer));
+      panel.addEventListener('mouseleave', scheduleClose);
+
+      trigger.addEventListener('focus', scheduleOpen);
+    }
+
+    mobileToggle?.addEventListener('click', () => {
+      const open = mobileToggle.getAttribute('aria-expanded') === 'true';
+      setMobileOpen(!open);
+      if (!open) setMegaOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        setMegaOpen(false);
+        setMobileOpen(false);
+        trigger?.focus();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!root.contains(e.target)) {
+        setMegaOpen(false);
+        setMobileOpen(false);
+      }
+    });
+  }
+</script>
+
+<style>
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+
+  .masthead__bar {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: var(--gutter);
+    padding: 1.35rem var(--margin-mobile);
+  }
+
+  @media (min-width: 960px) {
+    .masthead__bar {
+      grid-template-columns: auto 1fr auto;
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .masthead__wordmark {
+    text-decoration: none;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .masthead__nav {
+    display: none;
+  }
+
+  @media (min-width: 960px) {
+    .masthead__nav {
+      display: block;
+      justify-self: center;
+    }
+  }
+
+  .masthead__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .masthead__link {
+    appearance: none;
+    background: none;
+    border: 0;
+    border-bottom: var(--hairline) solid transparent;
+    padding: 0.35rem 0;
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .masthead__link.is-active,
+  .masthead__link[aria-expanded='true'] {
+    border-bottom-color: var(--ink);
+  }
+
+  .masthead__phone {
+    display: none;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.72;
+  }
+
+  @media (min-width: 960px) {
+    .masthead__phone {
+      display: inline;
+    }
+  }
+
+  .masthead__menu-toggle {
+    justify-self: end;
+    appearance: none;
+    background: none;
+    border: 0;
+    border-bottom: var(--hairline) solid var(--ink);
+    padding: 0.35rem 0;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  @media (min-width: 960px) {
+    .masthead__menu-toggle {
+      display: none;
+    }
+  }
+
+  .masthead__mega {
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    background: var(--paper);
+    padding: var(--stack-md) var(--margin-mobile) var(--stack-lg);
+  }
+
+  @media (min-width: 960px) {
+    .masthead__mega {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .masthead__mega-grid {
+    display: grid;
+    gap: var(--gutter);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 960px) {
+    .masthead__mega-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .masthead__mega-heading {
+    margin: 0 0 1.25rem;
+    opacity: 0.55;
+  }
+
+  .masthead__mega-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .masthead__mega-link {
+    font-family: var(--family-display);
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: var(--weight-display);
+    font-variation-settings: 'opsz' var(--opsz-display);
+    line-height: 1.15;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .masthead__mega-index {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .masthead__mega-fig {
+    margin: 2rem 0 0;
+  }
+
+  .masthead__mega-fig-frame {
+    width: 6rem;
+    height: 8rem;
+    background: var(--vellum);
+    border: var(--hairline) solid color-mix(in srgb, var(--ink) 12%, transparent);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead__mobile {
+    border-top: var(--hairline) solid color-mix(in srgb, var(--ink) 18%, transparent);
+    background: var(--paper);
+    padding: var(--stack-md) var(--margin-mobile) var(--stack-lg);
+  }
+
+  .masthead__mobile ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .masthead__mobile a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .masthead__mobile-phone {
+    display: inline-block;
+    margin-top: var(--stack-md);
+    opacity: 0.72;
+  }
+</style>

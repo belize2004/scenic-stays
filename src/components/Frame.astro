@@ -1,13 +1,20 @@
 ---
 /**
  * Viewport frame — DNA §5.
- * Height uses svh only (never vh). Quiet frames get a hairline so cream reads composed.
+ * Height uses svh only (never vh). Quiet frames are still composed viewports.
+ * Catalog register bodies opt out with flow={true}.
+ * Use min-height only — never fixed height — so content is never clipped.
  */
 interface Props {
   variant?: 'loud' | 'quiet';
   /** Pixels of the next section visible at the bottom. Loud default: 50. Quiet default: 0. */
   peek?: number;
   background?: 'paper' | 'vellum';
+  /**
+   * Opt out of viewport framing (catalog register: listing bodies, tables, review rows).
+   * Quiet ≠ flow. Quiet is the rest-beat frame and still gets min-height.
+   */
+  flow?: boolean;
   class?: string;
   as?: 'section' | 'div' | 'header' | 'footer';
 }
@@ -16,32 +23,32 @@ const {
   variant = 'quiet',
   peek = variant === 'loud' ? 50 : 0,
   background = 'paper',
+  flow = false,
   class: className = '',
   as: Tag = 'section',
 } = Astro.props;
 
 const bg = background === 'vellum' ? 'var(--vellum)' : 'var(--paper)';
 
-/** Loud frames fill the viewport minus peek; quiet frames size to content unless peek is set. */
 const style: Record<string, string> = {
   backgroundColor: bg,
 };
 
-if (variant === 'loud' || peek > 0) {
+if (!flow) {
   const frameHeight = peek > 0 ? `calc(100svh - ${peek}px)` : '100svh';
-  style.height = frameHeight;
   style.minHeight = frameHeight;
 }
 ---
 
 <Tag
-  class:list={['frame', `frame--${variant}`, className]}
+  class:list={['frame', `frame--${variant}`, flow && 'frame--flow', className]}
   data-variant={variant}
   data-background={background}
   data-peek={String(peek)}
+  data-flow={flow ? 'true' : 'false'}
   style={style}
 >
-  {variant === 'quiet' && <div class="frame__hairline" aria-hidden="true" />}
+  {variant === 'quiet' && !flow && <div class="frame__hairline" aria-hidden="true" />}
   <div class="frame__inner">
     <slot />
   </div>

@@ -125,9 +125,9 @@
 
   /*
     Type scale — DNA §2.
-    display-xl: clamp vw ceiling AND ~40svh cap so short laptop viewports keep eyebrow/caption.
+    display-xl: clamp vw ceiling AND per-line ~40svh/3 so a 2–3 line hero stays under ~40% of viewport.
   */
-  --text-display-xl: min(clamp(56px, 9vw, 120px), 40svh);
+  --text-display-xl: min(clamp(56px, 9vw, 120px), calc(40svh / 3));
   --lh-display-xl: 0.95;
   --text-headline-lg: clamp(40px, 5vw, 64px);
   --lh-headline-lg: 1;
@@ -216,7 +216,7 @@ video {
   font-weight: var(--weight-display);
   font-variation-settings: 'opsz' var(--opsz-display);
   line-height: var(--lh-display-xl);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .type-headline-lg {

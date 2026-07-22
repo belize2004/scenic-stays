@@ -1,16 +1,71 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Frame from '../components/Frame.astro';
 ---
 
-<BaseLayout title="SCENIC STAYS | The Emerald Coast, properly.">
-  <main style="padding: var(--stack-lg) var(--margin-mobile);">
-    <p class="type-label-caps">SCENIC STAYS</p>
-    <h1 class="type-display-xl" style="max-width: 12ch; margin-top: var(--stack-md);">
-      The Emerald Coast, <em>properly</em>.
-    </h1>
-    <p class="type-body-lg" style="margin-top: var(--stack-md); max-width: 36rem;">
-      Foundation in progress. Review the
-      <a class="link-gold" href="/style-guide">style guide</a>.
-    </p>
+<SiteLayout title="SCENIC STAYS | The Emerald Coast, properly.">
+  <main>
+    <Frame variant="loud" peek={50} background="paper">
+      <div class="home-hero">
+        <p class="type-label-caps home-hero__eyebrow">Destin — 30A — Navarre — Panama City Beach</p>
+        <h1 class="type-display-xl">
+          The Emerald Coast, <em>properly</em>.
+        </h1>
+        <p class="type-body-lg home-hero__note">
+          Global shell in place. Homepage components land in Step 3.
+        </p>
+      </div>
+    </Frame>
+
+    <Frame variant="quiet" background="vellum">
+      <div class="home-rest">
+        <p class="type-label-caps">No. 01 — The Private Homes</p>
+        <p class="type-headline-lg"><em>Chosen slowly, and only once.</em></p>
+      </div>
+    </Frame>
   </main>
-</BaseLayout>
+</SiteLayout>
+
+<style>
+  .home-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--stack-lg) var(--margin-mobile);
+    max-width: 48rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-hero {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .home-hero__eyebrow {
+    margin-bottom: var(--stack-md);
+    letter-spacing: 0.35em;
+  }
+
+  .home-hero__note {
+    margin-top: var(--stack-md);
+    max-width: 28rem;
+  }
+
+  .home-rest {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: var(--stack-md) var(--margin-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .home-rest {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+</style>
