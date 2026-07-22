@@ -1,0 +1,75 @@
+---
+/**
+ * Catch-all fallback for planned-but-unbuilt routes.
+ * Real pages always win; this only renders when no dedicated page exists.
+ * Distinct from 404.astro ("Lost, pleasantly.") — this is "Forthcoming."
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Frame from '../components/Frame.astro';
+import { forthcomingPages, KIND_COPY } from '../data/forthcoming';
+
+export function getStaticPaths() {
+  return Object.keys(forthcomingPages()).map((path) => ({
+    params: { slug: path.replace(/^\//, '') },
+  }));
+}
+
+const slugParam = Astro.params.slug;
+const slug = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
+const path = '/' + slug;
+
+const planned = forthcomingPages()[path];
+const title = planned?.title ?? 'Forthcoming';
+const line = KIND_COPY[planned?.kind ?? 'default'] ?? KIND_COPY.default;
+const back = planned?.back ?? { href: '/', label: 'Return home' };
+---
+
+<SiteLayout title={`${title} | SCENIC STAYS`} robots="noindex, follow">
+  <main id="main">
+    <Frame variant="quiet" background="paper">
+      <div class="forthcoming">
+        <p class="type-label-caps forthcoming__eyebrow">SCENIC STAYS — Forthcoming</p>
+        <h1 class="type-headline-lg forthcoming__title">{title}.</h1>
+        <p class="type-headline-md forthcoming__line">{line}</p>
+        <a class="type-label-caps forthcoming__back" href={back.href}>{back.label}</a>
+      </div>
+    </Frame>
+  </main>
+</SiteLayout>
+
+<style>
+  .forthcoming {
+    flex: 1;
+    max-width: 40rem;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: var(--stack-xl) var(--margin-mobile);
+  }
+
+  .forthcoming__eyebrow {
+    opacity: 0.7;
+  }
+
+  .forthcoming__title {
+    margin: 0;
+  }
+
+  .forthcoming__line {
+    margin: 0;
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  .forthcoming__back {
+    color: var(--gold);
+    border-bottom: var(--hairline) solid var(--gold);
+    padding-bottom: 2px;
+    margin-top: 0.5rem;
+    text-decoration: none;
+  }
+</style>
