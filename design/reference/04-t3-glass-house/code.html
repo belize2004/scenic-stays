@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5f5e5b",
+                        "on-primary": "#ffffff",
+                        "surface": "#fdf8f7",
+                        "on-surface": "#1c1b1b",
+                        "secondary-container": "#f3eee4",
+                        "on-secondary-container": "#67645c",
+                        "outline": "#787770",
+                        "outline-variant": "#c8c7be",
+                        "ink": "#141210",
+                        "paper": "#faf7f2",
+                        "gold-accent": "#8a6d3b"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0rem",
+                        "lg": "0rem",
+                        "xl": "0rem",
+                        "full": "0rem"
+                    },
+                    spacing: {
+                        "margin-desktop": "80px",
+                        "gutter": "24px",
+                        "stack-xl": "160px",
+                        "stack-lg": "80px",
+                        "stack-md": "40px",
+                        "hairline": "1px"
+                    },
+                    fontFamily: {
+                        "display-xl": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "headline-lg-italic": ["Bodoni Moda"],
+                        "headline-md": ["Bodoni Moda"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "display-xl": ["120px", { "lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400" }],
+                        "headline-lg": ["64px", { "lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-md": ["40px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="font-body-md bg-paper selection:bg-gold-accent/20">
+<div class="grain-overlay"></div>
+<!-- Top Navigation (Shared Component Integration) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-6 bg-paper/80 backdrop-blur-md border-b border-outline-variant/30">
+<div class="font-headline-md text-headline-md tracking-tighter text-on-surface">SCENIC STAYS</div>
+<div class="hidden md:flex gap-8 items-center">
+<a href="#" class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors">HOMES</a>
+<a href="#" class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors">RESORTS</a>
+<a href="#" class="font-label-caps text-label-caps text-on-surface border-b border-on-surface pb-1">DESTINATIONS</a>
+<a href="#" class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors">JOURNAL</a>
+<a href="#" class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors">OWNERS</a>
+</div>
+<div class="font-label-caps text-label-caps text-primary">+1 800 555 0123</div>
+</nav>
+<main class="w-full">
+<!-- 1. COVER FRAME -->
+<section class="snap-section peek-container relative overflow-hidden flex flex-col h-screen">
+<div class="flex-grow w-full relative">
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" data-alt="A breathtaking architectural photograph of a modern glass-walled luxury beach house in Seacrest Beach at dusk. The structure is minimalist with sharp lines and warm interior lighting glowing through floor-to-ceiling windows. The surrounding landscape features soft sand dunes and sea oats under a lavender and gold sunset sky. The perspective is from the beach looking up at the majestic home, evoking a sense of quiet luxury and serene coastal elegance." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AP1WRLsvMOFfgy4HmrmmA7htmxuATl5cmlFodCwH0uU4IEXNSZ4-d3JMSezFa0ewipZJ9ds1uep-U0Dqii7iWh2Rv08YT5pTAEPQEXAX1wPk_tcQxDw2P1YT4q3UF_DVBIw6gHnSKb4BZ6LpzW1TAGJgEUaogXW2YaqdBoAYZfb_oRR1Iy9nojNKNEe7rqWnbgCLOMWfdPU971615M_pmkmLs73ctAJ5DV5rREhKSqvcsV3CS3BcbTs57wA0mAUu&quot;);">
+</div>
+<div class="absolute bottom-0 left-0 w-full px-margin-desktop translate-y-1/2 flex flex-col z-10">
+<h1 class="font-headline-lg text-[180px] leading-none text-paper mix-blend-difference">The Glass House</h1>
+</div>
+</div>
+<div class="h-[120px] bg-paper w-full flex items-end pb-8 px-margin-desktop">
+<div class="flex justify-between items-baseline w-full">
+<p class="font-label-caps text-label-caps tracking-[0.3em] text-ink/60 uppercase">
+                        SEACREST BEACH · SLEEPS 12 · GULF VIEWS · 5 BD / 5.5 BA
+                    </p>
+<p class="font-label-caps text-[10px] italic text-ink/40">FIG. 01 — THE HOUSE, LATE AFTERNOON</p>
+</div>
+</div>
+</section>
+<!-- 2. THE FACTS STRIP (Sticky) -->
+<section class="sticky top-0 z-40 bg-paper border-y border-ink/10 py-6 px-margin-desktop">
+<div class="flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="flex gap-12">
+<div class="flex flex-col">
+<span class="font-label-caps text-[9px] mb-2">CHECK IN / OUT</span>
+<input class="bg-transparent border-0 border-b border-ink/20 p-0 font-headline-lg-italic text-lg focus:ring-0 placeholder:text-ink/30 italic" placeholder="Select Dates" type="text">
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[9px] mb-2">GUESTS</span>
+<input class="bg-transparent border-0 border-b border-ink/20 p-0 font-headline-lg-italic text-lg focus:ring-0 placeholder:text-ink/30 italic w-32" placeholder="2 Adults" type="text">
+</div>
+</div>
+<div class="flex items-center gap-12">
+<div class="text-right">
+<span class="font-label-caps text-[9px] block">STARTING RATE</span>
+<span class="font-headline-md text-2xl tracking-tight">FROM $920 / NIGHT</span>
+</div>
+<button class="bg-ink text-paper px-12 py-5 font-label-caps text-xs tracking-widest hover:bg-gold-accent transition-colors duration-500">
+                        BEGIN AN INQUIRY
+                    </button>
+</div>
+</div>
+</section>
+<!-- 3. EDITORIAL INTRODUCTION -->
+<section class="snap-section bg-paper flex items-center justify-center py-stack-xl px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-[1400px]">
+<div class="md:col-start-1 md:col-span-2">
+<span class="font-label-caps text-label-caps text-gold-accent border-b border-gold-accent pb-2">NO. 01 — THE HOUSE</span>
+</div>
+<div class="md:col-start-4 md:col-span-8 flex flex-col gap-16">
+<h2 class="font-headline-lg text-headline-lg leading-tight text-ink max-w-2xl">
+                        An exercise in transparency, forty steps from the sand.
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<p class="font-body-lg text-body-lg text-ink/80 leading-relaxed">
+                            The Glass House is not merely a residence; it is a lens through which the Gulf of Mexico is perpetually observed. Designed by award-winning architects, the structure utilizes structural glass and bleached oak to dissolve the boundaries between the refined interior and the wild Atlantic coast.
+                        </p>
+<p class="font-body-lg text-body-lg text-ink/80 leading-relaxed">
+                            Every floor is a curated experience of light. From the ground-floor garden suite to the soaring third-story observation deck, the materials remain tactile and honest—terrazzo, linen, and aged brass—providing a quiet backdrop for the theatre of the tides.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. THE GALLERY -->
+<section class="snap-section flex flex-col gap-hairline bg-outline-variant/30">
+<div class="relative w-full h-[85vh]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A high-end editorial interior photograph of the living room in The Glass House. The space features white linen sofas, a low-profile travertine coffee table, and massive floor-to-ceiling glass walls that frame an unobstructed view of the turquoise ocean. The morning light is soft and diffused, highlighting the texture of a handmade wool rug and minimalist coastal decor. The style is sophisticated, airy, and exemplifies high-fashion magazine interior design." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBHS8Yh0bJmzifRzNYKPOBtk0SWh7aZl0M2glWt7qJIRDn8o1wNc1jKIFIs3faPP5nYHOjcnkKlyP9RXvcOtoCkDlbi3foP8oyvj8PlMsoNQwOCSaBsZ7fDkSxRSyuLf_995x_NXX1BAtKco3J1U_umWU24utDnbj0ZgyLDf79BjEH_GYNDcB5ldXM0L7uNFfNIHu5B4eKCD88Yj8wt8B2BDOda_OmIj0YH0RydclG2b51iZaj-sOojgg&quot;);">
+</div>
+<div class="absolute bottom-10 right-margin-desktop text-paper">
+<p class="font-label-caps text-[10px] italic">FIG. 02 — THE LIVING ROOM, MORNING</p>
+</div>
+</div>
+<div class="bg-paper py-stack-lg px-margin-desktop flex flex-col items-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 w-full max-w-[1200px] mb-20">
+<div class="flex flex-col gap-4">
+<div class="aspect-[4/5] bg-cover bg-center" data-alt="A minimalist photograph of a zero-edge infinity pool reflecting the sky. The pool deck is made of smooth, light-colored stone that matches the house exterior. A single luxury sun lounger with a cream cushion sits at the edge. The composition is asymmetrical and clean, focusing on the calm water and the horizon line. The lighting is bright midday sun, casting sharp, elegant shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSo7MDvZ7MDke-eATg6_9-JuXGJ07K_YCAZPsmiPlcyve1fl5Xj5vmtguvlGHxTNeWEhMDkNDeH7pCGkXAqIC9oTa5ADKrCfMeMW2TY1ojrPC6fdDCThcfueseS_6TEqhR8dM0J9rWGsQkEFbXSGcgxxrFnA0YQOFfL7RnyRuGOS7BI5WDPhLeWHWWoyWvHOodWG96n9z8yRzOtYjld-f43L2lvuKTYNISt95W1uhfpD-DtYlQJ4Xg_w')">
+</div>
+<p class="font-label-caps text-[9px] text-ink/40">FIG. 03 — EXTERIOR POOL &amp; TERRACE</p>
+</div>
+<div class="flex flex-col gap-4 mt-24">
+<div class="aspect-square bg-cover bg-center" data-alt="A detailed macro photograph focusing on the materials used in The Glass House. It shows the intersection of a fluted white oak panel, a brushed brass door handle, and a cool grey marble countertop. The lighting is soft and side-lit, emphasizing the rich textures and premium craftsmanship. This shot emphasizes the 'quiet luxury' aesthetic through tactile details and a muted, neutral color palette." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAAW6dJiDdizlAjE647EeEdzlp9_8JgWM-vEI--Yjc-PTi9HLViZ4yBHBE11UsM_x3NBI0EMpIpAWi0UaSaOvxOLhB-lU2aqKn6PxzVJ4PhSZp2ozAsYFmihZXGz2y1fVO20sJoJLMoP-PfX2xwprSojnTawef1DPjJh3-A95TMgAOr-D3OWn-bbAlz0JEROvt84qEKLfTKHG-FrW0QyWYBYPOj9A7krvZaw7Pyo-o_Jnbl8sai8tPmHA&quot;);">
+</div>
+<p class="font-label-caps text-[9px] text-ink/40">FIG. 04 — CURATED MATERIALS</p>
+</div>
+</div>
+<a class="font-label-caps text-xs text-gold-accent border-b border-gold-accent pb-1 tracking-[0.2em] hover:opacity-70 transition-opacity" href="#">
+                    VIEW ALL 42 PHOTOGRAPHS
+                </a>
+</div>
+</section>
+<!-- 5. THE PARTICULARS -->
+<section class="bg-secondary-container py-stack-xl px-margin-desktop">
+<div class="max-w-[1400px] mx-auto">
+<h3 class="font-headline-md text-headline-md mb-20">The Particulars</h3>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-ink/10 pt-12">
+<div class="border-r border-ink/10 pr-gutter last:border-0">
+<h4 class="font-label-caps text-xs mb-8 text-gold-accent">THE HOUSE</h4>
+<ul class="flex flex-col gap-4 font-body-md text-ink/70">
+<li class="">5 Bedrooms</li>
+<li class="">5.5 Bathrooms</li>
+<li class="">6,200 Square Feet</li>
+<li class="">Private Elevator</li>
+<li class="">Observation Deck</li>
+<li class="">Smart Home Integration</li>
+</ul>
+</div>
+<div class="border-r border-ink/10 pr-gutter last:border-0">
+<h4 class="font-label-caps text-xs mb-8 text-gold-accent">THE KITCHEN</h4>
+<ul class="flex flex-col gap-4 font-body-md text-ink/70">
+<li class="">Sub-Zero Appliances</li>
+<li class="">Dual Wolf Ovens</li>
+<li class="">Marble Island</li>
+<li class="">Walk-in Butler Pantry</li>
+<li class="">Wine Preservation</li>
+<li class="">Espresso Station</li>
+</ul>
+</div>
+<div class="border-r border-ink/10 pr-gutter last:border-0">
+<h4 class="font-label-caps text-xs mb-8 text-gold-accent">OUTSIDE</h4>
+<ul class="flex flex-col gap-4 font-body-md text-ink/70">
+<li class="">Private Heated Pool</li>
+<li class="">Summer Kitchen</li>
+<li class="">Rooftop Fire Pit</li>
+<li class="">Outdoor Shower</li>
+<li class="">Private Beach Access</li>
+<li class="">6 Balconies</li>
+</ul>
+</div>
+<div class="pr-gutter">
+<h4 class="font-label-caps text-xs mb-8 text-gold-accent">INCLUDED</h4>
+<ul class="flex flex-col gap-4 font-body-md text-ink/70">
+<li class="">Concierge Service</li>
+<li class="">Daily Housekeeping</li>
+<li class="">Beach Setup</li>
+<li class="">6 Bicycles</li>
+<li class="">Golf Cart</li>
+<li class="">Welcome Provisions</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. AVAILABILITY -->
+<section class="bg-paper py-stack-xl px-margin-desktop">
+<div class="max-w-[1000px] mx-auto">
+<div class="flex justify-between items-baseline mb-12">
+<h3 class="font-headline-md text-headline-md italic">Availability</h3>
+<div class="flex gap-4">
+<span class="font-label-caps text-xs cursor-pointer hover:text-gold-accent transition-colors">PREV</span>
+<span class="font-label-caps text-xs cursor-pointer hover:text-gold-accent transition-colors">NEXT</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<!-- Month 1 -->
+<div>
+<p class="font-headline-md text-xl mb-6">June 2024</p>
+<div class="grid grid-cols-7 gap-px bg-ink/10 border border-ink/10">
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">S</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">M</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">T</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">W</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">T</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">F</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">S</div>
+<!-- Simple calendar loop simulation -->
+<div class="bg-paper p-4 text-center font-body-md opacity-20">26</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">27</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">28</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">29</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">30</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">31</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">1</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">2</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">3</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">4</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">5</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">6</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">7</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">8</div>
+<div class="bg-paper p-4 text-center font-body-md">9</div>
+<div class="bg-paper p-4 text-center font-body-md">10</div>
+<div class="bg-paper p-4 text-center font-body-md">11</div>
+<div class="bg-paper p-4 text-center font-body-md">12</div>
+<div class="bg-paper p-4 text-center font-body-md">13</div>
+<div class="bg-paper p-4 text-center font-body-md">14</div>
+<div class="bg-paper p-4 text-center font-body-md">15</div>
+<div class="bg-paper p-4 text-center font-body-md">16</div>
+<div class="bg-paper p-4 text-center font-body-md">17</div>
+<div class="bg-paper p-4 text-center font-body-md">18</div>
+<div class="bg-paper p-4 text-center font-body-md">19</div>
+<div class="bg-paper p-4 text-center font-body-md">20</div>
+<div class="bg-paper p-4 text-center font-body-md">21</div>
+<div class="bg-paper p-4 text-center font-body-md">22</div>
+<div class="bg-paper p-4 text-center font-body-md">23</div>
+<div class="bg-paper p-4 text-center font-body-md">24</div>
+<div class="bg-paper p-4 text-center font-body-md">25</div>
+<div class="bg-paper p-4 text-center font-body-md">26</div>
+<div class="bg-paper p-4 text-center font-body-md">27</div>
+<div class="bg-paper p-4 text-center font-body-md">28</div>
+<div class="bg-paper p-4 text-center font-body-md">29</div>
+</div>
+</div>
+<!-- Month 2 -->
+<div class="">
+<p class="font-headline-md text-xl mb-6">July 2024</p>
+<div class="grid grid-cols-7 gap-px bg-ink/10 border border-ink/10">
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">S</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">M</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">T</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">W</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">T</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">F</div>
+<div class="bg-paper p-3 text-center font-label-caps text-[9px] py-4">S</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">30</div>
+<div class="bg-paper p-4 text-center font-body-md">1</div>
+<div class="bg-paper p-4 text-center font-body-md">2</div>
+<div class="bg-paper p-4 text-center font-body-md">3</div>
+<div class="bg-paper p-4 text-center font-body-md">4</div>
+<div class="bg-paper p-4 text-center font-body-md">5</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">6</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">7</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">8</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">9</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">10</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">11</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">12</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">13</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">14</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">15</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">16</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">17</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">18</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">19</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">20</div>
+<div class="bg-ink text-paper p-4 text-center font-body-md">21</div>
+<div class="bg-paper p-4 text-center font-body-md">22</div>
+<div class="bg-paper p-4 text-center font-body-md">23</div>
+<div class="bg-paper p-4 text-center font-body-md">24</div>
+<div class="bg-paper p-4 text-center font-body-md">25</div>
+<div class="bg-paper p-4 text-center font-body-md">26</div>
+<div class="bg-paper p-4 text-center font-body-md">27</div>
+<div class="bg-paper p-4 text-center font-body-md">28</div>
+<div class="bg-paper p-4 text-center font-body-md">29</div>
+<div class="bg-paper p-4 text-center font-body-md">30</div>
+<div class="bg-paper p-4 text-center font-body-md">31</div>
+<div class="bg-paper p-4 text-center font-body-md opacity-20">1</div>
+</div>
+</div>
+</div>
+<div class="mt-12 border-t border-ink/10 pt-6">
+<p class="font-label-caps text-[10px] tracking-[0.2em] text-ink/50 text-center">MINIMUM SEVEN NIGHTS · SATURDAY TO SATURDAY IN SUMMER</p>
+</div>
+</div>
+</section>
+<!-- 7. THE GUESTBOOK -->
+<section class="snap-section bg-secondary-container py-stack-xl px-margin-desktop flex items-center justify-center">
+<div class="max-w-[1000px] w-full">
+<div class="mb-24">
+<p class="font-label-caps text-xs text-gold-accent mb-8 uppercase tracking-widest">Guestbook Highlights</p>
+<blockquote class="font-headline-lg-italic text-headline-lg leading-tight text-ink mb-8">
+                        "The light moves through this house all day, and you find yourself following it."
+                    </blockquote>
+<p class="font-label-caps text-xs text-ink/60">— MARGARET · JUNE 2023</p>
+</div>
+<div class="flex flex-col gap-hairline bg-ink/10">
+<div class="bg-secondary-container py-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-8">
+<p class="font-body-lg italic leading-relaxed text-ink/80">"Architecture at its most poetic. The sunrise over the Gulf through the master bedroom glass was a spiritual experience."</p>
+</div>
+<div class="md:col-span-4 text-right">
+<p class="font-label-caps text-[10px] uppercase tracking-widest">Julian · October</p>
+</div>
+</div>
+<div class="bg-secondary-container py-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-8">
+<p class="font-body-lg italic leading-relaxed text-ink/80">"Remarkably private despite the transparency. The concierge was invisible but present, every detail anticipated."</p>
+</div>
+<div class="md:col-span-4 text-right">
+<p class="font-label-caps text-[10px] uppercase tracking-widest">Elena · January</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. NEARBY -->
+<section class="bg-paper py-stack-xl px-margin-desktop">
+<div class="max-w-[1400px] mx-auto">
+<h3 class="font-headline-md text-headline-md mb-12">Recommended Retreats</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Property 1 -->
+<div class="flex flex-col gap-8 group cursor-pointer">
+<div class="aspect-[16/9] overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" data-alt="A luxurious seaside property named Azure Retreat. The house features Mediterranean architecture with white stucco walls, terracotta roof tiles, and vibrant blue shutters. It's surrounded by lush bougainvillea and overlooks a private cove with deep blue water. The lighting is golden hour, creating a warm and inviting editorial aesthetic for a high-end travel magazine." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMwkSLdTvUdMaGU5sbBduhOi6DGSAdUU7JMsZEa9k4JmklA_3ByqnFwrrYa2ZDKyebdHgsGDPdbGVK5aKfyS7jcLA4T90dMClX2NduogNdX_lzjt-S1_bY_IzGz5Z13tbUD4cNh6vjHP9e_UD0rgiFIZ6B-l6p_xmu6HKANRdvLnOYXLoTk2ZBP0u4b9tM7JYTmID6XRkVCm8BaErDc6nkA4aSYd7dGM6XOpTGPwvqgj3NDmxqWqJVsw')">
+</div>
+</div>
+<div class="flex justify-between items-baseline border-b border-ink/10 pb-4">
+<div>
+<h4 class="font-headline-md text-2xl">Azure Retreat</h4>
+<p class="font-label-caps text-[9px] text-ink/50 mt-1 uppercase tracking-widest">Alys Beach · Sleeps 8</p>
+</div>
+<p class="font-label-caps text-xs text-gold-accent">VIEW PROPERTY</p>
+</div>
+</div>
+<!-- Property 2 -->
+<div class="flex flex-col gap-8 group cursor-pointer">
+<div class="aspect-[16/9] overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" data-alt="The Pearl, a modern architectural masterpiece in Rosemary Beach. The building is characterized by its bold black timber framing, large glass panels, and industrial-chic aesthetic. It sits on a high dune overlooking the coast at sunset. The moody lighting and sharp silhouettes provide a striking contrast, following the magazine editorial style of luxury real estate photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9fpMUJFJPONtKA8ykOyp40K3rG2Ahh6gkmDJNDbA4WOLCPfI8Nes7rMUyy1dGgAUaAwWynHicU9Tqa4sQQVK9-BgrHpH8ZxdPe_2Hsn7bMnhdNSAr5hwGRge_2PgCOUX2QsnPJ9kYcjJnwlrjMY74YGsR-B5NBAVkBTZ9UG8MIBbH3crxaJlYkh-XeowMi1xHxKyOGpcuryQLQfPF4XkTdkKfLkGe-uynkGs4ooluNxUzduuNu1W8dg')">
+</div>
+</div>
+<div class="flex justify-between items-baseline border-b border-ink/10 pb-4">
+<div>
+<h4 class="font-headline-md text-2xl">The Pearl</h4>
+<p class="font-label-caps text-[9px] text-ink/50 mt-1 uppercase tracking-widest">Rosemary Beach · Sleeps 10</p>
+</div>
+<p class="font-label-caps text-xs text-gold-accent">VIEW PROPERTY</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. CLOSING + FOOTER -->
+<section class="bg-paper pt-stack-xl flex flex-col items-center">
+<div class="text-center mb-stack-xl">
+<p class="font-headline-lg-italic text-[80px] leading-tight text-ink px-margin-mobile">
+                    Come for the light.<br>Stay for the quiet.
+                </p>
+</div>
+<footer class="w-full bg-secondary-container border-t border-outline-variant pt-stack-lg pb-12 px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter w-full mb-stack-lg">
+<div class="flex flex-col gap-6">
+<div class="font-headline-lg text-headline-lg text-on-surface">SCENIC STAYS</div>
+<address class="not-italic font-body-md text-on-surface-variant flex flex-col gap-2">
+<span class="">PO Box 5383, Destin</span>
+<span class="">Florida 32540</span>
+<span class="mt-4">850-390-7511</span>
+<span class="text-gold-accent">inquiries@scenicstays.com</span>
+</address>
+</div>
+<div>
+<h5 class="font-label-caps text-xs mb-8 text-on-surface uppercase tracking-widest">VACATION RENTALS</h5>
+<ul class="flex flex-col gap-4 font-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">All Properties</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Area Guides</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">What's Included</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">A–Z Property List</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Rental Policies</a></li>
+</ul>
+</div>
+<div class="">
+<h5 class="font-label-caps text-xs mb-8 text-on-surface uppercase tracking-widest">COMPANY</h5>
+<ul class="flex flex-col gap-4 font-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">About Scenic Stays</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">The Journal</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Careers</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Contact</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">FAQs</a></li>
+</ul>
+</div>
+<div class="">
+<h5 class="font-label-caps text-xs mb-8 text-on-surface uppercase tracking-widest">OWNERS</h5>
+<ul class="flex flex-col gap-4 font-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Property Management</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Real Estate</a></li>
+<li class=""><a class="hover:text-primary transition-all underline decoration-transparent hover:decoration-gold-accent" href="#">Owner Log In</a></li>
+</ul>
+</div>
+</div>
+<div class="border-y border-outline-variant py-12 mb-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="w-full md:w-1/2">
+<h5 class="font-label-caps text-xs mb-4 uppercase">Newsletter</h5>
+<input class="w-full bg-transparent border-0 border-b border-on-surface/20 p-0 py-4 font-label-caps text-xs tracking-widest focus:ring-0 focus:border-gold-accent" placeholder="JOIN THE LIST" type="email">
+</div>
+<div class="flex gap-12 font-label-caps text-xs uppercase tracking-widest">
+<a class="hover:text-gold-accent transition-colors" href="#">Instagram</a>
+<a class="hover:text-gold-accent transition-colors" href="#">Pinterest</a>
+<a class="hover:text-gold-accent transition-colors" href="#">Journal</a>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center text-[10px] font-label-caps text-on-surface-variant/60 tracking-widest">
+<span class="">© 2026 SCENIC STAYS. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a href="#" class="">PRIVACY POLICY</a>
+<a href="#" class="">TERMS OF SERVICE</a>
+</div>
+</div>
+</footer>
+</section>
+</main>
+<script>
+        // Micro-interaction for the sticky nav blur effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.add('py-6');
+                nav.classList.remove('py-4');
+            }
+        });
+
+        // Hover effect for image sections to simulate 'exposure' shift
+        document.querySelectorAll('[data-alt]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.filter = 'brightness(1.05) contrast(1.02)';
+                el.style.transition = 'filter 0.8s ease-out';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.filter = 'brightness(1) contrast(1)';
+            });
+        });
+    </script>
+
+</body></html>

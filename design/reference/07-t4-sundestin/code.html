@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ESTATE | SunDestin Beach Resort</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#72716d",
+                    "surface-container-highest": "#e5e2e0",
+                    "primary": "#5f5e5b",
+                    "on-secondary-container": "#67645c",
+                    "surface-tint": "#5f5e5b",
+                    "tertiary-fixed-dim": "#cbc5c2",
+                    "on-surface-variant": "#474741",
+                    "surface": "#fdf8f7",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#c8c6c2",
+                    "on-surface": "#1c1b1b",
+                    "surface-container-low": "#f7f3f1",
+                    "secondary-container": "#e7e2d8",
+                    "primary-fixed": "#e5e2dd",
+                    "background": "#fdf8f7",
+                    "on-tertiary-container": "#74706d",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fdf8f7",
+                    "inverse-on-surface": "#f4f0ef",
+                    "on-primary-fixed": "#1c1c19",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e8e1dd",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "outline": "#787770",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#fdf6f2",
+                    "surface-dim": "#ddd9d8",
+                    "secondary-fixed": "#e7e2d8",
+                    "on-secondary-fixed": "#1d1c16",
+                    "tertiary": "#615e5b",
+                    "surface-container": "#f1edec",
+                    "inverse-surface": "#313030",
+                    "primary-container": "#faf7f2",
+                    "surface-container-high": "#ebe7e6",
+                    "on-primary-fixed-variant": "#474743",
+                    "secondary": "#615e57",
+                    "outline-variant": "#c8c7be",
+                    "on-tertiary-fixed": "#1d1b19",
+                    "inverse-primary": "#c8c6c2",
+                    "surface-variant": "#e5e2e0",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#494643",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#494740",
+                    "on-background": "#1c1b1b",
+                    "ink": "#141210",
+                    "cream": "#FAF7F2",
+                    "cream-deep": "#F3EEE4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "gutter": "24px",
+                    "stack-xl": "160px",
+                    "stack-md": "40px",
+                    "margin-mobile": "24px",
+                    "margin-desktop": "80px",
+                    "hairline": "1px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Bodoni Moda"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "headline-lg-italic": ["Bodoni Moda"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "display-xl": ["Bodoni Moda"]
+            },
+            "fontSize": {
+                    "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      ::selection {
+        background-color: #141210;
+        color: #FAF7F2;
+      }
+      .grain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.03;
+        background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+      }
+      .editorial-divider {
+        height: 1px;
+        background-color: #c8c7be;
+        width: 100%;
+      }
+      .vertical-divider {
+        width: 1px;
+        background-color: #c8c7be;
+        height: 100%;
+      }
+    </style>
+</head>
+<body class="bg-cream text-ink font-body-md antialiased selection:bg-ink selection:text-cream">
+<div class="grain"></div>
+<!-- 1. MASTHEAD -->
+<header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-sm">
+<nav class="flex justify-between items-center px-margin-desktop py-8 w-full max-w-full">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-on-surface">ESTATE</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors duration-300" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors duration-300" href="#">GUIDES</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors duration-300" href="#">VACATION DEALS</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors duration-300" href="#">PROPERTY MANAGEMENT</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors duration-300" href="#">REAL ESTATE</a>
+</div>
+<div class="font-label-caps text-label-caps border-b border-ink pb-1">
+                850-390-7511
+            </div>
+</nav>
+<div class="editorial-divider"></div>
+</header>
+<main>
+<!-- 2. COVER FRAME -->
+<section class="relative h-screen w-full overflow-hidden">
+<img alt="Golden hour view of the SunDestin Beach Resort tower standing tall against a vibrant sunset sky and the emerald Gulf waters." class="absolute inset-0 w-full h-full object-cover grayscale-[20%] brightness-90" src="https://lh3.googleusercontent.com/aida/AP1WRLu8mkO_D8fj-kRL_2DUaqq3HwL7C2ybe0g2s-DnI92ABXqeWOUcQb2sUCvtAgRPR_jrSAn6I89wcf76K3ewh3k_yacOoXRBvNrqpbreiGGeIfarnDVixeVtPIXX3ybwOImal_-6dT9YaS1Sr6puqdUQy8ozRnckdFbIJGDMf1ocoBQnarnBwZ3-WZRulGy1XaPKVOkIOuGMkKR5i0DjRmL3s6oP8jh0CuL8x7ByT6v905qSHkEl7gOGu97g"/>
+<div class="absolute inset-0 bg-ink/10 flex flex-col justify-center items-center text-center px-margin-desktop">
+<h1 class="font-display-xl text-display-xl text-cream-deep opacity-90 mb-4">SunDestin.</h1>
+<p class="font-label-caps text-label-caps text-cream tracking-[0.4em] uppercase">FIG. 01 — THE TOWER FROM THE SAND</p>
+</div>
+</section>
+<!-- 3. BOOKING STRIP -->
+<section class="bg-white px-margin-desktop py-12 relative z-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-end justify-between gap-8">
+<div class="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="border-b border-ink/30 pb-2 group transition-all duration-300 hover:border-ink">
+<label class="font-label-caps text-[9px] text-on-surface-variant block mb-2">CHECK IN</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg placeholder:text-outline-variant" placeholder="Select Date" type="text"/>
+</div>
+<div class="border-b border-ink/30 pb-2 group transition-all duration-300 hover:border-ink">
+<label class="font-label-caps text-[9px] text-on-surface-variant block mb-2">CHECK OUT</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg placeholder:text-outline-variant" placeholder="Select Date" type="text"/>
+</div>
+<div class="border-b border-ink/30 pb-2 group transition-all duration-300 hover:border-ink">
+<label class="font-label-caps text-[9px] text-on-surface-variant block mb-2">GUESTS</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg appearance-none">
+<option>2 Adults, 0 Children</option>
+<option>4 Adults, 2 Children</option>
+</select>
+</div>
+</div>
+<button class="bg-ink text-cream px-12 py-5 font-label-caps text-label-caps tracking-widest hover:bg-primary transition-colors duration-500 whitespace-nowrap">
+                    SEE AVAILABILITY
+                </button>
+</div>
+</section>
+<!-- 4. INTRODUCTION FRAME -->
+<section class="px-margin-desktop py-stack-xl max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-8">NO. 01 — THE RESORT</span>
+</div>
+<div class="md:col-span-8">
+<h2 class="font-headline-lg-italic text-headline-lg-italic mb-12 italic leading-tight">
+                        Directly on the sand, with the water at your window.
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-on-surface-variant">
+<p class="font-body-lg text-body-lg">
+                            SunDestin Beach Resort stands as a lighthouse of coastal leisure on the prestigious Holiday Isle. Every balcony is a private theater for the Gulf of Mexico, where the transition from dawn's soft gold to evening's deep indigo is witnessed in silent grandeur.
+                        </p>
+<p class="font-body-lg text-body-lg">
+                            This is not merely a stay; it is an immersion into the rhythm of the tides. Positioned at the heart of Destin, the resort offers immediate access to the sugar-white dunes while maintaining a curated distance from the common bustle.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. AMENITIES FRAME -->
+<section class="bg-cream-deep px-margin-desktop py-stack-lg border-y border-outline-variant">
+<div class="max-w-7xl mx-auto">
+<h3 class="font-headline-md text-headline-md mb-20 text-center">What the resort keeps</h3>
+<div class="grid grid-cols-1 md:grid-cols-3">
+<div class="px-8 py-12 md:py-0 border-b md:border-b-0 md:border-r border-outline-variant text-center">
+<h4 class="font-label-caps text-label-caps mb-6">THE POOLS</h4>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto">Indoor and outdoor aquatic spaces designed for year-round restoration.</p>
+</div>
+<div class="px-8 py-12 md:py-0 border-b md:border-b-0 md:border-r border-outline-variant text-center">
+<h4 class="font-label-caps text-label-caps mb-6">THE BEACH</h4>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto">Private access to federal-protected dunes and turquoise surf.</p>
+</div>
+<div class="px-8 py-12 md:py-0 text-center">
+<h4 class="font-label-caps text-label-caps mb-6">THE DESK</h4>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto">Personalized concierge services to navigate the finest local cuisine.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. UNIT INDEX -->
+<section class="px-margin-desktop py-stack-xl max-w-7xl mx-auto">
+<div class="mb-16">
+<span class="font-label-caps text-label-caps text-on-surface-variant">NO. 02 — THE UNITS</span>
+</div>
+<div class="flex flex-col space-y-hairline bg-outline-variant border-y border-outline-variant">
+<!-- Unit 1 -->
+<div class="bg-cream py-12 group cursor-pointer hover:bg-cream-deep transition-colors duration-300">
+<div class="grid grid-cols-1 md:grid-cols-12 items-center gap-gutter">
+<div class="md:col-span-2">
+<img alt="Minimalist, high-end living area of a luxury beachfront condominium featuring floor-to-ceiling windows with a view of the emerald gulf and clean beige furnishings." class="w-full aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBkeeKzD3fjVib6dpq_RMcJR1XjWBGupLjfCSPAB3ZhcTfezNH6tMIHLksP_HC_-rgcgBeptrx94jaQ24Rdw4A3sWpV1C-wcksTJ076SJvu29ZmMOtxUR_kcjvsdqIo6nsvTboiBqMkDtswfAvUjWNz5oFo_mszadz0BymS09kkoxMXPoZ_KFGFqLO6Ensqej17dj3Q0DXa4MXhrlimff6ByuxcY3PqmGyWbtWHTKty5sPbWJ5ZFoieA"/>
+</div>
+<div class="md:col-span-4">
+<h5 class="font-headline-md text-[28px] mb-2">Penthouse 1604</h5>
+<p class="font-label-caps text-[10px] text-on-surface-variant">GULF FRONT · SLEEPS 6</p>
+</div>
+<div class="md:col-span-3 text-right md:text-left">
+<p class="font-body-lg text-body-lg">FROM $420 / NIGHT</p>
+</div>
+<div class="md:col-span-3 text-right">
+<span class="font-label-caps text-label-caps border-b border-primary pb-1 group-hover:border-ink transition-colors">DISCOVER</span>
+</div>
+</div>
+</div>
+<!-- Unit 2 -->
+<div class="bg-cream py-12 group cursor-pointer hover:bg-cream-deep transition-colors duration-300">
+<div class="grid grid-cols-1 md:grid-cols-12 items-center gap-gutter">
+<div class="md:col-span-2">
+<img alt="Sophisticated bedroom interior with a high-end linen-covered bed, woven headboard, and natural light streaming through sheer curtains from a private balcony." class="w-full aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKF8O3iPmvBtaZX8kfX-89nLVoyUj22Kyjz7LghyJkqii6FGQ9I624IUZfjD_hDAooOQYgN9wusHfdkxwPQfxtBu5lmgzIyJQ0owlZnh6Kw2JOYVphuDLbgeoRLmK4XKgoILR_Mu40mivRrO5rp4QdWFYsh0aJfy5jgRlV_Nra0Rbf7KdTLVdXU7E9newhw9oITPzH0SAvrPRztcgUO1BlPRj-gM33R5Hbecfc4yrEPG4D5mcGJaOtJA"/>
+</div>
+<div class="md:col-span-4">
+<h5 class="font-headline-md text-[28px] mb-2">The Emerald Suite</h5>
+<p class="font-label-caps text-[10px] text-on-surface-variant">CORNER UNIT · SLEEPS 4</p>
+</div>
+<div class="md:col-span-3 text-right md:text-left">
+<p class="font-body-lg text-body-lg">FROM $340 / NIGHT</p>
+</div>
+<div class="md:col-span-3 text-right">
+<span class="font-label-caps text-label-caps border-b border-primary pb-1 group-hover:border-ink transition-colors">DISCOVER</span>
+</div>
+</div>
+</div>
+<!-- Unit 3 -->
+<div class="bg-cream py-12 group cursor-pointer hover:bg-cream-deep transition-colors duration-300">
+<div class="grid grid-cols-1 md:grid-cols-12 items-center gap-gutter">
+<div class="md:col-span-2 flex items-center justify-center bg-surface-container-low aspect-square">
+<span class="font-label-caps text-on-surface-variant opacity-50">IMAGE 03</span>
+</div>
+<div class="md:col-span-4">
+<h5 class="font-headline-md text-[28px] mb-2">Driftwood Loft</h5>
+<p class="font-label-caps text-[10px] text-on-surface-variant">STUDIO · SLEEPS 2</p>
+</div>
+<div class="md:col-span-3 text-right md:text-left">
+<p class="font-body-lg text-body-lg">FROM $210 / NIGHT</p>
+</div>
+<div class="md:col-span-3 text-right">
+<span class="font-label-caps text-label-caps border-b border-primary pb-1 group-hover:border-ink transition-colors">DISCOVER</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. EDITORIAL BREAK -->
+<section class="relative h-[80vh] w-full overflow-hidden">
+<img alt="Breathtaking wide-angle shot from a high-floor balcony of SunDestin Beach Resort looking out over the turquoise ocean and white sand beach stretching for miles under a clear blue sky." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLu1S1I9p9FSZ6sA2-jVnWiwflHOtNRLxkadUi2VsFGyNDhmfxvavkwM6m3Y59gl8rMJxEFyGBfcf8UNK5icXjRGo3CBREM71WOgTzI6PMpqsZDiorjoAbIcPfxoSdZpas4SG0fH3s6usX_XXq7LDVevDR_zdiRFx25L06bTCQT1_-qwLdOHG8-b60dOiWG0TuTvnmD_MVgvgevNUlozlU_4B5qCjp_a2Lq0YfzXuvgveb1pSlNMaRA4uoAb"/>
+<div class="absolute bottom-12 left-margin-desktop">
+<p class="font-label-caps text-label-caps text-cream tracking-[0.4em] uppercase">FIG. 02 — THE VIEW FROM SIXTEEN</p>
+</div>
+</section>
+<!-- 8. GUESTBOOK -->
+<section class="px-margin-desktop py-stack-xl max-w-5xl mx-auto text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-12">NO. 03 — THE GUESTBOOK</span>
+<div class="mb-20">
+<blockquote class="font-headline-lg-italic text-headline-md italic leading-snug mb-8">
+                    "We woke to the water every morning and never once moved the car. The position on Holiday Isle is absolute perfection."
+                </blockquote>
+<cite class="font-label-caps text-[10px] uppercase tracking-widest">— THE HARRISON FAMILY, NEW YORK</cite>
+</div>
+<div class="editorial-divider mb-12"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 text-left">
+<div>
+<p class="font-body-lg text-body-lg italic mb-4">"A masterclass in coastal hospitality. The units are immaculate and the staff treat you like a long-lost friend."</p>
+<p class="font-label-caps text-[9px]">DR. ARLO VANCE</p>
+</div>
+<div>
+<p class="font-body-lg text-body-lg italic mb-4">"Our third year returning. Nowhere else in Destin offers this blend of architectural scale and beach intimacy."</p>
+<p class="font-label-caps text-[9px]">SARA &amp; JAMES COLLINS</p>
+</div>
+</div>
+</section>
+<!-- 9. LOCATION -->
+<section class="px-margin-desktop py-stack-xl bg-ink text-cream">
+<div class="max-w-7xl mx-auto">
+<span class="font-label-caps text-label-caps opacity-60 block mb-12">NO. 04 — THE LOCATION</span>
+<div class="relative w-full aspect-[21/9] border border-cream/20 overflow-hidden grayscale contrast-125 mb-8">
+<img class="w-full h-full object-cover opacity-80" data-alt="A clean, minimalist high-contrast grayscale map showing the coastal region of Holiday Isle in Destin, Florida. The map features elegant black lines for streets and soft gray tones for the water of the Gulf of Mexico and the Destin Harbor, punctuated by a single clean typographic pin marker for the SunDestin resort." data-location="Destin, Florida" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUFrGNDFa-gqvo7N4_2qK_HERGmpRRORu92hzXPYHSz5oJC13PXy-8pSiNAcOYswiG_xBX0s-fr0u9NPEUYsTfbdUbXFkRtOsu43MiGSTlXNHWptueKdhOyA-sNgi3Hhpo2kxZdfmxnyZ7xhJ3-mVLcI9U3ow5H-YqLQ6gNalyH5LJOq988Tescx4oxDrxuweC_re6BfKyVq2R7N3rQHZ9z_asz-G5zc2e9N_71dbyDE4q1emODMVU6w"/>
+<div class="absolute inset-0 pointer-events-none ring-1 ring-inset ring-cream/10"></div>
+</div>
+<p class="font-label-caps text-label-caps tracking-[0.4em] uppercase">30.39° N — HOLIDAY ISLE, DESTIN</p>
+</div>
+</section>
+</main>
+<!-- 10. FOOTER -->
+<footer class="bg-cream-deep border-t border-outline-variant">
+<div class="grid grid-cols-12 px-margin-desktop py-stack-lg w-full">
+<div class="col-span-12 md:col-span-4 mb-16 md:mb-0">
+<h6 class="font-headline-md text-headline-md text-on-surface mb-8">ESTATE</h6>
+<address class="not-italic font-body-md text-on-surface-variant space-y-2">
+<p>1040 Highway 98 East</p>
+<p>Destin, Florida 32541</p>
+<p class="pt-4">Reservations: 850-390-7511</p>
+</address>
+</div>
+<div class="col-span-12 md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col space-y-4">
+<h7 class="font-label-caps text-[10px] text-ink mb-2">EXPLORE</h7>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">RESORT GUIDES</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">REAL ESTATE</a>
+</div>
+<div class="flex flex-col space-y-4">
+<h7 class="font-label-caps text-[10px] text-ink mb-2">MANAGEMENT</h7>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">PROPERTY OWNER PORTAL</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">LIST YOUR PROPERTY</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">CAREERS</a>
+</div>
+<div class="flex flex-col space-y-4 col-span-2 md:col-span-1">
+<h7 class="font-label-caps text-[10px] text-ink mb-2">LEGAL</h7>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">PRIVACY POLICY</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">TERMS OF SERVICE</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-hairline transition-opacity duration-200" href="#">ACCESSIBILITY</a>
+</div>
+</div>
+<div class="col-span-12 mt-stack-lg border-t border-outline-variant pt-12 flex justify-between items-center">
+<p class="font-label-caps text-[9px] tracking-widest text-on-surface-variant">© 2024 ESTATE INTERNATIONAL. ALL RIGHTS RESERVED.</p>
+<div class="flex space-x-6">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant cursor-pointer hover:text-ink transition-colors">language</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant cursor-pointer hover:text-ink transition-colors">share</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the booking fields
+        document.querySelectorAll('input, select').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.classList.add('border-ink');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.classList.remove('border-ink');
+            });
+        });
+
+        // Simple Parallax Effect for the images
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxImages = document.querySelectorAll('.object-cover');
+            parallaxImages.forEach(img => {
+                const speed = 0.05;
+                img.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body></html>

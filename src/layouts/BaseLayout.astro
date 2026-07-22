@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  preloadBodoni?: boolean;
+}
+
+const {
+  title = 'SCENIC STAYS',
+  description = 'Luxury vacation rentals on the Florida Gulf Coast.',
+  preloadBodoni = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {preloadBodoni && (
+      <link
+        rel="preload"
+        href="/fonts/bodoni-moda-latin.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+    )}
+    <title>{title}</title>
+  </head>
+  <body>
+    {/* Shared SVG grain filter — DNA §3; zero network requests */}
+    <svg class="grain-defs" aria-hidden="true" focusable="false">
+      <filter id="grain-filter" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.85"
+          numOctaves="2"
+          stitchTiles="stitch"
+          result="noise"
+        ></feTurbulence>
+        <feColorMatrix type="saturate" values="0" in="noise" result="mono"></feColorMatrix>
+      </filter>
+    </svg>
+    <slot />
+  </body>
+</html>

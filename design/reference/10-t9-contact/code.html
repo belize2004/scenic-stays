@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact &amp; Inquiries | SCENIC STAYS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Custom Fine Grain Texture Overlay */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/p6-dark.png");
+        }
+
+        /* Smooth Transition for Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-item.active .toggle-icon::before {
+            content: "—";
+        }
+        .toggle-icon::before {
+            content: "+";
+        }
+
+        /* Specific Muted Gold for Accents */
+        .text-accent-gold { color: #8A6D3B; }
+        .border-accent-gold { border-color: #8A6D3B; }
+
+        /* Near Black Ink */
+        .text-ink { color: #141210; }
+        .border-ink { border-color: #141210; }
+        .bg-ink { background-color: #141210; }
+
+        /* Layout specific overrides to match Editorial look */
+        .letter-spacing-extra { letter-spacing: 0.2em; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#72716d",
+                        "secondary": "#615e57",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#787770",
+                        "surface-bright": "#fdf8f7",
+                        "primary-fixed": "#e5e2dd",
+                        "secondary-fixed": "#e7e2d8",
+                        "primary": "#5f5e5b",
+                        "inverse-surface": "#313030",
+                        "primary-container": "#faf7f2",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed": "#e8e1dd",
+                        "tertiary-container": "#fdf6f2",
+                        "on-background": "#1c1b1b",
+                        "surface-variant": "#e5e2e0",
+                        "surface-dim": "#ddd9d8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#494643",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5f5e5b",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "on-surface-variant": "#474741",
+                        "surface-container": "#f1edec",
+                        "on-tertiary-container": "#74706d",
+                        "background": "#fdf8f7",
+                        "on-primary-fixed": "#1c1c19",
+                        "on-primary-fixed-variant": "#474743",
+                        "secondary-container": "#e7e2d8",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c8c6c2",
+                        "outline-variant": "#c8c7be",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#cbc5c2",
+                        "on-secondary-fixed-variant": "#494740",
+                        "primary-fixed-dim": "#c8c6c2",
+                        "surface-container-low": "#f7f3f1",
+                        "surface": "#fdf8f7",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#615e5b",
+                        "surface-container-highest": "#e5e2e0",
+                        "surface-container-high": "#ebe7e6",
+                        "on-secondary-fixed": "#1d1c16",
+                        "inverse-on-surface": "#f4f0ef",
+                        "on-secondary-container": "#67645c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0rem",
+                        "lg": "0rem",
+                        "xl": "0rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "stack-md": "40px",
+                        "hairline": "1px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px",
+                        "stack-xl": "160px",
+                        "stack-lg": "80px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "headline-md": ["Bodoni Moda"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-xl": ["Bodoni Moda"],
+                        "headline-lg-italic": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                        "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-[#FAF7F2] text-ink font-body-md overflow-x-hidden antialiased">
+<div class="grain-overlay"></div>
+<!-- Navigation Shell from JSON -->
+<nav class="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant flex justify-between items-center w-full px-margin-desktop py-8 max-w-full">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-on-background">SCENIC STAYS</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-background transition-colors duration-300" href="#">Destinations</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-background transition-colors duration-300" href="#">Journals</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-background transition-colors duration-300" href="#">Collection</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-background transition-colors duration-300" href="#">Heritage</a>
+<a class="font-label-caps text-label-caps text-on-background border-b border-on-background pb-1" href="#">About</a>
+</div>
+<button class="font-label-caps text-label-caps px-8 py-3 border border-ink hover:opacity-70 transition-opacity">INQUIRE</button>
+</nav>
+<!-- 1. TYPOGRAPHIC HEADER FRAME -->
+<header class="px-margin-desktop py-stack-xl max-w-7xl">
+<p class="font-label-caps text-label-caps mb-8">SCENIC STAYS — THE RECORD</p>
+<h1 class="font-display-xl text-display-xl mb-6">Everything else.</h1>
+<p class="font-headline-md text-headline-md italic max-w-2xl opacity-80">How to reach us, and the answers we give most often.</p>
+<div class="mt-stack-lg border-b border-ink/10 w-full"></div>
+</header>
+<!-- 2. THE DIRECTORY -->
+<section class="px-margin-desktop pb-stack-xl">
+<div class="grid grid-cols-1 md:grid-cols-3">
+<!-- Reservations -->
+<div class="py-12 md:pr-12">
+<span class="font-label-caps text-label-caps block mb-6">RESERVATIONS</span>
+<p class="font-headline-md text-[24px] mb-2">850-390-7511</p>
+<a class="font-body-lg text-accent-gold block mb-8 underline underline-offset-4 decoration-1" href="mailto:reservations@myscenicstays.com">reservations@myscenicstays.com</a>
+<p class="font-label-caps text-[11px] opacity-60">DAILY, 8 A.M. TO 8 P.M. CENTRAL</p>
+</div>
+<!-- Guests -->
+<div class="py-12 md:px-12 border-t md:border-t-0 md:border-l border-ink/10">
+<span class="font-label-caps text-label-caps block mb-6">GUESTS IN RESIDENCE</span>
+<p class="font-body-md mb-4 leading-relaxed">For immediate assistance during your stay, please contact the front desk directly.</p>
+<p class="font-headline-md text-[24px] mb-8">850-390-7511</p>
+<p class="font-label-caps text-[11px] opacity-60">TWENTY-FOUR HOURS</p>
+</div>
+<!-- Post -->
+<div class="py-12 md:pl-12 border-t md:border-t-0 md:border-l border-ink/10">
+<span class="font-label-caps text-label-caps block mb-6">BY POST</span>
+<p class="font-body-md mb-1">PO Box 5383</p>
+<p class="font-body-md mb-8">Destin, Florida 32540</p>
+<p class="font-label-caps text-[11px] opacity-60">OFFICE VISITS BY APPOINTMENT</p>
+</div>
+</div>
+</section>
+<!-- 3. THE MESSAGE FORM -->
+<section class="bg-[#F3EEE4] px-margin-desktop py-stack-xl">
+<div class="max-w-[620px]">
+<span class="font-label-caps text-label-caps block mb-8">NO. 01 — WRITE TO US</span>
+<h2 class="font-headline-md text-headline-md mb-12">Tell us what you need.</h2>
+<form class="space-y-12" onsubmit="event.preventDefault();">
+<div class="relative">
+<label class="font-label-caps text-[10px] block mb-2 opacity-50">NAME</label>
+<input class="w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b border-ink focus:ring-0 focus:border-accent-gold p-0 pb-3 font-headline-md text-[20px] italic placeholder:text-ink/20" placeholder="your full name" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="relative">
+<label class="font-label-caps text-[10px] block mb-2 opacity-50">EMAIL</label>
+<input class="w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b border-ink focus:ring-0 focus:border-accent-gold p-0 pb-3 font-headline-md text-[20px] italic placeholder:text-ink/20" placeholder="email@address.com" type="email"/>
+</div>
+<div class="relative">
+<label class="font-label-caps text-[10px] block mb-2 opacity-50">PHONE</label>
+<input class="w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b border-ink focus:ring-0 focus:border-accent-gold p-0 pb-3 font-headline-md text-[20px] italic placeholder:text-ink/20" placeholder="000-000-0000" type="tel"/>
+</div>
+</div>
+<div class="relative">
+<label class="font-label-caps text-[10px] block mb-2 opacity-50">REGARDING</label>
+<input class="w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b border-ink focus:ring-0 focus:border-accent-gold p-0 pb-3 font-headline-md text-[20px] italic placeholder:text-ink/20" placeholder="a stay, a house, or something else?" type="text"/>
+</div>
+<div class="relative">
+<label class="font-label-caps text-[10px] block mb-2 opacity-50">MESSAGE</label>
+<textarea class="w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b border-ink focus:ring-0 focus:border-accent-gold p-0 pb-3 font-headline-md text-[20px] italic placeholder:text-ink/20 resize-none" placeholder="How can we assist?" rows="4"></textarea>
+</div>
+<div class="pt-8">
+<button class="px-16 py-5 border border-ink text-ink font-label-caps text-label-caps hover:bg-ink hover:text-white transition-all duration-500">SEND</button>
+</div>
+</form>
+</div>
+</section>
+<!-- 4. THE QUESTIONS -->
+<section class="px-margin-desktop py-stack-xl">
+<div class="max-w-5xl">
+<span class="font-label-caps text-label-caps block mb-12">NO. 02 — QUESTIONS ASKED OFTEN</span>
+<div class="divide-y divide-ink/10 border-y border-ink/10">
+<!-- Question 1 (Open by default) -->
+<div class="accordion-item active py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">What time is check in, and can we arrive early?</h3>
+<span class="toggle-icon font-headline-md text-[22px] transition-transform"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            Our standard arrival begins at 4:00 PM Central, while departure is requested by 10:00 AM Central. While we strive to accommodate early arrivals, they are strictly subject to our cleaning and maintenance schedule. Please inquire 24 hours prior to your stay.
+                        </p>
+</div>
+</div>
+<!-- Question 2 -->
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">Is there a minimum stay?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            Minimum stays vary by season and specific collection properties, generally ranging from three to seven nights.
+                        </p>
+</div>
+</div>
+<!-- Question 3 -->
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">What is included in the house?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            Every Scenic Stay is fully provisioned with premium linens, essential kitchenware, and high-speed connectivity. Specific amenity lists are available on each property's detailed portfolio page.
+                        </p>
+</div>
+</div>
+<!-- More Questions -->
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">How do we get the keys and door codes?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            Access credentials and specific entry instructions are dispatched via our encrypted guest portal 72 hours before arrival.
+                        </p>
+</div>
+</div>
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">What happens if a hurricane is forecast?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            We follow strict evacuation mandates issued by local authorities. We highly recommend travel insurance to cover weather-related disruptions.
+                        </p>
+</div>
+</div>
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">Are pets allowed?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            Specific homes in our Heritage and Coast collections are pet-friendly. Please utilize the "Pet Friendly" filter during your search.
+                        </p>
+</div>
+</div>
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">Is there a cleaning fee, and what does it cover?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            A departure cleaning fee is applied to all bookings. This covers professional sanitization and preparation for the following guest.
+                        </p>
+</div>
+</div>
+<div class="accordion-item py-8 group cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center mb-0 group-[.active]:mb-6">
+<h3 class="font-headline-md text-[22px]">Do you manage homes for owners?</h3>
+<span class="toggle-icon font-headline-md text-[22px]"></span>
+</div>
+<div class="accordion-content">
+<p class="font-body-md text-[16px] max-w-[640px] leading-relaxed opacity-70">
+                            Yes, we provide boutique management services for a curated selection of properties. Inquire via the "Partnership" portal.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. THE POLICIES INDEX -->
+<section class="bg-[#F3EEE4] px-margin-desktop py-stack-xl">
+<div class="max-w-5xl">
+<span class="font-label-caps text-label-caps block mb-12">NO. 03 — THE FULL RECORD</span>
+<div class="divide-y divide-ink/10 border-t border-ink/10">
+<div class="py-10 grid grid-cols-1 md:grid-cols-4 gap-4 items-center group">
+<div class="md:col-span-1">
+<h4 class="font-headline-md text-[20px]">Rental Policies</h4>
+</div>
+<div class="md:col-span-2">
+<p class="font-body-md opacity-60">Complete guidelines regarding guest obligations and stay parameters.</p>
+</div>
+<div class="md:col-span-1 text-right">
+<a class="font-label-caps text-label-caps text-accent-gold underline underline-offset-8 decoration-1 hover:tracking-widest transition-all" href="#">READ</a>
+</div>
+</div>
+<div class="py-10 grid grid-cols-1 md:grid-cols-4 gap-4 items-center group">
+<div class="md:col-span-1">
+<h4 class="font-headline-md text-[20px]">What's Included</h4>
+</div>
+<div class="md:col-span-2">
+<p class="font-body-md opacity-60">A detailed inventory of standard provisions for every collection.</p>
+</div>
+<div class="md:col-span-1 text-right">
+<a class="font-label-caps text-label-caps text-accent-gold underline underline-offset-8 decoration-1 hover:tracking-widest transition-all" href="#">READ</a>
+</div>
+</div>
+<div class="py-10 grid grid-cols-1 md:grid-cols-4 gap-4 items-center group">
+<div class="md:col-span-1">
+<h4 class="font-headline-md text-[20px]">Housekeeping Commitment</h4>
+</div>
+<div class="md:col-span-2">
+<p class="font-body-md opacity-60">Our rigorous standards for sanitization and environmental care.</p>
+</div>
+<div class="md:col-span-1 text-right">
+<a class="font-label-caps text-label-caps text-accent-gold underline underline-offset-8 decoration-1 hover:tracking-widest transition-all" href="#">READ</a>
+</div>
+</div>
+<div class="py-10 grid grid-cols-1 md:grid-cols-4 gap-4 items-center group">
+<div class="md:col-span-1">
+<h4 class="font-headline-md text-[20px]">Privacy Policy</h4>
+</div>
+<div class="md:col-span-2">
+<p class="font-body-md opacity-60">How we protect your data and stay history across our platforms.</p>
+</div>
+<div class="md:col-span-1 text-right">
+<a class="font-label-caps text-label-caps text-accent-gold underline underline-offset-8 decoration-1 hover:tracking-widest transition-all" href="#">READ</a>
+</div>
+</div>
+<div class="py-10 grid grid-cols-1 md:grid-cols-4 gap-4 items-center group border-b border-ink/10">
+<div class="md:col-span-1">
+<h4 class="font-headline-md text-[20px]">Terms of Service</h4>
+</div>
+<div class="md:col-span-2">
+<p class="font-body-md opacity-60">The legal framework governing our digital and physical interactions.</p>
+</div>
+<div class="md:col-span-1 text-right">
+<a class="font-label-caps text-label-caps text-accent-gold underline underline-offset-8 decoration-1 hover:tracking-widest transition-all" href="#">READ</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. CLOSING + FOOTER -->
+<div class="py-stack-lg text-center bg-background">
+<p class="font-headline-md italic text-[32px]">We answer the telephone.</p>
+</div>
+<footer class="bg-secondary-container dark:bg-surface-container-highest grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-lg w-full border-t border-outline-variant">
+<!-- Brand & Address -->
+<div class="space-y-8">
+<div class="font-headline-lg text-headline-lg text-on-secondary-container">SCENIC STAYS</div>
+<div class="space-y-1">
+<p class="font-label-caps text-label-caps opacity-50">LOCATION</p>
+<p class="font-body-md">PO Box 5383</p>
+<p class="font-body-md">Destin, FL 32540</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-caps text-label-caps opacity-50">CONTACT</p>
+<p class="font-body-md">850-390-7511</p>
+<a class="font-body-md text-accent-gold" href="mailto:reservations@myscenicstays.com">reservations@myscenicstays.com</a>
+</div>
+</div>
+<!-- Links -->
+<div class="space-y-4">
+<p class="font-label-caps text-label-caps mb-8">NAVIGATION</p>
+<nav class="flex flex-col space-y-4">
+<a class="font-label-caps text-on-secondary-container hover:tracking-widest transition-all duration-300" href="#">The Archive</a>
+<a class="font-label-caps text-on-secondary-container hover:tracking-widest transition-all duration-300" href="#">Privacy Policy</a>
+<a class="font-label-caps text-on-secondary-container hover:tracking-widest transition-all duration-300" href="#">Terms of Service</a>
+<a class="font-label-caps text-on-secondary-container hover:tracking-widest transition-all duration-300" href="#">Press Inquiries</a>
+<a class="font-label-caps text-on-secondary-container hover:tracking-widest transition-all duration-300" href="#">Global Offices</a>
+</nav>
+</div>
+<!-- Newsletter -->
+<div class="md:col-span-2 space-y-8">
+<p class="font-label-caps text-label-caps">STAY INFORMED</p>
+<div class="flex border-b border-ink pb-2 max-w-md">
+<input class="bg-transparent border-none focus:ring-0 w-full font-label-caps text-[12px] p-0" placeholder="YOUR EMAIL ADDRESS" type="email"/>
+<button class="font-label-caps text-label-caps">JOIN</button>
+</div>
+<div class="flex space-x-6">
+<a class="font-label-caps text-[10px] hover:text-accent-gold transition-colors" href="#">INSTAGRAM</a>
+<a class="font-label-caps text-[10px] hover:text-accent-gold transition-colors" href="#">FACEBOOK</a>
+<a class="font-label-caps text-[10px] hover:text-accent-gold transition-colors" href="#">TIKTOK</a>
+<a class="font-label-caps text-[10px] hover:text-accent-gold transition-colors" href="#">LINKEDIN</a>
+</div>
+</div>
+<!-- Copyright -->
+<div class="md:col-span-4 mt-stack-md pt-8 border-t border-ink/5">
+<p class="font-label-caps text-[10px] tracking-[0.3em] opacity-40">© 2024 SCENIC STAYS. ALL RIGHTS RESERVED. PRINTED IN SPIRIT.</p>
+</div>
+</footer>
+<script>
+        // Simple logic for accordion toggles if user clicks directly on text or button
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active from others for a true accordion feel if desired
+                // document.querySelectorAll('.accordion-item').forEach(other => {
+                //     if(other !== item) other.classList.remove('active');
+                // });
+            });
+        });
+    </script>
+</body></html>

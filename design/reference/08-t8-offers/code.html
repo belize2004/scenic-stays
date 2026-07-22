@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scenic Stays — Vacation Deals</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Bodoni Moda (Editorial Serif) & Hanken Grotesk (Premium Sans) -->
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1c1b1b",
+                    "primary-container": "#faf7f2",
+                    "on-surface-variant": "#474741",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#494740",
+                    "primary": "#5f5e5b",
+                    "outline": "#787770",
+                    "tertiary-container": "#fdf6f2",
+                    "surface-container-highest": "#e5e2e0",
+                    "on-tertiary-fixed": "#1d1b19",
+                    "tertiary-fixed": "#e8e1dd",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1d1c16",
+                    "secondary": "#615e57",
+                    "tertiary-fixed-dim": "#cbc5c2",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#c8c6c2",
+                    "inverse-surface": "#313030",
+                    "surface-container-high": "#ebe7e6",
+                    "primary-fixed": "#e5e2dd",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-low": "#f7f3f1",
+                    "secondary-container": "#e7e2d8",
+                    "inverse-on-surface": "#f4f0ef",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#474743",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#72716d",
+                    "surface-bright": "#fdf8f7",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#494643",
+                    "tertiary": "#615e5b",
+                    "surface": "#fdf8f7",
+                    "surface-tint": "#5f5e5b",
+                    "on-tertiary-container": "#74706d",
+                    "on-secondary-container": "#67645c",
+                    "background": "#fdf8f7",
+                    "surface-container": "#f1edec",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "secondary-fixed": "#e7e2d8",
+                    "on-primary-fixed": "#1c1c19",
+                    "surface-variant": "#e5e2e0",
+                    "inverse-primary": "#c8c6c2",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c8c7be",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0rem",
+                    "lg": "0rem",
+                    "xl": "0rem",
+                    "full": "0rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-xl": "160px",
+                    "stack-lg": "80px",
+                    "margin-desktop": "80px",
+                    "hairline": "1px",
+                    "stack-md": "40px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Bodoni Moda"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "headline-lg-italic": ["Bodoni Moda"],
+                    "display-xl": ["Bodoni Moda"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                    "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fdf8f7;
+            color: #1c1b1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Hairline */
+        .hairline-rule {
+            height: 1px;
+            background-color: #c8c7be;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<div class="grain-overlay"></div>
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline w-full top-0 z-50 sticky">
+<nav class="flex justify-between items-center px-margin-desktop py-6 w-full max-w-full">
+<div class="font-headline-md text-headline-md text-on-surface dark:text-on-surface tracking-tighter">
+                Scenic Stays
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 cursor-pointer" href="#">Vacation Rentals</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 cursor-pointer" href="#">Guides</a>
+<a class="font-label-caps text-label-caps text-on-surface dark:text-on-surface border-b border-on-surface pb-1 transition-colors duration-300 cursor-pointer" href="#">Vacation Deals</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 cursor-pointer" href="#">Property Management</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 cursor-pointer" href="#">Real Estate</a>
+</div>
+<div class="flex gap-6 items-center">
+<span class="material-symbols-outlined cursor-pointer text-primary">search</span>
+<span class="material-symbols-outlined cursor-pointer text-primary">account_circle</span>
+</div>
+</nav>
+</header>
+<main>
+<!-- 1. TYPOGRAPHIC COVER -->
+<section class="min-h-screen bg-secondary-container flex flex-col justify-center px-margin-desktop py-stack-lg">
+<div class="max-w-4xl">
+<p class="font-label-caps text-label-caps text-primary tracking-[0.3em] mb-12">SCENIC STAYS — THE OFFERS</p>
+<h1 class="font-display-xl text-display-xl text-on-background mb-8 leading-[0.9]">
+                    Quiet months, <br/>
+<span class="italic font-headline-lg-italic italic">generous</span> rates.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mt-12">
+                    A handful of seasonal arrangements, updated as the calendar turns. Each selected to honor the slow rhythm of the coast.
+                </p>
+</div>
+</section>
+<!-- 2. OFFERS INDEX (Rows I & II) -->
+<section class="bg-surface px-margin-desktop py-stack-xl">
+<div class="flex flex-col">
+<!-- ROW I: Autumn -->
+<div class="grid grid-cols-12 gap-gutter py-12 border-t border-outline-variant items-baseline">
+<div class="col-span-1 font-label-caps text-label-caps">I. AUTUMN</div>
+<div class="col-span-3">
+<h2 class="font-headline-md text-headline-md">The September Edition</h2>
+</div>
+<div class="col-span-3 font-body-md text-on-surface-variant">
+                        The water is still warm, the crowds have vanished, and the evening light takes on a golden, honey-like quality.
+                    </div>
+<div class="col-span-2 font-label-caps text-label-caps opacity-60">
+                        SEPTEMBER 2 — OCTOBER 31<br/>
+                        CODE: SEPTEMBER
+                    </div>
+<div class="col-span-3 text-right">
+<span class="font-headline-lg text-headline-lg">25% OFF</span>
+<div class="font-label-caps text-label-caps mt-1">NIGHTLY RATES</div>
+</div>
+</div>
+<!-- ROW II: Winter -->
+<div class="grid grid-cols-12 gap-gutter py-12 border-t border-outline-variant items-baseline">
+<div class="col-span-1 font-label-caps text-label-caps">II. WINTER</div>
+<div class="col-span-3">
+<h2 class="font-headline-md text-headline-md">The Long Stay</h2>
+</div>
+<div class="col-span-3 font-body-md text-on-surface-variant">
+                        For those who work from anywhere, the winter months offer a sanctuary of focus and restorative solitude by the sea.
+                    </div>
+<div class="col-span-2 font-label-caps text-label-caps opacity-60">
+                        JANUARY 5 — MARCH 15<br/>
+                        CODE: WINTER
+                    </div>
+<div class="col-span-3 text-right">
+<span class="font-headline-lg text-headline-lg">40% OFF</span>
+<div class="font-label-caps text-label-caps mt-1">MONTHLY RATES</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. EDITORIAL BREAK -->
+<section class="h-screen w-full relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An expansive, high-fashion editorial photograph of a pristine, white sand beach during a misty, overcast winter morning. The turquoise water gently laps at the shore under a pale, muted grey sky. The composition is minimalist and vast, evoking a sense of profound serenity and 'quiet luxury' with its soft, high-key lighting and natural, desaturated palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjayzLi5ek_Z1i6rWDBgzXUiHe232kizDTi7NICQWSP9_lyPDNe5kO3tceqQjRZEBXJlFxGKYBfY1wWeTLOFyk7iSQotZIPD7XBF2iT206dSmSfUystE4HEdT_atTAyD0wJ8nLPx0fkRfehREa1En7uj9CuDs7et5BUliHFGpn9JP1kgGnXpBsht2MU6BwbDuI_QOtdJi3JPbHhQnAlkUPNnBSD0SHrepunh1SrnF14lpkr9xIykeu-w"/>
+<div class="absolute bottom-12 left-margin-desktop">
+<p class="font-label-caps text-label-caps text-white tracking-widest bg-black/10 backdrop-blur-sm px-4 py-2">FIG. — JANUARY, AND NO ONE FOR A MILE</p>
+</div>
+</section>
+<!-- OFFERS INDEX (Rows III & IV) -->
+<section class="bg-surface px-margin-desktop py-stack-xl">
+<div class="flex flex-col">
+<!-- ROW III: Spring -->
+<div class="grid grid-cols-12 gap-gutter py-12 border-t border-outline-variant items-baseline">
+<div class="col-span-1 font-label-caps text-label-caps">III. SPRING</div>
+<div class="col-span-3">
+<h2 class="font-headline-md text-headline-md">The Fourth Night</h2>
+</div>
+<div class="col-span-3 font-body-md text-on-surface-variant">
+                        Stay three nights in spring and allow us to host your fourth. A moment to witness the dunes beginning their bloom.
+                    </div>
+<div class="col-span-2 font-label-caps text-label-caps opacity-60">
+                        MARCH 20 — MAY 15<br/>
+                        CODE: FOURTH
+                    </div>
+<div class="col-span-3 text-right">
+<span class="font-headline-lg text-headline-lg italic">ONE NIGHT</span>
+<div class="font-label-caps text-label-caps mt-1">COMPLIMENTARY</div>
+</div>
+</div>
+<!-- ROW IV: Any Season -->
+<div class="grid grid-cols-12 gap-gutter py-12 border-t border-b border-outline-variant items-baseline">
+<div class="col-span-1 font-label-caps text-label-caps">IV. ANY SEASON</div>
+<div class="col-span-3">
+<h2 class="font-headline-md text-headline-md">The Returning Guest</h2>
+</div>
+<div class="col-span-3 font-body-md text-on-surface-variant">
+                        For anyone who has stayed with us before, the invitation remains open. A legacy of hospitality for our most frequent visitors.
+                    </div>
+<div class="col-span-2 font-label-caps text-label-caps opacity-60">
+                        YEAR ROUND<br/>
+                        APPLIED AT BOOKING
+                    </div>
+<div class="col-span-3 text-right">
+<span class="font-headline-lg text-headline-lg">10% OFF</span>
+<div class="font-label-caps text-label-caps mt-1">EVERY STAY</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. THE FINE PRINT -->
+<section class="bg-secondary-container px-margin-desktop py-stack-lg">
+<div class="max-w-7xl">
+<h3 class="font-label-caps text-label-caps mb-20 tracking-[0.4em]">NO. — THE PARTICULARS</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div>
+<h4 class="font-label-caps text-label-caps text-primary mb-6">HOW TO CLAIM</h4>
+<p class="font-body-md text-on-surface-variant">
+                            Offers must be redeemed at the time of reservation using the provided code. For returning guest rates, please ensure you use the same email profile associated with your previous stays.
+                        </p>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary mb-6">WHAT APPLIES</h4>
+<p class="font-body-md text-on-surface-variant">
+                            Discounts apply strictly to nightly accommodation rates. These offers are valid for direct bookings through our digital publication or concierge services.
+                        </p>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary mb-6">WHAT DOESN'T</h4>
+<p class="font-body-md text-on-surface-variant">
+                            Offers cannot be combined with existing promotions or negotiated corporate rates. Taxes, cleaning fees, and service charges are calculated on the pre-discounted total.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. INQUIRY FRAME -->
+<section class="min-h-screen bg-surface flex flex-col justify-center items-center px-margin-mobile text-center">
+<div class="max-w-2xl w-full border border-outline-variant p-margin-desktop">
+<h3 class="font-label-caps text-label-caps tracking-[0.4em] mb-4">NO. — BEGIN</h3>
+<p class="font-headline-md text-headline-md mb-12">Tell us when you'd like to come.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+<div class="border-b border-on-background py-4 flex flex-col text-left">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2">CHECK-IN</label>
+<input class="bg-transparent border-none p-0 focus:ring-0 italic font-headline-md text-body-lg placeholder:text-outline/40" placeholder="Autumn 2024" type="text"/>
+</div>
+<div class="border-b border-on-background py-4 flex flex-col text-left">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2">CHECK-OUT</label>
+<input class="bg-transparent border-none p-0 focus:ring-0 italic font-headline-md text-body-lg placeholder:text-outline/40" placeholder="Late Season" type="text"/>
+</div>
+<div class="border-b border-on-background py-4 flex flex-col text-left">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2">GUESTS</label>
+<input class="bg-transparent border-none p-0 focus:ring-0 italic font-headline-md text-body-lg placeholder:text-outline/40" placeholder="Two People" type="text"/>
+</div>
+</div>
+<button class="w-full py-6 border border-on-background font-label-caps text-label-caps tracking-widest hover:bg-on-background hover:text-surface transition-all duration-500">
+                    INQUIRE
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-secondary-container dark:bg-on-secondary-fixed-variant border-t border-outline-variant dark:border-outline w-full">
+<div class="grid grid-cols-12 gap-gutter px-margin-desktop py-stack-lg w-full">
+<div class="col-span-12 lg:col-span-4 mb-12 lg:mb-0">
+<div class="font-headline-lg text-headline-lg text-on-surface dark:text-on-surface-variant mb-4">Scenic Stays</div>
+<p class="font-body-md text-body-md text-on-secondary-container dark:text-secondary-fixed opacity-70">
+                    Curating architectural sanctuaries for the discerning traveler.
+                </p>
+</div>
+<div class="col-span-6 lg:col-span-2">
+<h5 class="font-label-caps text-label-caps mb-6 text-on-secondary-fixed">EXPLORE</h5>
+<ul class="flex flex-col gap-4 font-body-md text-body-md text-on-secondary-container dark:text-secondary-fixed">
+<li><a class="hover:underline transition-all" href="#">Rentals</a></li>
+<li><a class="hover:underline transition-all" href="#">Guides</a></li>
+<li><a class="font-bold text-on-surface dark:text-on-surface" href="#">Deals</a></li>
+</ul>
+</div>
+<div class="col-span-6 lg:col-span-2">
+<h5 class="font-label-caps text-label-caps mb-6 text-on-secondary-fixed">COMPANY</h5>
+<ul class="flex flex-col gap-4 font-body-md text-body-md text-on-secondary-container dark:text-secondary-fixed">
+<li><a class="hover:underline transition-all" href="#">Careers</a></li>
+<li><a class="hover:underline transition-all" href="#">Press Inquiries</a></li>
+<li><a class="hover:underline transition-all" href="#">Accessibility</a></li>
+</ul>
+</div>
+<div class="col-span-12 lg:col-span-4 mt-12 lg:mt-0 lg:text-right flex flex-col justify-between">
+<div class="flex lg:justify-end gap-6 mb-8">
+<span class="material-symbols-outlined text-primary cursor-pointer">qr_code_2</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">photo_camera</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">mail</span>
+</div>
+<p class="font-body-md text-body-md text-on-secondary-container dark:text-secondary-fixed">
+                    © 2024 Scenic Stays. All rights reserved. <br/>
+<span class="italic">A Quiet Luxury Publication.</span>
+</p>
+</div>
+<div class="col-span-12 border-t border-outline-variant pt-8 mt-16 flex flex-wrap gap-8 font-label-caps text-label-caps opacity-50">
+<a class="hover:underline" href="#">Privacy Policy</a>
+<a class="hover:underline" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal of rows on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('.grid.border-t');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            rows.forEach(row => {
+                row.classList.add('opacity-0', 'transition-all', 'duration-1000', 'ease-out');
+                row.style.transform = 'translateY(20px)';
+                observer.observe(row);
+            });
+        });
+    </script>
+</body></html>

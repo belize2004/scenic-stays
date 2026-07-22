@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real Estate Portfolio | SCENIC STAYS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-container": "#74706d",
+                "surface-container-lowest": "#ffffff",
+                "on-error-container": "#93000a",
+                "secondary-fixed": "#e7e2d8",
+                "on-tertiary-fixed-variant": "#494643",
+                "primary-fixed": "#e5e2dd",
+                "on-primary-fixed-variant": "#474743",
+                "on-background": "#1c1b1b",
+                "primary-container": "#faf7f2",
+                "on-primary-container": "#72716d",
+                "surface-bright": "#fdf8f7",
+                "secondary-fixed-dim": "#cac6bd",
+                "inverse-on-surface": "#f4f0ef",
+                "secondary-container": "#e7e2d8",
+                "on-error": "#ffffff",
+                "surface-dim": "#ddd9d8",
+                "outline-variant": "#c8c7be",
+                "on-secondary-fixed": "#1d1c16",
+                "on-secondary-fixed-variant": "#494740",
+                "primary-fixed-dim": "#c8c6c2",
+                "on-secondary": "#ffffff",
+                "on-primary": "#ffffff",
+                "tertiary-fixed-dim": "#cbc5c2",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#ebe7e6",
+                "surface": "#fdf8f7",
+                "surface-variant": "#e5e2e0",
+                "on-surface-variant": "#474741",
+                "on-secondary-container": "#67645c",
+                "on-surface": "#1c1b1b",
+                "primary": "#5f5e5b",
+                "surface-container-highest": "#e5e2e0",
+                "surface-container": "#f1edec",
+                "surface-container-low": "#f7f3f1",
+                "outline": "#787770",
+                "inverse-surface": "#313030",
+                "inverse-primary": "#c8c6c2",
+                "tertiary-fixed": "#e8e1dd",
+                "surface-tint": "#5f5e5b",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed": "#1d1b19",
+                "error-container": "#ffdad6",
+                "tertiary": "#615e5b",
+                "background": "#fdf8f7",
+                "on-primary-fixed": "#1c1c19",
+                "tertiary-container": "#fdf6f2",
+                "secondary": "#615e57",
+                "ink": "#141210",
+                "gold-accent": "#8A6D3B"
+            },
+            "borderRadius": {
+                "DEFAULT": "0px",
+                "lg": "0px",
+                "xl": "0px",
+                "full": "0px"
+            },
+            "spacing": {
+                "stack-xl": "160px",
+                "margin-mobile": "24px",
+                "margin-desktop": "80px",
+                "gutter": "24px",
+                "stack-md": "40px",
+                "stack-lg": "80px",
+                "hairline": "1px"
+            },
+            "fontFamily": {
+                "headline-md": ["Bodoni Moda"],
+                "headline-lg": ["Bodoni Moda"],
+                "display-xl": ["Bodoni Moda"],
+                "label-caps": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Bodoni Moda"],
+                "headline-lg-italic": ["Bodoni Moda"],
+                "body-md": ["Hanken Grotesk"],
+                "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fdf8f7;
+            color: #141210;
+            -webkit-font-smoothing: antialiased;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/p6-dark.png");
+        }
+        .editorial-line {
+            background-color: #141210;
+            height: 1px;
+            width: 100%;
+        }
+        .vertical-line {
+            background-color: #141210;
+            width: 1px;
+            height: 100%;
+        }
+        .hover-underline-gold:hover {
+            text-decoration-color: #8A6D3B;
+        }
+    </style>
+</head>
+<body class="font-body-md selection:bg-gold-accent selection:text-white">
+<div class="grain-overlay"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div class="font-headline-md text-headline-md tracking-tighter text-on-surface">SCENIC STAYS</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">GUIDES</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">VACATION DEALS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">PROPERTY MANAGEMENT</a>
+<a class="font-label-caps text-label-caps text-on-surface border-b border-on-surface pb-1" href="#">REAL ESTATE</a>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface tracking-widest">850-390-7511</div>
+</nav>
+<!-- 1. HERO FRAME -->
+<header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center scale-105" data-alt="A high-contrast cinematic wide shot of the Florida Emerald Coast at golden hour. The pristine white sand and vibrant turquoise water are captured in a sharp, editorial style. The lighting is dramatic, highlighting the natural textures of the dunes and the sophisticated calm of the Gulf of Mexico. The overall mood is exclusive, serene, and deeply luxurious." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA72Ms4UjU-OrQI6_-DwGK98Gg3fnISbuDGSsnvOdCUmi4sumzUdyoPmPRthwsYqcY4aP_gol-CrqKKyAIgUKiYBK9FrvVTmY6LsyurPuvrpgljPjUvnS_JycI1gpxERiNNm-p2kRwk05sUUXq-hWZedK0d5rjJi4_KmbrIA8U2T5XCBgBF-IaaaifI9HwEPfzQrqBED85DUlLM7qGwWfmFHGkRGCCVW6ZukQJJyr0fkQFaKjY8vaTX-Q')"></div>
+<div class="absolute inset-0 bg-ink/20"></div>
+</div>
+<div class="relative z-10 text-center text-white px-margin-mobile">
+<p class="font-label-caps text-label-caps mb-6 tracking-[0.4em] opacity-90 uppercase">NO. 05 — THE REAL ESTATE PORTFOLIO</p>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-display-xl leading-none">
+                Invest in the <span class="italic">Emerald</span> Coast.
+            </h1>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+<div class="w-[1px] h-12 bg-white/40"></div>
+</div>
+</header>
+<!-- 2. PORTFOLIO INTRODUCTION -->
+<section class="bg-[#F3EEE4] py-stack-xl px-margin-desktop flex flex-col items-center justify-center text-center">
+<div class="max-w-4xl">
+<p class="font-headline-lg-italic text-headline-md md:text-headline-lg-italic text-ink mb-8 leading-tight">
+                "We don't just sell property; we steward the <span class="italic">legacy</span> of this coastline."
+            </p>
+<p class="font-label-caps text-label-caps tracking-[0.3em] text-ink/60 uppercase">FOUNDER — SCENIC STAYS</p>
+</div>
+</section>
+<!-- 3. FEATURED LISTINGS SPREAD -->
+<section class="bg-surface py-stack-lg">
+<div class="px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-0 border-y border-ink">
+<!-- Property 1 -->
+<div class="group relative py-stack-md md:pr-gutter md:border-r border-ink flex flex-col gap-8">
+<div class="overflow-hidden aspect-[3/4]">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic architectural photograph of a minimalist white villa known as Seacrest Sanctuary. The building features clean lines, large glass windows reflecting the coastal sky, and a pristine courtyard. The shot is captured in midday high-key lighting, emphasizing the pure whites and deep shadows characteristic of luxury Florida architecture. Minimalist, quiet luxury aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuhCn2gnDSfuu8xy4D52HlfOV64g-JehyRgJolaKMkZ3UL3yy69y9l0wlm2QnU0kSj6oFbcKWaY9jg_gD-FNbTBs0yNlhS839cUwFtLkFrph1gMGoTxYzdzbkNfibltG0r0OjVJp26g49kis3sXbK5FUWPE29VSSShuffCJ7NON7dr8ZJijllh9Os0ltz9gED8SYxsCTVXSAyS1_acKomLHXWqBB51ksBG0iBg9T5zyeDdYtF8S-YdQw')"></div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-ink uppercase tracking-tight">Seacrest Sanctuary</h3>
+<div class="flex justify-between items-baseline">
+<p class="font-label-caps text-label-caps text-ink/60 uppercase">SANTA ROSA BEACH, FL</p>
+<p class="font-headline-md text-[24px] text-ink">$8,450,000</p>
+</div>
+</div>
+</div>
+<!-- Property 2 -->
+<div class="group relative py-stack-md md:pl-gutter flex flex-col gap-8">
+<div class="overflow-hidden aspect-[3/4]">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="An exquisite minimalist architecture shot of the Alys Anchor residence. The image focuses on the stark white geometric forms of the building against a deep blue sky. A solitary palm tree casts a sharp shadow against the textured masonry. The style is reminiscent of high-end architectural magazines like Cereal or Vogue Living, emphasizing luxury, space, and form over clutter." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9xAVxf80NPnMUb6DCDe0HlB4j9T2Iai0Z28nOM2mjMqMSl3LdJs5-3ToexAvqkG91XALCT9imxYYDsjYP9_MDa99YKQpkhRPZRBrXp3h08swr-56dklObTYSBmp1mcJJvSwgamLze-py88Z8vvxok7DJIMra7uuwz3gK3wXPdf1H60t72FiNQ4CXNHy72WfWAfKsyWpiLXWZbFXRxd3OJN33NM7b_R38GkCl2GI_HgyPMYOilw_Hr8w')"></div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-ink uppercase tracking-tight">Alys Anchor</h3>
+<div class="flex justify-between items-baseline">
+<p class="font-label-caps text-label-caps text-ink/60 uppercase">ALYS BEACH, FL</p>
+<p class="font-headline-md text-[24px] text-ink">$12,200,000</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. THE PHILOSOPHY -->
+<section class="bg-[#FAF7F2] py-stack-xl">
+<div class="px-margin-desktop">
+<h2 class="font-label-caps text-label-caps tracking-[0.4em] text-ink mb-stack-md uppercase text-center">OUR PHILOSOPHY</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-ink">
+<!-- Column 1 -->
+<div class="p-stack-md md:border-r border-ink flex flex-col gap-6">
+<h4 class="font-headline-md text-headline-md text-ink">CURATION</h4>
+<p class="font-body-lg text-ink/80 leading-relaxed">
+                        A rigorous selection process that filters for only the most significant coastal residences. We prioritize architectural integrity and site-specific value over market volume.
+                    </p>
+</div>
+<!-- Column 2 -->
+<div class="p-stack-md md:border-r border-ink flex flex-col gap-6">
+<h4 class="font-headline-md text-headline-md text-ink">DISCRETION</h4>
+<p class="font-body-lg text-ink/80 leading-relaxed">
+                        Facilitating private acquisitions and exclusive off-market opportunities for a global clientele who demand anonymity and precision in high-value transactions.
+                    </p>
+</div>
+<!-- Column 3 -->
+<div class="p-stack-md flex flex-col gap-6">
+<h4 class="font-headline-md text-headline-md text-ink">LEGACY</h4>
+<p class="font-body-lg text-ink/80 leading-relaxed">
+                        Our commitment extends beyond the sale. We provide long-term value preservation strategies and bespoke property management to ensure your investment matures with grace.
+                    </p>
+</div>
+</div>
+<div class="border-b border-ink w-full"></div>
+</div>
+</section>
+<!-- 5. CLOSING SPREAD -->
+<section class="bg-surface py-stack-xl flex flex-col items-center justify-center text-center px-margin-mobile">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-ink leading-none mb-12">
+            Your place in the sun, <span class="italic">secured</span>.
+        </h2>
+<a class="font-label-caps text-[14px] text-gold-accent border-b border-gold-accent/40 pb-2 hover:border-gold-accent transition-all duration-300 tracking-widest uppercase" href="#">
+            Inquire for the portfolio
+        </a>
+</section>
+<!-- 6. FOOTER -->
+<footer class="w-full py-stack-lg px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-secondary-container border-t border-outline-variant">
+<div class="flex flex-col gap-6">
+<div class="font-headline-md text-headline-md text-on-secondary-container">SCENIC STAYS</div>
+<p class="font-body-md text-on-secondary-container/80 max-w-[240px]">Curating the finest coastal experiences along the Emerald Coast since 2004.</p>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-on-secondary-container mb-2">QUICK LINKS</p>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">JOURNAL</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">REAL ESTATE</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-on-secondary-container mb-2">LEGAL</p>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">PRIVACY</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">TERMS</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">ACCESSIBILITY</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-on-secondary-container mb-2">SOCIAL</p>
+<div class="flex flex-col gap-4">
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">INSTAGRAM</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">FACEBOOK</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">PINTEREST</a>
+</div>
+<div class="mt-stack-md">
+<p class="font-label-caps text-label-caps text-on-secondary-container/60">© 2024 SCENIC STAYS. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for smooth fade-in
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                        entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-4');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body></html>

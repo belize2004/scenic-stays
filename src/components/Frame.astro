@@ -1,0 +1,84 @@
+---
+/**
+ * Viewport frame — DNA §5.
+ * Height uses svh only (never vh). Quiet frames get a hairline so cream reads composed.
+ */
+interface Props {
+  variant?: 'loud' | 'quiet';
+  /** Pixels of the next section visible at the bottom. Loud default: 50. Quiet default: 0. */
+  peek?: number;
+  background?: 'paper' | 'vellum';
+  class?: string;
+  as?: 'section' | 'div' | 'header' | 'footer';
+}
+
+const {
+  variant = 'quiet',
+  peek = variant === 'loud' ? 50 : 0,
+  background = 'paper',
+  class: className = '',
+  as: Tag = 'section',
+} = Astro.props;
+
+const bg = background === 'vellum' ? 'var(--vellum)' : 'var(--paper)';
+
+/** Loud frames fill the viewport minus peek; quiet frames size to content unless peek is set. */
+const style: Record<string, string> = {
+  backgroundColor: bg,
+};
+
+if (variant === 'loud' || peek > 0) {
+  const frameHeight = peek > 0 ? `calc(100svh - ${peek}px)` : '100svh';
+  style.height = frameHeight;
+  style.minHeight = frameHeight;
+}
+---
+
+<Tag
+  class:list={['frame', `frame--${variant}`, className]}
+  data-variant={variant}
+  data-background={background}
+  data-peek={String(peek)}
+  style={style}
+>
+  {variant === 'quiet' && <div class="frame__hairline" aria-hidden="true" />}
+  <div class="frame__inner">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .frame {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .frame__hairline {
+    position: absolute;
+    top: 0;
+    left: var(--margin-mobile);
+    right: var(--margin-mobile);
+    height: var(--hairline);
+    background-color: var(--ink);
+    opacity: 0.2;
+  }
+
+  @media (min-width: 768px) {
+    .frame__hairline {
+      left: var(--margin-desktop);
+      right: var(--margin-desktop);
+    }
+  }
+
+  .frame__inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+</style>

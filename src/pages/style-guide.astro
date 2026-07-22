@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Frame from '../components/Frame.astro';
+
+const colors = [
+  { name: '--paper', hex: '#FAF7F2', role: 'Primary background' },
+  { name: '--vellum', hex: '#F3EEE4', role: 'Alternating section / page turn' },
+  { name: '--ink', hex: '#141210', role: 'Type, hairlines, solid buttons' },
+  { name: '--gold', hex: '#8A6D3B', role: 'Rare accent (1–2 uses / viewport)' },
+] as const;
+
+const spacing = [
+  { name: '--margin-desktop', value: '80px' },
+  { name: '--margin-mobile', value: '24px' },
+  { name: '--gutter', value: '24px' },
+  { name: '--stack-xl', value: '160px' },
+  { name: '--stack-lg', value: '80px' },
+  { name: '--stack-md', value: '40px' },
+  { name: '--hairline', value: '1px' },
+] as const;
+---
+
+<BaseLayout title="Style Guide — SCENIC STAYS" description="Editorial design system tokens and components.">
+  <main class="sg">
+    <header class="sg__header">
+      <p class="type-label-caps">SCENIC STAYS · Design DNA</p>
+      <h1 class="type-headline-lg">Style guide.</h1>
+      <p class="type-body-lg sg__lede">
+        Four colors. Two typefaces. Square corners. Paper and ink — not widgets.
+      </p>
+    </header>
+
+    <section class="sg__section" aria-labelledby="colors">
+      <h2 id="colors" class="type-headline-md">Color</h2>
+      <p class="type-body-md sg__note">Only these four exist. Never pure #FFFFFF or #000000.</p>
+      <ul class="sg__swatches">
+        {
+          colors.map((c) => (
+            <li class="sg__swatch">
+              <div class="sg__chip" style={`background:${c.hex}`} />
+              <p class="type-label-caps">{c.name}</p>
+              <p class="type-body-md">{c.hex}</p>
+              <p class="type-body-md sg__muted">{c.role}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="sg__section" aria-labelledby="type">
+      <h2 id="type" class="type-headline-md">Typography</h2>
+      <div class="sg__type-stack">
+        <div>
+          <p class="type-label-caps sg__meta">display-xl</p>
+          <p class="type-display-xl">
+            The Emerald Coast, <em>properly</em>.
+          </p>
+        </div>
+        <div>
+          <p class="type-label-caps sg__meta">headline-lg</p>
+          <p class="type-headline-lg">Management worthy of the house.</p>
+        </div>
+        <div>
+          <p class="type-label-caps sg__meta">headline-md</p>
+          <p class="type-headline-md">Quiet months, generous rates.</p>
+        </div>
+        <div>
+          <p class="type-label-caps sg__meta">body-lg</p>
+          <p class="type-body-lg">
+            Photography is the narrative device; the UI is a transparent frame around it.
+          </p>
+        </div>
+        <div>
+          <p class="type-label-caps sg__meta">body-md</p>
+          <p class="type-body-md">
+            Destin · Sleeps 12 · Gulf front — location and capacity always present.
+          </p>
+        </div>
+        <div>
+          <p class="type-label-caps sg__meta">label-caps</p>
+          <p class="type-label-caps">No. 01 — The Private Homes</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg__section" aria-labelledby="spacing">
+      <h2 id="spacing" class="type-headline-md">Spacing</h2>
+      <ul class="sg__spacing">
+        {
+          spacing.map((s) => (
+            <li>
+              <span class="type-label-caps">{s.name}</span>
+              <span class="sg__bar" style={`width:${s.value}`} />
+              <span class="type-body-md">{s.value}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="sg__hairline-demo" aria-hidden="true" />
+      <p class="type-label-caps">Hairline rule</p>
+    </section>
+
+    <section class="sg__section" aria-labelledby="controls">
+      <h2 id="controls" class="type-headline-md">Controls</h2>
+      <p class="type-body-md sg__note">Tab to verify :focus-visible rings.</p>
+      <div class="sg__controls">
+        <button type="button" class="btn-ghost">Search</button>
+        <button type="button" class="btn-solid">Begin an inquiry</button>
+        <a href="#frames" class="link-gold">Discover the interiors</a>
+      </div>
+    </section>
+
+    <section class="sg__section" aria-labelledby="grain">
+      <h2 id="grain" class="type-headline-md">Grain</h2>
+      <p class="type-body-md sg__note">Cream surfaces only, ≤ 3–4% opacity. Shared inline SVG filter.</p>
+      <div class="sg__grain-sample">
+        <div class="grain" aria-hidden="true" />
+        <p class="type-label-caps">Paper + grain</p>
+      </div>
+    </section>
+
+    <section class="sg__section sg__section--flush" aria-labelledby="frames" id="frames">
+      <div class="sg__section-pad">
+        <h2 class="type-headline-md">Frames</h2>
+        <p class="type-body-md sg__note">
+          Loud = composed viewport (svh − peek). Quiet = rest beat with hairline. No scroll-snap.
+        </p>
+      </div>
+
+      <Frame variant="loud" peek={50} background="paper">
+        <div class="sg__frame-demo">
+          <p class="type-label-caps">loud · paper · peek 50</p>
+          <p class="type-headline-lg">100svh − 50px</p>
+        </div>
+      </Frame>
+
+      <Frame variant="quiet" background="vellum">
+        <div class="sg__frame-demo sg__frame-demo--quiet">
+          <p class="type-label-caps">quiet · vellum</p>
+          <p class="type-headline-md">A rest beat after the hero.</p>
+        </div>
+      </Frame>
+
+      <Frame variant="loud" peek={0} background="vellum">
+        <div class="sg__frame-demo">
+          <p class="type-label-caps">loud · vellum · peek 0</p>
+          <p class="type-headline-lg">Full 100svh</p>
+        </div>
+      </Frame>
+
+      <Frame variant="quiet" background="paper">
+        <div class="sg__frame-demo sg__frame-demo--quiet">
+          <p class="type-label-caps">quiet · paper</p>
+          <p class="type-body-lg">Hairline anchors the cream so space reads composed, not empty.</p>
+        </div>
+      </Frame>
+    </section>
+
+    <footer class="sg__footer">
+      <p class="type-label-caps">Easing · cubic-bezier(0.22, 1, 0.36, 1) · 500ms fade-up</p>
+      <p class="type-body-md reveal">This line uses the single reveal motion.</p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .sg {
+    padding-bottom: var(--stack-xl);
+  }
+
+  .sg__header,
+  .sg__section-pad,
+  .sg__footer {
+    padding: var(--stack-lg) var(--margin-mobile) 0;
+  }
+
+  @media (min-width: 768px) {
+    .sg__header,
+    .sg__section-pad,
+    .sg__footer {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .sg__lede {
+    max-width: 36rem;
+    margin-top: var(--stack-md);
+  }
+
+  .sg__section {
+    padding: var(--stack-lg) var(--margin-mobile) 0;
+  }
+
+  .sg__section--flush {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media (min-width: 768px) {
+    .sg__section:not(.sg__section--flush) {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .sg__note,
+  .sg__muted {
+    opacity: 0.72;
+    margin-top: 0.75rem;
+  }
+
+  .sg__meta {
+    margin-bottom: 0.75rem;
+    opacity: 0.55;
+  }
+
+  .sg__swatches {
+    list-style: none;
+    margin: var(--stack-md) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--gutter);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .sg__chip {
+    height: 96px;
+    border: var(--hairline) solid color-mix(in srgb, var(--ink) 15%, transparent);
+    margin-bottom: 0.75rem;
+  }
+
+  .sg__type-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-md);
+    margin-top: var(--stack-md);
+  }
+
+  .sg__spacing {
+    list-style: none;
+    margin: var(--stack-md) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sg__spacing li {
+    display: grid;
+    grid-template-columns: 10rem 1fr auto;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .sg__bar {
+    display: block;
+    height: 8px;
+    background: var(--ink);
+    max-width: 100%;
+  }
+
+  .sg__hairline-demo {
+    margin-top: var(--stack-md);
+    height: var(--hairline);
+    background: var(--ink);
+  }
+
+  .sg__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
+    margin-top: var(--stack-md);
+  }
+
+  .sg__grain-sample {
+    position: relative;
+    margin-top: var(--stack-md);
+    min-height: 160px;
+    background: var(--paper);
+    border: var(--hairline) solid color-mix(in srgb, var(--ink) 15%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sg__frame-demo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--stack-lg) var(--margin-mobile);
+    gap: 0.75rem;
+  }
+
+  .sg__frame-demo--quiet {
+    padding-top: var(--stack-md);
+    padding-bottom: var(--stack-md);
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .sg__frame-demo {
+      padding-left: var(--margin-desktop);
+      padding-right: var(--margin-desktop);
+    }
+  }
+
+  .sg__footer {
+    margin-top: var(--stack-lg);
+  }
+</style>

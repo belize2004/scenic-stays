@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About | Scenic Stays</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#e7e2d8",
+                        "on-secondary-fixed": "#1d1c16",
+                        "on-primary-fixed": "#1c1c19",
+                        "on-primary-container": "#72716d",
+                        "surface-bright": "#fdf8f7",
+                        "surface-variant": "#e5e2e0",
+                        "surface": "#fdf8f7",
+                        "on-surface-variant": "#474741",
+                        "surface-dim": "#ddd9d8",
+                        "on-primary-fixed-variant": "#474743",
+                        "surface-container-highest": "#e5e2e0",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed": "#e8e1dd",
+                        "tertiary-container": "#fdf6f2",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e7e2d8",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "tertiary": "#615e5b",
+                        "inverse-primary": "#c8c6c2",
+                        "on-tertiary-container": "#74706d",
+                        "surface-container-low": "#f7f3f1",
+                        "primary": "#5f5e5b",
+                        "on-secondary-fixed-variant": "#494740",
+                        "on-secondary-container": "#67645c",
+                        "tertiary-fixed-dim": "#cbc5c2",
+                        "primary-fixed": "#e5e2dd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#5f5e5b",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#494643",
+                        "on-background": "#1c1b1b",
+                        "secondary": "#615e57",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf7f2",
+                        "outline-variant": "#c8c7be",
+                        "outline": "#787770",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "surface-container": "#f1edec",
+                        "primary-container": "#faf7f2",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-high": "#ebe7e6",
+                        "primary-fixed-dim": "#c8c6c2",
+                        "ink": "#141210",
+                        "gold-muted": "#8A6D3B",
+                        "cream-deep": "#F3EEE4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "40px",
+                        "margin-mobile": "24px",
+                        "hairline": "1px",
+                        "margin-desktop": "80px",
+                        "stack-xl": "160px",
+                        "gutter": "24px",
+                        "stack-lg": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-italic": ["Bodoni Moda"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-xl": ["Bodoni Moda"],
+                        "headline-md": ["Bodoni Moda"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                        "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                        "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                        "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #faf7f2;
+            color: #141210;
+            overflow-x: hidden;
+        }
+        .grain {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .hairline-y {
+            width: 1px;
+            background-color: rgba(20, 18, 16, 0.15);
+        }
+        .hairline-x {
+            height: 1px;
+            background-color: rgba(20, 18, 16, 0.15);
+        }
+        .gold-underline {
+            position: relative;
+        }
+        .gold-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background-color: #8A6D3B;
+        }
+    </style>
+</head>
+<body class="font-body-md text-ink selection:bg-gold-muted/20">
+<div class="grain"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-6 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30">
+<div class="font-headline-md text-[32px] tracking-tighter text-on-surface">SCENIC STAYS</div>
+<div class="hidden md:flex gap-10">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Homes</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Resorts</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Destinations</a>
+<a class="font-label-caps text-label-caps text-on-surface border-b border-on-surface pb-1" href="#">Journal</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Owners</a>
+</div>
+<div class="font-label-caps text-label-caps text-primary">+1 800 555 0123</div>
+</nav>
+<main>
+<!-- 1. COVER FRAME -->
+<section class="relative h-screen w-full flex flex-col justify-end px-margin-desktop pb-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center scale-105 hover:scale-100 transition-transform duration-[5s] ease-out" data-alt="A cinematic wide-angle photograph of the Destin coastline at sunrise. The sky is a soft blend of peach and gold, reflecting onto calm, emerald-tinted gulf waters. White sandy beaches stretch into the distance with a delicate mist hanging over the shore. The lighting is high-key and ethereal, following a minimalist editorial aesthetic with deep natural contrast and serene mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKtng_IsijuOCzl4aISQRssEAorw6c7ZskaATCqIFM3pj2b-_pmcgG42rRfKGZ6Avxq5lsNgiJpPAil44lqsXRU0CW8MsiEbsgOXEQPp7jmcX41uBzgJB1dCysqiU5e6B9HsOJAw9I7CCJR3br3cA8dCiWFq_QHH_omye_fDIXHxoT_TeSQAivizI2GJmLzNdbLNTmBglXZd_0cqDOxvKOtXbHrDYtiIDOHkd7jB7ba1Q39rsedDJ35w')"></div>
+<div class="absolute inset-0 bg-ink/10"></div>
+</div>
+<div class="relative z-10 grid grid-cols-12 gap-gutter items-end">
+<div class="col-span-8">
+<h1 class="font-headline-lg text-headline-lg text-white mb-4">We live here.</h1>
+<p class="font-body-lg text-white/90 max-w-lg">Thirty miles of coastline, and a company that has never managed anywhere else.</p>
+</div>
+<div class="col-span-4 text-right">
+<span class="font-label-caps text-label-caps text-white/80">FIG. 01 — THE PASS, FIRST LIGHT</span>
+</div>
+</div>
+</section>
+<!-- 2. THE STORY FRAME -->
+<section class="h-screen w-full bg-background flex flex-col justify-center px-margin-desktop relative">
+<div class="absolute top-margin-desktop">
+<span class="font-label-caps text-label-caps text-gold-muted">NO. 01 — THE BEGINNING</span>
+</div>
+<div class="max-w-4xl mx-auto text-center space-y-12">
+<blockquote class="font-headline-lg-italic text-headline-lg text-ink">
+                    "One house, one family, one telephone number."
+                </blockquote>
+<div class="flex flex-col items-center gap-8 max-w-[560px] mx-auto">
+<p class="font-body-md text-ink/80 text-center">
+                        Founded in the salt-air breeze of Destin, Scenic Stays began as a promise between a family and their home. We didn't set out to build a global empire; we set out to care for a single porch, a single kitchen, and the memories made within them.
+                    </p>
+<p class="font-body-md text-ink/80 text-center">
+                        Two decades later, the scale has shifted, but the phone number hasn't. We remain locally owned, locally operated, and entirely devoted to the thirty miles of sugar-white sand we call home.
+                    </p>
+</div>
+</div>
+</section>
+<!-- 3. THE PHILOSOPHY SPREAD -->
+<section class="h-screen w-full grid grid-cols-2">
+<div class="relative h-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A vertical, high-fashion editorial photograph of a sun-drenched coastal bedroom. Crisp white linens are being meticulously flattened on a large bed by hands just out of frame. The room features warm wood accents and a minimalist aesthetic with soft, natural light pouring through sheer linen curtains. The palette is dominated by cream, beige, and soft white tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCogMaoKTfy_eZzSFJwobsJ_yzaqfVd8u3W4yha60YhTg7HvaNmJkoUkvmxBBN30maxW49JkKS6RHTXCuUz392KjZ1Uj1XrIa4_0_hFjBMvnRN-rWYynYTnq9Q4mvduapR0o7Sg3DXg2uZ2eGCUbsQ3dVtA0P0Hv7X9BReLzA8Ney693RYsyw2rWpS7uZW0FLCaNUItYrLRi97mZlSlfaevcT_3Ski6Z6IIKeIeSuukkuSvscEnDxczxg')"></div>
+</div>
+<div class="bg-background flex flex-col justify-center px-24 space-y-8">
+<blockquote class="font-headline-md text-headline-md text-ink leading-tight">
+                    "A house should feel cared for before anyone arrives."
+                </blockquote>
+<p class="font-body-md text-ink/70 max-w-md">
+                    Our preparation standards are not defined by a checklist, but by a feeling. It is the scent of clean air, the precision of a folded towel, and the knowledge that every lightbulb has been tested before the sun sets on your first night.
+                </p>
+</div>
+</section>
+<!-- 4. THE DIFFERENCE FRAME -->
+<section class="h-screen w-full bg-cream-deep flex flex-col justify-center px-margin-desktop">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-ink">What being local actually means</h2>
+</div>
+<div class="grid grid-cols-3 gap-0 border-y border-ink/10">
+<div class="p-12 flex flex-col items-center text-center border-r border-ink/10">
+<span class="font-display-xl text-4xl mb-4 italic">3 A.M.</span>
+<p class="font-label-caps text-label-caps text-gold-muted mb-4">COVERAGE</p>
+<p class="font-body-md text-ink/70">A real person on the ground in Destin, always awake when you are.</p>
+</div>
+<div class="p-12 flex flex-col items-center text-center border-r border-ink/10">
+<span class="font-display-xl text-4xl mb-4 italic">IN YOUR POCKET</span>
+<p class="font-label-caps text-label-caps text-gold-muted mb-4">GUEST APP</p>
+<p class="font-body-md text-ink/70">Bespoke technology designed for the specific needs of our coastal guests.</p>
+</div>
+<div class="p-12 flex flex-col items-center text-center">
+<span class="font-display-xl text-4xl mb-4 italic">TWO HUNDRED YEARS</span>
+<p class="font-label-caps text-label-caps text-gold-muted mb-4">EXPERIENCE</p>
+<p class="font-body-md text-ink/70">The combined local tenure of our leadership team on the Gulf Coast.</p>
+</div>
+</div>
+<div class="mt-stack-lg text-center">
+<p class="font-label-caps text-label-caps tracking-[0.4em] text-ink/50 uppercase">
+                    LOCALLY OWNED · NEVER A CALL CENTER · NEVER A FRANCHISE
+                </p>
+</div>
+</section>
+<!-- 5. THE MASTHEAD -->
+<section class="min-h-screen w-full bg-background px-margin-desktop py-stack-xl">
+<div class="mb-24">
+<span class="font-label-caps text-label-caps text-gold-muted">NO. 02 — THE MASTHEAD</span>
+</div>
+<div class="max-w-5xl mx-auto space-y-24">
+<!-- Group -->
+<div>
+<h3 class="font-label-caps text-label-caps text-ink/40 mb-8 border-b border-ink/10 pb-2">LEADERSHIP</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">David Harrison</span>
+<span class="font-label-caps text-label-caps text-ink/60">PRINCIPAL &amp; FOUNDER</span>
+</div>
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">Sarah Collins</span>
+<span class="font-label-caps text-label-caps text-ink/60">MANAGING DIRECTOR</span>
+</div>
+</div>
+</div>
+<!-- Group -->
+<div>
+<h3 class="font-label-caps text-label-caps text-ink/40 mb-8 border-b border-ink/10 pb-2">GUEST EXPERIENCE</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">Michael Reed</span>
+<span class="font-label-caps text-label-caps text-ink/60">DIRECTOR OF HOSPITALITY</span>
+</div>
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">Elena Velez</span>
+<span class="font-label-caps text-label-caps text-ink/60">CONCIERGE LEAD</span>
+</div>
+</div>
+</div>
+<!-- Group -->
+<div>
+<h3 class="font-label-caps text-label-caps text-ink/40 mb-8 border-b border-ink/10 pb-2">PROPERTY CARE</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">Julian Thorne</span>
+<span class="font-label-caps text-label-caps text-ink/60">OPERATIONS CHIEF</span>
+</div>
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">Marcus Bennett</span>
+<span class="font-label-caps text-label-caps text-ink/60">MAINTENANCE SUPERVISOR</span>
+</div>
+</div>
+</div>
+<!-- Group -->
+<div>
+<h3 class="font-label-caps text-label-caps text-ink/40 mb-8 border-b border-ink/10 pb-2">OWNER RELATIONS</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-baseline border-b border-ink/5 pb-2">
+<span class="font-headline-md text-2xl">Catherine Lowes</span>
+<span class="font-label-caps text-label-caps text-ink/60">PORTFOLIO STRATEGIST</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. THE EDITORIAL BREAK -->
+<section class="relative h-screen w-full flex flex-col justify-end px-margin-desktop pb-margin-desktop">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A minimalist, high-definition macro photograph of a stack of perfectly folded, heavy white cotton towels. The fabric texture is visible, illuminated by a warm, golden sunlight beam hitting from the side. The background is a soft-focus wooden surface in a clean, high-end coastal interior. The overall aesthetic is calm, orderly, and luxurious." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYpqXMUQBHvy5O7euufx6N7J74wQkHM3CXZh8la4-z0o42ORnnHhxil1W1wI5qHc2w0Xt79ff_RlncOqW86wuGH8Md3s_y2JnOaB1TYPBS7e5D7S-jyQ3FrAwjYz9hojpfui_dnWKqbfCuaTztZdQ0tGQAwJRe3GlImJm0NSi9nbfOzfX7QQpyQMGPv4-ZFq3pwmwT6e50E0G27Ufurdp_lz2botXUGDyuwFp-qbPhg9O53r4ahfMxTQ')"></div>
+</div>
+<div class="relative z-10 text-right">
+<span class="font-label-caps text-label-caps text-white drop-shadow-sm">FIG. 03 — BEFORE THE GUESTS ARRIVE</span>
+</div>
+</section>
+<!-- 7. THE INVITATION FRAME -->
+<section class="h-screen w-full bg-background flex flex-col justify-center px-margin-desktop">
+<div class="mb-stack-lg">
+<span class="font-label-caps text-label-caps text-gold-muted uppercase">NO. 03 — TWO WAYS IN</span>
+</div>
+<div class="grid grid-cols-2 h-1/2">
+<div class="flex flex-col justify-center items-start pr-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg mb-8">Come and stay.</h2>
+<a class="font-label-caps text-label-caps gold-underline text-gold-muted hover:text-ink transition-colors duration-300" href="#">VIEW THE COLLECTION</a>
+</div>
+<div class="border-l border-ink/10 flex flex-col justify-center items-start pl-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg mb-8">Or hand us the keys.</h2>
+<a class="font-label-caps text-label-caps gold-underline text-gold-muted hover:text-ink transition-colors duration-300" href="#">FOR OWNERS</a>
+</div>
+</div>
+</section>
+</main>
+<!-- 8. FOOTER -->
+<footer class="bg-cream-deep w-full px-margin-desktop py-stack-lg border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter w-full">
+<div class="col-span-1 flex flex-col gap-8">
+<div class="font-headline-lg text-headline-lg text-on-surface">SCENIC STAYS</div>
+<div class="font-body-md text-on-surface-variant space-y-1">
+<p>PO Box 5383</p>
+<p>Destin, FL 32540</p>
+<p>850-390-7511</p>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-gold-muted mb-6">VACATION RENTALS</h4>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Beachfront Homes</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Destin Condos</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Pet Friendly</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">New Arrivals</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-gold-muted mb-6">COMPANY</h4>
+<ul class="space-y-3">
+<li><a class="font-body-md text-primary font-bold" href="#">About Us</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Journal</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Careers</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-8">
+<div>
+<h4 class="font-label-caps text-label-caps text-gold-muted mb-6">NEWSLETTER</h4>
+<form class="relative">
+<input class="w-full bg-transparent border-none border-b border-outline p-0 pb-2 focus:ring-0 placeholder:text-ink/30 font-body-md" placeholder="Email Address" type="email"/>
+<button class="absolute right-0 bottom-2" type="submit">
+<span class="material-symbols-outlined text-gold-muted">east</span>
+</button>
+</form>
+</div>
+<div class="flex gap-6">
+<a class="font-label-caps text-[10px] hover:text-primary" href="#">INSTAGRAM</a>
+<a class="font-label-caps text-[10px] hover:text-primary" href="#">FACEBOOK</a>
+<a class="font-label-caps text-[10px] hover:text-primary" href="#">PINTEREST</a>
+</div>
+</div>
+</div>
+<div class="mt-24 pt-8 border-t border-ink/5 flex justify-between items-center">
+<p class="font-label-caps text-[10px] text-on-surface-variant">© 2024 SCENIC STAYS. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8">
+<a class="font-label-caps text-[10px] text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a>
+<a class="font-label-caps text-[10px] text-on-surface-variant hover:text-primary" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the magazine feel
+        document.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const nav = document.querySelector('nav');
+            
+            // Fade-in navigation on scroll
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+
+        // Parallax-ish image effect
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 100;
+            const moveY = (e.clientY - window.innerHeight / 2) / 100;
+            const heroes = document.querySelectorAll('.bg-cover');
+            heroes.forEach(hero => {
+                hero.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    </script>
+</body></html>

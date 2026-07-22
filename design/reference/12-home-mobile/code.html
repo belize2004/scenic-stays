@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=390, user-scalable=no" name="viewport"/>
+<title>Scenic Stays | Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf8f7",
+                        "secondary": "#615e57",
+                        "primary": "#5f5e5b",
+                        "secondary-container": "#e7e2d8",
+                        "tertiary-container": "#fdf6f2",
+                        "surface-container": "#f1edec",
+                        "tertiary": "#615e5b",
+                        "on-secondary-fixed": "#1d1c16",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e8e1dd",
+                        "surface-tint": "#5f5e5b",
+                        "primary-fixed": "#e5e2dd",
+                        "surface-container-high": "#ebe7e6",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-highest": "#e5e2e0",
+                        "outline-variant": "#c8c7be",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#faf7f2",
+                        "secondary-fixed": "#e7e2d8",
+                        "on-surface": "#1c1b1b",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "on-primary-fixed": "#1c1c19",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#67645c",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fdf8f7",
+                        "on-tertiary-fixed-variant": "#494643",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474743",
+                        "inverse-surface": "#313030",
+                        "surface-dim": "#ddd9d8",
+                        "on-background": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c8c6c2",
+                        "primary-fixed-dim": "#c8c6c2",
+                        "outline": "#787770",
+                        "surface-container-low": "#f7f3f1",
+                        "on-secondary-fixed-variant": "#494740",
+                        "on-primary-container": "#72716d",
+                        "surface": "#fdf8f7",
+                        "on-tertiary-container": "#74706d",
+                        "on-surface-variant": "#474741",
+                        "surface-variant": "#e5e2e0",
+                        "tertiary-fixed-dim": "#cbc5c2"
+                    },
+                    "spacing": {
+                        "stack-md": "40px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "24px",
+                        "stack-lg": "80px",
+                        "stack-xl": "160px",
+                        "hairline": "1px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-italic": ["Bodoni Moda"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "display-xl": ["Bodoni Moda"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Bodoni Moda"],
+                        "headline-lg-mobile": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                        "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                        "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fdf8f7;
+            color: #1c1b1b;
+            width: 390px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<div class="grain"></div>
+<!-- 1. Masthead Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant h-16 flex items-center justify-between px-margin-mobile">
+<div class="font-headline-md text-[20px] tracking-tight text-on-surface font-bold">SCENIC STAYS</div>
+<button class="flex items-center gap-2 group active:scale-95 transition-transform">
+<span class="font-label-caps text-label-caps text-on-surface-variant">MENU</span>
+<span class="material-symbols-outlined text-on-surface">menu</span>
+</button>
+</header>
+<!-- 2. Cover Frame -->
+<section class="relative h-screen w-full flex flex-col items-center justify-center text-center px-margin-mobile pt-16">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLs2RSuc8xTSaFpdn3MuMQaQVEZS6LTs_zPwAmHCfxI855LFVZrTw4g9AvsuaCd53TRwyBizYAq7FMcXkbZL16t71GoDi_CNTJ0EypfQtBJYBxLqrM4Fl-KZqbrkj6wQCm7az1Z0QUfqJW1KDjnafqSIXl5yIP6eQVkMLb-ZtCND-bsgcXZ83soge3fk5jB0k4es8TL5xG_1HFwpjcnQI9XFwYhzjyFSgLgvnJhji2h6hNluVCpDt2lQaDjL"/>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="bg-primary-container px-4 py-2 mb-8">
+<span class="font-label-caps text-label-caps text-on-primary-container">DESTIN · 30A · NAVARRE</span>
+</div>
+<h1 class="font-headline-lg-mobile text-[46px] leading-[1.1] text-white drop-shadow-sm mb-10">
+                Stay <br/> <span class="italic font-headline-lg-italic">somewhere</span> <br/> worth the film
+            </h1>
+<a class="inline-block border-b-hairline border-surface-container-highest pb-1" href="#">
+<span class="font-label-caps text-label-caps text-white tracking-[0.3em]">THE HOUSES</span>
+</a>
+</div>
+<div class="absolute bottom-12 left-margin-mobile z-10">
+<p class="font-label-caps text-[10px] text-white/80">FIG. 01 — SEAGROVE, FIRST LIGHT</p>
+</div>
+</section>
+<!-- 3. Search Strip -->
+<section class="bg-secondary-container py-stack-md px-margin-mobile space-y-8">
+<div class="space-y-6">
+<div class="border-b border-outline/30 pb-2">
+<label class="font-label-caps text-[9px] text-on-secondary-container block mb-1">WHERE</label>
+<input class="w-full bg-transparent border-none p-0 italic font-headline-md text-[18px] focus:ring-0 placeholder:text-on-secondary-container/40" placeholder="Select destination" type="text"/>
+</div>
+<div class="border-b border-outline/30 pb-2">
+<label class="font-label-caps text-[9px] text-on-secondary-container block mb-1">WHEN</label>
+<input class="w-full bg-transparent border-none p-0 italic font-headline-md text-[18px] focus:ring-0 placeholder:text-on-secondary-container/40" placeholder="Check in — Check out" type="text"/>
+</div>
+<div class="border-b border-outline/30 pb-2">
+<label class="font-label-caps text-[9px] text-on-secondary-container block mb-1">HOW MANY</label>
+<input class="w-full bg-transparent border-none p-0 italic font-headline-md text-[18px] focus:ring-0 placeholder:text-on-secondary-container/40" placeholder="Number of guests" type="text"/>
+</div>
+</div>
+<button class="w-full border border-outline py-5 font-label-caps text-label-caps hover:bg-on-surface hover:text-surface transition-colors">
+            SEARCH THE COLLECTION
+        </button>
+</section>
+<!-- 4. Folio Intro -->
+<section class="bg-secondary-container pt-stack-lg pb-stack-md px-margin-mobile border-t border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-secondary-container opacity-60">NO. 01 — THE PRIVATE HOMES</span>
+<h2 class="font-headline-md text-[34px] leading-tight mt-6 mb-8 text-on-surface">Chosen slowly, and only once.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px]">Our curation isn't about volume. It's about the resonance of a place—how the light hits the floorboards and how the salt air meets the architecture.</p>
+</section>
+<!-- 5. Property Frames -->
+<!-- House 1 -->
+<section class="relative bg-surface pb-stack-lg">
+<div class="h-[500px] w-full relative">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLsvMOFfgy4HmrmmA7htmxuATl5cmlFodCwH0uU4IEXNSZ4-d3JMSezFa0ewipZJ9ds1uep-U0Dqii7iWh2Rv08YT5pTAEPQEXAX1wPk_tcQxDw2P1YT4q3UF_DVBIw6gHnSKb4BZ6LpzW1TAGJgEUaogXW2YaqdBoAYZfb_oRR1Iy9nojNKNEe7rqWnbgCLOMWfdPU971615M_pmkmLs73ctAJ5DV5rREhKSqvcsV3CS3BcbTs57wA0mAUu"/>
+</div>
+<div class="px-margin-mobile -mt-12 relative z-10">
+<h3 class="font-headline-md text-[34px] text-on-surface bg-surface pr-4 inline-block">The Glass House</h3>
+<div class="mt-4 pt-4 border-t border-outline-variant space-y-4">
+<p class="font-label-caps text-[10px] text-primary tracking-widest uppercase">SEACREST BEACH · SLEEPS 12 · GULF FRONT</p>
+<p class="font-body-md text-body-md text-on-surface-variant">A concrete and timber sanctuary designed for the purist traveler.</p>
+<a class="inline-block border-b-hairline border-primary pb-1" href="#">
+<span class="font-label-caps text-label-caps text-on-surface">DISCOVER THE INTERIORS</span>
+</a>
+</div>
+</div>
+</section>
+<!-- House 2 -->
+<section class="relative bg-surface pb-stack-lg">
+<div class="h-[500px] w-full relative">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtOeWSGNewH4UCy_7QjpBD-lIHikCqPLsb-J1NT9DniJGsk0APeogEjS06QZRTO2jsh8CkigWd0YAqPLDdc0oYbZR0uaE0RQk7cjUa4tSre-FAfKL52Ib9K4BHw1fu5a6oxk4KaGl0P2REp_5I8d-zFPhFxCxrpF7rCWVgQ5UBNhTITIj_6D36KmbXjSyVrbm8LAM4edqrtLqpRbUgjdE68LBJ0uNNOaIc6snJinjbPXYEKItbuvvQXV2in"/>
+</div>
+<div class="px-margin-mobile -mt-12 relative z-10">
+<h3 class="font-headline-md text-[34px] text-on-surface bg-surface pr-4 inline-block">Morning Star</h3>
+<div class="mt-4 pt-4 border-t border-outline-variant space-y-4">
+<p class="font-label-caps text-[10px] text-primary tracking-widest uppercase">ALYS BEACH · SLEEPS 8 · COURTYARD</p>
+<p class="font-body-md text-body-md text-on-surface-variant">White-washed serenity meets Bermuda-inspired courtyards.</p>
+<a class="inline-block border-b-hairline border-primary pb-1" href="#">
+<span class="font-label-caps text-label-caps text-on-surface">DISCOVER THE INTERIORS</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 6. Destination Frames -->
+<section class="w-full flex flex-col">
+<!-- Thirty-A -->
+<div class="relative h-[70vh] flex items-end p-margin-mobile group">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A cinematic, low-angle shot of a winding coastal road in 30A Florida, flanked by high-end white stucco architecture and lush palm trees. The sky is a dusty violet from the fading sunset, reflecting off the clean, minimalist building surfaces. The image captures a quiet, exclusive atmosphere with high-contrast shadows and a sophisticated light-mode editorial palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa09ITwAOQxHQf1xjtCg1Fi2LO3wBZNaNci4GyTwkVXnB1D23_PF-_LpbS2hw12VrlyHbuyHwFJXCGcGICAcKpkVbPEWisio3z1c1u5wIIO4KkqdqM3Fr20Cztafdp7f6xm9qyFepP4bUSXyS4-2__UzrsXeSuya82rZHlN5gyw9PMP4q7DS9pGGgmtBflWF6Zm8YShpYISLGiIobQJBnyI_Yh9XuYBVLKkjwh_CcaiNjv_Hk2wroivQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-[36px] text-white leading-none">I. Thirty-A <br/> <span class="text-[14px] font-label-caps tracking-[0.4em] opacity-80">THE VILLAGES</span></h4>
+</div>
+</div>
+<!-- Destin -->
+<div class="relative h-[70vh] flex items-end p-margin-mobile">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="An aerial view of the Destin Harbor at golden hour, showing luxury yachts docked at pristine wooden piers. The water is a deep emerald green, transitioning to a golden orange where it reflects the sun. The composition is clean and symmetrical, emphasizing the scale and exclusivity of the coastal lifestyle in a high-end editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpfQK8MJwYg9bowPqFMrX4VLqyU9VTXZWK8LeR2dACNGFqj-1IkJ64gCiFbzaTz7GTmB0JW2pEIwm3yqbJPEKqZ8JoJIx-rCDR6EiCxy9D-hjT-3PGxfpq4qfXISH_UpgmYfwWzRmUVr8NdjY6eO8UnTt_BZre2IfLUrmdqrc90rGtDWkoi-SFqpPOK9U9nGcArhSYO3t8ZhDRz2QSiXlAffxuH2Z4TCTw8zyqmpAx9Cmql64tDmIN1A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-[36px] text-white leading-none">II. Destin <br/> <span class="text-[14px] font-label-caps tracking-[0.4em] opacity-80">THE HARBOR</span></h4>
+</div>
+</div>
+<!-- Navarre -->
+<div class="relative h-[70vh] flex items-end p-margin-mobile">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A long exposure photograph of the Navarre Beach pier stretching into the calm, pale blue Gulf of Mexico under an overcast, high-key sky. The white sand is smooth and undisturbed. The mood is ethereal and serene, focusing on the minimalist structure of the pier against the vast, quiet sea. Perfect light-mode aesthetic with soft, diffused illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-CMFXjL2chTCWfiMksgZluwVQIV7srgaUvtPFkUtoVcddqMKiJZNBVeYtB-0A6R5EtnBkXapyTM70BljuikZi_7AMa-t3JHjRO1dwGHus8YSysbNnGJhpj4EfDHHPZVPqfyunMmTv68NZZnChOdXA7ZWlNijd4FD2MYnIhwj086fiw3c9kEq60hO6jEFpIBmX5irpJBCF_UEQn_yM-mXnkQDYfUIO1y0sx1TowLw_qjOVIIto6kxbrA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-[36px] text-white leading-none">III. Navarre <br/> <span class="text-[14px] font-label-caps tracking-[0.4em] opacity-80">THE LONGEST PIER</span></h4>
+</div>
+</div>
+</section>
+<!-- 7. Guestbook -->
+<section class="bg-surface-container py-stack-lg px-margin-mobile text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-60">NO. 03 — THE GUESTBOOK</span>
+<blockquote class="font-headline-lg-italic text-[26px] leading-relaxed mt-10 mb-8 italic text-on-surface">
+            "Sink into the sofa, the linens, the emerald waves coming to shore."
+        </blockquote>
+<p class="font-label-caps text-label-caps text-primary">— CAMILLE · JULY</p>
+</section>
+<!-- 8. The Difference -->
+<section class="bg-surface py-stack-lg px-margin-mobile">
+<h2 class="font-headline-md text-[22px] mb-12 text-on-surface">The difference is in the details</h2>
+<div class="divide-y divide-outline-variant">
+<div class="py-8 space-y-3">
+<h5 class="font-label-caps text-label-caps text-primary">3 A.M.</h5>
+<p class="font-body-md text-on-surface-variant">Concierge support that never clocks out. We are here when the unexpected arrives.</p>
+</div>
+<div class="py-8 space-y-3">
+<h5 class="font-label-caps text-label-caps text-primary">IN YOUR POCKET</h5>
+<p class="font-body-md text-on-surface-variant">The Scenic App: curated local guides and one-touch house controls at your fingertips.</p>
+</div>
+<div class="py-8 space-y-3">
+<h5 class="font-label-caps text-label-caps text-primary">LOCALLY OWNED</h5>
+<p class="font-body-md text-on-surface-variant">We live here. We know the secret paths to the beach and the table that's always available.</p>
+</div>
+</div>
+</section>
+<!-- 9. Closing Frame -->
+<section class="bg-surface pb-stack-xl px-margin-mobile space-y-stack-md text-center">
+<div class="space-y-4">
+<a class="font-headline-lg-italic text-[18px] italic underline underline-offset-4 decoration-primary/30 text-on-surface" href="#">
+                Which beach are you? Take the quiz
+            </a>
+<h2 class="font-headline-md text-[30px] leading-tight text-on-surface pt-10">The season's quietest luxury is time</h2>
+</div>
+<div class="pt-stack-md border-t border-outline-variant">
+<h6 class="font-label-caps text-[12px] text-on-surface-variant mb-4">FOR OWNERS: MANAGEMENT WORTHY OF THE HOUSE</h6>
+<a class="font-label-caps text-label-caps text-primary border-b border-primary-fixed pb-1 hover:text-primary-fixed transition-colors" href="#">INQUIRE</a>
+</div>
+</section>
+<!-- 10. Footer -->
+<footer class="bg-surface-container-highest py-stack-lg px-margin-mobile border-t border-outline-variant">
+<div class="space-y-12">
+<div class="space-y-4">
+<div class="font-headline-md text-[24px] tracking-tight font-bold">SCENIC STAYS</div>
+<div class="font-body-md text-[14px] text-on-surface-variant leading-loose">
+                    30A Highway East, Suite 202<br/>
+                    Inlet Beach, FL 32461<br/>
+                    850.555.0192<br/>
+                    hello@scenicstays.com
+                </div>
+</div>
+<nav class="space-y-10">
+<div class="space-y-4">
+<h6 class="font-label-caps text-[10px] text-primary">VACATION RENTALS</h6>
+<ul class="space-y-3 font-label-caps text-[11px] text-on-surface">
+<li><a class="hover:underline" href="#">THIRTY-A</a></li>
+<li><a class="hover:underline" href="#">DESTIN</a></li>
+<li><a class="hover:underline" href="#">NAVARRE</a></li>
+<li><a class="hover:underline" href="#">LAST MINUTE</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-caps text-[10px] text-primary">COMPANY</h6>
+<ul class="space-y-3 font-label-caps text-[11px] text-on-surface">
+<li><a class="hover:underline" href="#">OUR STORY</a></li>
+<li><a class="hover:underline" href="#">JOURNAL</a></li>
+<li><a class="hover:underline" href="#">CONTACT</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-caps text-[10px] text-primary">OWNERS</h6>
+<ul class="space-y-3 font-label-caps text-[11px] text-on-surface">
+<li><a class="hover:underline" href="#">MANAGEMENT</a></li>
+<li><a class="hover:underline" href="#">PERFORMANCE</a></li>
+</ul>
+</div>
+</nav>
+<div class="pt-stack-md border-t border-outline-variant space-y-6">
+<h6 class="font-label-caps text-[10px] text-primary">NEWSLETTER</h6>
+<div class="flex border-b border-outline pb-2">
+<input class="bg-transparent border-none p-0 w-full text-[11px] font-label-caps placeholder:text-on-surface-variant/40 focus:ring-0" placeholder="EMAIL ADDRESS" type="email"/>
+<button class="material-symbols-outlined text-primary">arrow_forward</button>
+</div>
+</div>
+<div class="flex justify-between items-end pt-stack-md">
+<div class="flex gap-4 font-label-caps text-[10px] text-on-surface-variant">
+<a href="#">IG</a>
+<a href="#">FB</a>
+<a href="#">PIN</a>
+</div>
+<div class="font-label-caps text-[9px] text-on-surface-variant opacity-60">
+                    © 2024 SCENIC STAYS
+                </div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for scroll reveal or simple parallax
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('section:first-of-type img');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.15}px)`;
+            }
+        });
+    </script>
+</body></html>

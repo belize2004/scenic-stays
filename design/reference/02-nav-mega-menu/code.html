@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SCENIC STAYS | The Emerald Coast, properly.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary-fixed": "#e5e2dd",
+                "surface-container-high": "#ebe7e6",
+                "surface-dim": "#ddd9d8",
+                "tertiary-fixed-dim": "#cbc5c2",
+                "secondary-container": "#e7e2d8",
+                "surface": "#fdf8f7",
+                "on-primary-container": "#72716d",
+                "error-container": "#ffdad6",
+                "on-error": "#ffffff",
+                "surface-container": "#f1edec",
+                "secondary-fixed": "#e7e2d8",
+                "on-surface-variant": "#474741",
+                "surface-tint": "#5f5e5b",
+                "error": "#ba1a1a",
+                "outline": "#787770",
+                "primary": "#5f5e5b",
+                "surface-container-low": "#f7f3f1",
+                "on-error-container": "#93000a",
+                "surface-bright": "#fdf8f7",
+                "tertiary-container": "#fdf6f2",
+                "tertiary": "#615e5b",
+                "on-tertiary-fixed": "#1d1b19",
+                "tertiary-fixed": "#e8e1dd",
+                "on-surface": "#1c1b1b",
+                "secondary-fixed-dim": "#cac6bd",
+                "on-primary-fixed-variant": "#474743",
+                "secondary": "#615e57",
+                "background": "#fdf8f7",
+                "primary-container": "#faf7f2",
+                "on-secondary-container": "#67645c",
+                "primary-fixed-dim": "#c8c6c2",
+                "on-primary-fixed": "#1c1c19",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed-variant": "#494740",
+                "on-background": "#1c1b1b",
+                "inverse-primary": "#c8c6c2",
+                "surface-container-lowest": "#ffffff",
+                "on-primary": "#ffffff",
+                "surface-container-highest": "#e5e20",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#313030",
+                "inverse-on-surface": "#f4f0ef",
+                "on-tertiary-fixed-variant": "#494643",
+                "on-secondary-fixed": "#1d1c16",
+                "on-tertiary-container": "#74706d",
+                "surface-variant": "#e5e2e0",
+                "outline-variant": "#c8c7be",
+                "ink-black": "#141210",
+                "cream-paper": "#FAF7F2"
+            },
+            "borderRadius": {
+                "DEFAULT": "0px",
+                "lg": "0px",
+                "xl": "0px",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "stack-md": "40px",
+                "margin-desktop": "80px",
+                "stack-xl": "160px",
+                "margin-mobile": "24px",
+                "stack-lg": "80px",
+                "hairline": "1px"
+            },
+            "fontFamily": {
+                "headline-lg": ["Bodoni Moda"],
+                "label-caps": ["Hanken Grotesk"],
+                "display-xl": ["Bodoni Moda"],
+                "body-lg": ["Hanken Grotesk"],
+                "headline-md": ["Bodoni Moda"],
+                "body-md": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Bodoni Moda"],
+                "headline-lg-italic": ["Bodoni Moda"]
+            },
+            "fontSize": {
+                "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F2;
+            color: #1c1b1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .border-ink { border-color: #5f5e5b; }
+        .text-ink { color: #5f5e5b; }
+        .bg-ink { background-color: #5f5e5b; }
+        .decoration-hairline { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+        
+        .scrim-bottom {
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .frame {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .dropdown-panel {
+            background-color: #FAF7F2;
+        }
+    </style>
+</head>
+<body class="font-body-md selection:bg-primary-fixed selection:text-on-background">
+<div class="grain"></div>
+<!-- Navigation + Dropdown Wrapper -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30">
+<nav class="px-margin-desktop py-6 flex justify-between items-center">
+<div class="font-headline-md text-headline-md tracking-tighter text-on-surface">SCENIC STAYS</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-label-caps text-label-caps text-on-surface border-b border-on-surface pb-1 hover:text-primary transition-colors duration-300" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">GUIDES</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">VACATION DEALS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">PROPERTY MANAGEMENT</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">REAL ESTATE</a>
+</div>
+<div class="font-label-caps text-label-caps text-primary tracking-widest">850-390-7511</div>
+</nav>
+<!-- Dropdown Panel: Vacation Rentals (Open State) -->
+<div class="dropdown-panel border-t border-outline-variant/30 py-12 px-margin-desktop">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Column 1 -->
+<div>
+<h3 class="font-label-caps text-[10px] tracking-[0.1em] text-on-surface-variant mb-6 uppercase">Destinations</h3>
+<ul class="space-y-3 font-headline-md text-[20px] text-on-surface">
+<li><a class="hover:text-primary transition-colors" href="#">30A</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Destin</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Navarre Beach</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Okaloosa Island</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Panama City Beach</a></li>
+</ul>
+</div>
+<!-- Column 2 -->
+<div>
+<h3 class="font-label-caps text-[10px] tracking-[0.1em] text-on-surface-variant mb-6 uppercase">Resorts</h3>
+<ul class="space-y-3 font-headline-md text-[20px] text-on-surface">
+<li><a class="hover:text-primary transition-colors" href="#">SunDestin Beach Resort</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">One Seagrove Place</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">The Crescent</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Emerald Towers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">High Pointe Beach Resort</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Amalfi Coast</a></li>
+</ul>
+</div>
+<!-- Column 3 -->
+<div>
+<h3 class="font-label-caps text-[10px] tracking-[0.1em] text-on-surface-variant mb-6 uppercase">The Collection</h3>
+<ul class="space-y-3 font-headline-md text-[20px] text-on-surface">
+<li><a class="hover:text-primary transition-colors" href="#">Gulf Front Homes</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Private Pools</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pet Friendly</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Golf Cart Included</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">The 100 Collection</a></li>
+</ul>
+</div>
+<!-- Column 4 -->
+<div class="flex flex-col">
+<h3 class="font-label-caps text-[10px] tracking-[0.1em] text-on-surface-variant mb-6 uppercase">Index</h3>
+<ul class="space-y-3 font-headline-md text-[20px] text-on-surface mb-8">
+<li><a class="hover:text-primary transition-colors" href="#">A–Z Property List</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">All Properties</a></li>
+</ul>
+<div class="mt-auto">
+<img alt="Beach house detail" class="w-24 h-32 object-cover grayscale mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB845ioC9z0aoqMOSH3Aw5Y_jXlWFhdeYCekEjtdPl8nGmo5A5knrtDcJ8arJ61n4ewkla21BrEdGnD2PdavZBjbZ4Z904RPK9xZHXIEAz4hMBV8JEUd2HkCrUS2AuhNl1Hwcq4iEBIKq1MmmdIRLg75btKYd2fjDmlig0k_4rftRHTdGyNQ5AHOs7Kd-hZUzHIwzW6p1Q6pWL5drWAJ6TJuKcOGLUnqSPOUWY1vEoK6leMf7jwd0iZsg"/>
+<p class="font-label-caps text-[9px] tracking-widest text-on-surface-variant uppercase">Fig. 04 — Seaside Residence</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-[420px]"> <!-- Compensate for header + large open dropdown -->
+<!-- 1. HERO FRAME -->
+<section class="h-[calc(100vh-50px)] w-full relative flex flex-col items-center justify-center">
+<div class="absolute inset-0 z-0 px-margin-desktop py-stack-md">
+<div class="w-full h-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[20%]" data-alt="A wide-angle cinematic shot of the Florida Gulf Coast at sunrise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzFo-zJ1d5ONWpOaiU_ZPszSoasm0zgO3kkAC3W4GieyLBhQ1r8nNy6QMig-wmC7EaH4clwcO66I6klRHsyK8xdeEiWNXppKYo_9Ciwm6Df2tBL5ozDowEYB8Sd2ggWco3x5sBhnzTBR1r9soNbS6RhFVMCZQp0kXFe9gcuIf3Dwf7qwx1hxxqSEFn1q1R5MIHe8oUNgq0uFhRprCFcu6I1aPIlWOj96TUEehI3h-05kdmOLIOUsW30A"/>
+</div>
+</div>
+<div class="relative z-10 text-center text-on-surface space-y-4">
+<p class="font-label-caps text-label-caps tracking-[0.4em] mb-8 text-ink-black">DESTIN — 30A — NAVARRE — PANAMA CITY BEACH</p>
+<h1 class="font-headline-lg md:text-display-xl leading-none">
+                    The Emerald Coast,<br/>
+<span class="font-headline-lg-italic italic">properly.</span>
+</h1>
+</div>
+<div class="absolute bottom-12 left-margin-desktop z-10">
+<p class="font-label-caps text-[10px] text-ink-black tracking-wider">FIG. 01 — SEAGROVE, FIRST LIGHT</p>
+</div>
+</section>
+<!-- 2. QUIET FRAME -->
+<section class="frame bg-cream-paper">
+<div class="px-margin-desktop border-y border-outline-variant/30 py-10">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter w-full">
+<div class="border-b border-ink py-2">
+<label class="font-label-caps text-[9px] block text-on-surface-variant mb-1">DESTINATION</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-[18px] text-on-surface" placeholder="Where to?" type="text"/>
+</div>
+<div class="border-b border-ink py-2">
+<label class="font-label-caps text-[9px] block text-on-surface-variant mb-1">DATES</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-[18px] text-on-surface" placeholder="Select dates" type="text"/>
+</div>
+<div class="border-b border-ink py-2">
+<label class="font-label-caps text-[9px] block text-on-surface-variant mb-1">GUESTS</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-[18px] text-on-surface" placeholder="How many?" type="text"/>
+</div>
+<div class="flex items-end pb-1">
+<button class="w-full font-label-caps text-label-caps text-ink-black py-4 bg-transparent border border-ink-black tracking-[0.3em] hover:bg-ink-black hover:text-surface transition-colors">SEARCH COLLECTION</button>
+</div>
+</div>
+</div>
+<div class="flex-grow flex flex-col justify-center px-margin-desktop">
+<div class="border-t border-ink-black/10 pt-16">
+<div class="max-w-4xl mx-auto text-center md:text-left flex flex-col md:flex-row justify-between items-baseline gap-12">
+<div class="max-w-2xl">
+<p class="font-label-caps text-label-caps text-primary mb-6">No. 01 — The Private Homes</p>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg italic">Chosen slowly, and only once.</h2>
+</div>
+<div>
+<a class="font-label-caps text-label-caps underline decoration-hairline hover:text-primary transition-all" href="#">VIEW ALL PRIVATE RESIDENCES</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. PROPERTY FRAME: GLASS HOUSE -->
+<section class="frame bg-surface px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center h-full max-w-7xl mx-auto py-24">
+<div class="col-span-1 md:col-span-8 relative group h-full">
+<div class="w-full h-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[10%]" data-alt="Beachfront villa in Seaside, Florida." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1jEMJ85ajB3vY9liGXh4R3xGQf5z6wDKtIruPgphcLvmxXhL9Yr2HZvNKZC6jBzIyuosiJ46KDtgElX3VtGOhPvWiqG9t9QcIjt9QCm_yllbh-Z6a0kYChE68ZqdRyWfwaIOYYft53xnnSn9ZW1r7i-iTRtYlBQ_UD5JLXnxvbdFXOkaxFbhrR3AG9QukBvU3WnqqFS-xkzDlGx5UfAF4GdnL42SOzQBMyw7Iq0Umjf5mPF83xAgoCw"/>
+</div>
+<div class="absolute bottom-[-40px] right-[-40px] z-20">
+<div class="bg-cream-paper p-10 border border-outline-variant/30 max-w-sm">
+<h3 class="font-headline-md text-[60px] leading-[0.9] -ml-24 mb-4 text-on-surface whitespace-nowrap">The Glass House</h3>
+<p class="font-label-caps text-[10px] text-primary tracking-[0.2em] mb-2 uppercase">Seacrest Beach · Sleeps 12 · Gulf front</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">An exercise in transparency. Floor-to-ceiling glass curated for the unhurried traveler.</p>
+<a class="font-label-caps text-[10px] underline decoration-hairline" href="#">DISCOVER THE INTERIORS</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. PROPERTY FRAME: MORNING STAR -->
+<section class="frame bg-cream-paper px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center h-full max-w-7xl mx-auto py-24">
+<div class="hidden md:block col-span-3"></div>
+<div class="col-span-1 md:col-span-6 group relative h-full">
+<div class="w-full h-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[10%]" data-alt="Luxury coastal living room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_D4FUex9MamfdVNmUnOaVku6I0kML0uqjSomE2TIH10KF6k0jbL9Zdn7E_MjTwMtkMOGOxGR8GLFPQqrase10w0rfDKxL0Jaq5fdXPvkWBSaaVOirCKeX3k-OoH30P0jwKiCun3u1b23cYlFaFFC_fUO8kD5bMTFoKmeFbhdSl_gvKuRNyNM9DofBX3kIrr-6XomD1gq4gp1QL3sirZAHzdnMzBnXaVP5QIJ66yY5oyo9aW17ejW-bg"/>
+</div>
+<div class="absolute top-1/2 left-[-100px] transform -translate-y-1/2 z-20">
+<div class="bg-surface p-10 border border-outline-variant/30 max-w-sm">
+<h3 class="font-headline-md text-[60px] leading-[0.9] mb-4 text-on-surface whitespace-nowrap">Morning Star</h3>
+<p class="font-label-caps text-[10px] text-primary tracking-[0.2em] mb-4 uppercase">Alys Beach · Sleeps 8 · Steps to sand</p>
+<a class="font-label-caps text-[10px] underline decoration-hairline" href="#">DISCOVER THE INTERIORS</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. FILMSTRIP FRAME -->
+<section class="frame">
+<div class="grid grid-cols-1 md:grid-cols-3 h-full w-full bg-ink-black/10">
+<div class="relative h-full overflow-hidden group">
+<img class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNvAf-QS_AnwToyVYCzgb3Ty6DGzYU8SjZCzHbYHdaS_HDWKyO6sEKyf9RexF-uy5l3fkr9OgAOhcrJJBmiwfKF4E2Sjksmx1019M96nPB5vvUBHLBfrADCw3iQp4KTkfpc9LAQzvXKAGIrCoWlYx2Otb-njDk0fDLlAINdm1j_J5nw2B6hw-Wgu8_34dmBhwA8rgQiI6EICwGB50KmeCGeJ3jktb9irVSjN2L8iWBrFrdlRMvhsEv3w"/>
+<div class="absolute inset-0 scrim-bottom opacity-80"></div>
+<div class="absolute bottom-10 left-10 text-white"><p class="font-headline-md text-headline-md">I. Thirty-A</p></div>
+</div>
+<div class="relative h-full overflow-hidden group">
+<img class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiflVUsx91V1SCBQqrd-jezHPNMErxBkiaXEDyghWm2txGBrMSTFtS5YjzvRhqhT1dTh2CAxTEOb0ASvpYlnNA5E3JL9vdalpl0lotsbRi8YEF7hbHCA-IfPO7mm8h4gyDETFIwN9k1Bi5RxNwnmXeX_Y_n2FjRGsahvLmgyCx7xof1K0DJ2eedkrWw3PbfVRWq3m0pbnfAHPcxzu7_Xig39Al-MNabkVquYDrqB5RCMRftGvtGNd0_Q"/>
+<div class="absolute inset-0 scrim-bottom opacity-80"></div>
+<div class="absolute bottom-10 left-10 text-white"><p class="font-headline-md text-headline-md">II. Destin</p></div>
+</div>
+<div class="relative h-full overflow-hidden group">
+<img class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4pYhNT0tTR9Vb6miCQdUXQkSLfJvuWZERmm3_HWh1UyRiPTFo8Cz84QhH_UOWLkmh__3zNhYX2sOGHNcc0xQdtEF-S2gExEHPgmTLMY4cPQu6DXmce1lM7i7WCdkLvYkK_KzPyeGfAMG-J7A7q3oUET3noqJr9If8t9G2McK4VPIqGZpnehOeBmFlEcOzyoQFzqOojjEF09EPWPip7SNmfSduenEpiLoQ2JzxnWrXh8auBt0rSqQrCA"/>
+<div class="absolute inset-0 scrim-bottom opacity-80"></div>
+<div class="absolute bottom-10 left-10 text-white"><p class="font-headline-md text-headline-md">III. Navarre</p></div>
+</div>
+</div>
+</section>
+<!-- 5. RESORT LIST FRAME -->
+<section class="frame bg-secondary-container/30 px-margin-desktop">
+<div class="max-w-4xl mx-auto w-full">
+<p class="font-label-caps text-label-caps text-primary text-center mb-6">No. 02 — The Resorts</p>
+<h2 class="font-headline-lg text-center mb-16">The Resort Collection</h2>
+<div class="space-y-0">
+<div class="group border-t border-ink py-8 flex flex-col md:flex-row justify-between items-center transition-all hover:bg-surface/50 px-8">
+<div class="flex items-center space-x-12"><span class="font-label-caps text-label-caps text-outline">01</span><h4 class="font-headline-md">SunDestin</h4></div>
+<p class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">OCEANFRONT GULF SUITES</p>
+<a class="font-label-caps text-[10px] underline decoration-hairline opacity-0 group-hover:opacity-100" href="#">EXPLORE</a>
+</div>
+<div class="group border-t border-ink py-8 flex flex-col md:flex-row justify-between items-center transition-all hover:bg-surface/50 px-8">
+<div class="flex items-center space-x-12"><span class="font-label-caps text-label-caps text-outline">02</span><h4 class="font-headline-md">Emerald Towers</h4></div>
+<p class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">THE HEIGHT OF LUXURY</p>
+<a class="font-label-caps text-[10px] underline decoration-hairline opacity-0 group-hover:opacity-100" href="#">EXPLORE</a>
+</div>
+<div class="group border-t border-ink py-8 flex flex-col md:flex-row justify-between items-center transition-all hover:bg-surface/50 px-8">
+<div class="flex items-center space-x-12"><span class="font-label-caps text-label-caps text-outline">03</span><h4 class="font-headline-md">Silver Shells</h4></div>
+<p class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">SANDESTIN EXCLUSIVES</p>
+<a class="font-label-caps text-[10px] underline decoration-hairline opacity-0 group-hover:opacity-100" href="#">EXPLORE</a>
+</div>
+<div class="border-t border-ink"></div>
+</div>
+</div>
+</section>
+<!-- 5. CLOSING FRAME -->
+<section class="frame bg-surface px-margin-desktop">
+<div class="max-w-7xl mx-auto w-full h-full flex flex-col justify-between py-24">
+<div class="text-center py-20">
+<h2 class="font-headline-lg italic">The season's quietest luxury is time.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg border-ink border-t pt-16">
+<div class="space-y-4">
+<h5 class="font-headline-md text-[24px]">Locally owned.</h5>
+<p class="font-body-md text-on-surface-variant max-w-xs">We don't manage from a distance. We live where you vacation.</p>
+<a class="inline-block font-label-caps text-[10px] border-b border-ink pb-1 tracking-widest" href="#">OUR STORY</a>
+</div>
+<div class="space-y-4">
+<h5 class="font-headline-md text-[24px]">For owners.</h5>
+<p class="font-body-md text-on-surface-variant max-w-xs">Management worthy of the house. Your investment deserves a steward.</p>
+<a class="inline-block font-label-caps text-[10px] border-b border-ink pb-1 tracking-widest" href="#">INQUIRE</a>
+</div>
+</div>
+<footer class="mt-20 border-t border-outline-variant pt-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-12">
+<div>
+<div class="font-headline-md text-on-surface mb-4">SCENIC STAYS</div>
+<p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest uppercase">Premier coastal residences since 2012.</p>
+</div>
+<div class="flex space-x-12">
+<div class="flex flex-col space-y-2">
+<a class="font-label-caps text-[10px]" href="#">Homes</a>
+<a class="font-label-caps text-[10px]" href="#">Resorts</a>
+</div>
+<div class="flex flex-col space-y-2">
+<a class="font-label-caps text-[10px]" href="#">Privacy</a>
+<a class="font-label-caps text-[10px]" href="#">Contact</a>
+</div>
+</div>
+<div class="flex space-x-6 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">public</span>
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+</div>
+<p class="font-label-caps text-[9px] mt-12 opacity-50">© 2024 SCENIC STAYS. ALL RIGHTS RESERVED.</p>
+</footer>
+</div>
+</section>
+</main>
+<script>
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.add('py-6');
+                nav.classList.remove('py-4');
+            }
+        });
+    </script>
+</body></html>

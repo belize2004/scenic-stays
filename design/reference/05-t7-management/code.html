@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SCENIC STAYS — Property Management</title>
+<!-- Typography: Bodoni Moda for Serifs, Hanken Grotesk for Sans-Serif -->
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols for Icons (though the brief requests minimal to no icons, included for system compatibility) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fdf8f7",
+                    "secondary": "#615e57",
+                    "primary": "#5f5e5b",
+                    "secondary-container": "#e7e2d8",
+                    "tertiary-container": "#fdf6f2",
+                    "surface-container": "#f1edec",
+                    "tertiary": "#615e5b",
+                    "on-secondary-fixed": "#1d1c16",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e8e1dd",
+                    "surface-tint": "#5f5e5b",
+                    "primary-fixed": "#e5e2dd",
+                    "surface-container-high": "#ebe7e6",
+                    "inverse-on-surface": "#f4f0ef",
+                    "surface-container-highest": "#e5e2e0",
+                    "outline-variant": "#c8c7be",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#faf7f2", // Warm Cream Paper
+                    "secondary-fixed": "#e7e2d8",
+                    "on-surface": "#1c1b1b", // Ink
+                    "on-tertiary-fixed": "#1d1b19",
+                    "on-primary-fixed": "#1c1c19",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#67645c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fdf8f7",
+                    "on-tertiary-fixed-variant": "#494643",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#474743",
+                    "inverse-surface": "#313030",
+                    "surface-dim": "#ddd9d8",
+                    "on-background": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#c8c6c2",
+                    "primary-fixed-dim": "#c8c6c2",
+                    "outline": "#787770",
+                    "surface-container-low": "#f7f3f1",
+                    "on-secondary-fixed-variant": "#494740",
+                    "on-primary-container": "#72716d",
+                    "surface": "#fdf8f7",
+                    "on-tertiary-container": "#74706d",
+                    "on-surface-variant": "#474741",
+                    "surface-variant": "#e5e2e0",
+                    "tertiary-fixed-dim": "#cbc5c2",
+                    "ink": "#141210",
+                    "paper": "#FAF7F2",
+                    "paper-dark": "#F3EEE4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "gutter": "24px",
+                    "stack-xl": "160px",
+                    "hairline": "1px",
+                    "margin-desktop": "80px",
+                    "stack-md": "40px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Bodoni Moda"],
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "display-xl": ["Bodoni Moda"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg-italic": ["Bodoni Moda"]
+            },
+            "fontSize": {
+                    "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["48px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F2;
+            color: #141210;
+            -webkit-font-smoothing: antialiased;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .editorial-line {
+            height: 1px;
+            background-color: #141210;
+            opacity: 0.15;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrim-dark {
+            background: linear-gradient(to bottom, rgba(20, 18, 16, 0.4), rgba(20, 18, 16, 0.7));
+        }
+    </style>
+</head>
+<body class="font-body-md text-ink">
+<div class="grain-overlay"></div>
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-surface/90 dark:bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div class="font-headline-md text-headline-md tracking-tighter text-on-surface dark:text-on-surface">SCENIC STAYS</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">GUIDES</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">VACATION DEALS</a>
+<a class="font-label-caps text-label-caps text-on-surface border-b border-on-surface pb-1" href="#">PROPERTY MANAGEMENT</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">REAL ESTATE</a>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface tracking-widest hover:opacity-70 transition-opacity cursor-pointer">
+            850-390-7511
+        </div>
+</nav>
+<main>
+<!-- 1. COVER FRAME -->
+<section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A moody, high-fashion architectural photograph of a minimalist luxury beach house at dusk. The warm golden interior lights glow through floor-to-ceiling glass windows, contrasting with the deep indigo and violet tones of the twilight sky. The ocean is a calm, dark horizon line. The overall aesthetic is serene, exclusive, and editorial, resembling a cover shot for an upscale travel magazine. Soft shadows and a slight grainy texture add depth and cinematic quality." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6kNSIe53o4evm_hQ0Y8B48J_WYE85fKs43Zk5iI-u043UZRUxQAQFvknDqezvorKKD4BC8Y1qR1_vDS62xu3ZrJj_bJ3zAc1dhBGgBPPOpAOyZECQNdOyV2vKTks7-upnmjSSynVkmb1w-ll-NUzScT844HXJSDFLWoyodkUwELJp-uQ-iH9ALfZv8BVOECjoW_ohCJS-lNWMBz9-YP8kxX3_wUzdMlG7V7vCDpYey02pBdFH9GCwg')"></div>
+<div class="absolute inset-0 z-10 scrim-dark"></div>
+<div class="relative z-20 text-center px-6">
+<p class="font-label-caps text-label-caps text-paper/80 mb-8 tracking-[0.4em]">FOR OWNERS</p>
+<h1 class="font-headline-lg text-headline-lg md:text-display-xl text-paper leading-[0.9] max-w-5xl mx-auto">
+                    Management <span class="italic">worthy</span> of the house.
+                </h1>
+</div>
+<div class="absolute bottom-12 left-margin-desktop z-20">
+<p class="font-label-caps text-label-caps text-paper/60">FIG. 01 — A HOUSE AT REST</p>
+</div>
+</section>
+<!-- 2. THE PITCH FRAME -->
+<section class="h-screen w-full flex flex-col justify-center bg-paper px-margin-desktop py-stack-lg">
+<div class="max-w-4xl mx-auto">
+<span class="font-label-caps text-label-caps text-ink/40 block mb-12">NO. 01 — THE PROPOSITION</span>
+<h2 class="font-headline-md text-headline-md mb-16 text-ink">
+                    Your house, kept as though we lived in it.
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<p class="font-body-lg text-body-lg leading-relaxed text-ink/80">
+                        At Scenic Stays, we believe management is a form of stewardship. Your property is more than an asset; it is a legacy of design and a sanctuary for those who visit. We approach every detail with the obsessive care of an owner, ensuring that every hairline finish and bespoke comfort remains pristine.
+                    </p>
+<p class="font-body-lg text-body-lg leading-relaxed text-ink/80">
+                        Rooted in the coastal elegance of the Florida Panhandle, our local expertise is paired with a global standard of service. We don't just manage rentals; we curate experiences that honor the architecture and the environment of every home in our portfolio.
+                    </p>
+</div>
+<div class="mt-20">
+<button class="font-label-caps text-label-caps text-ink border-b border-ink/30 pb-2 hover:border-ink transition-colors uppercase">
+                        Request a Valuation
+                    </button>
+</div>
+</div>
+</section>
+<!-- 3. THE SERVICES (Bento/Column Editorial) -->
+<section class="w-full bg-paper-dark py-stack-xl px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-0 border-t border-ink/10">
+<!-- Column 1: REVENUE -->
+<div class="pt-12 pb-20 md:pr-8 md:border-r border-ink/10">
+<h3 class="font-label-caps text-label-caps mb-12 tracking-widest">REVENUE</h3>
+<ul class="space-y-6">
+<li class="font-body-md text-body-md text-ink/70">Dynamic algorithmic pricing</li>
+<li class="font-body-md text-body-md text-ink/70">Direct-booking optimization</li>
+<li class="font-body-md text-body-md text-ink/70">Performance analytics</li>
+<li class="font-body-md text-body-md text-ink/70">High-yield occupancy strategies</li>
+</ul>
+</div>
+<!-- Column 2: STEWARDSHIP -->
+<div class="pt-12 pb-20 md:px-8 md:border-r border-ink/10">
+<h3 class="font-label-caps text-label-caps mb-12 tracking-widest">STEWARDSHIP</h3>
+<ul class="space-y-6">
+<li class="font-body-md text-body-md text-ink/70">Weekly preventative inspections</li>
+<li class="font-body-md text-body-md text-ink/70">White-glove housekeeping</li>
+<li class="font-body-md text-body-md text-ink/70">On-call maintenance teams</li>
+<li class="font-body-md text-body-md text-ink/70">Post-storm rapid response</li>
+</ul>
+</div>
+<!-- Column 3: VISIBILITY -->
+<div class="pt-12 pb-20 md:px-8 md:border-r border-ink/10">
+<h3 class="font-label-caps text-label-caps mb-12 tracking-widest">VISIBILITY</h3>
+<ul class="space-y-6">
+<li class="font-body-md text-body-md text-ink/70">Professional editorial photography</li>
+<li class="font-body-md text-body-md text-ink/70">Multi-channel marketing exposure</li>
+<li class="font-body-md text-body-md text-ink/70">Social media storytelling</li>
+<li class="font-body-md text-body-md text-ink/70">Featured property placements</li>
+</ul>
+</div>
+<!-- Column 4: LOCAL -->
+<div class="pt-12 pb-20 md:pl-8">
+<h3 class="font-label-caps text-label-caps mb-12 tracking-widest">LOCAL</h3>
+<ul class="space-y-6">
+<li class="font-body-md text-body-md text-ink/70">Physical Destin, FL headquarters</li>
+<li class="font-body-md text-body-md text-ink/70">Community relationship management</li>
+<li class="font-body-md text-body-md text-ink/70">24/7 localized guest support</li>
+<li class="font-body-md text-body-md text-ink/70">In-market housekeeping staff</li>
+</ul>
+</div>
+</div>
+<!-- Interstitial Editorial Quote -->
+<div class="mt-stack-xl max-w-5xl mx-auto text-center italic">
+<blockquote class="font-headline-lg-italic text-headline-md md:text-headline-lg text-ink/90 leading-tight">
+                    "Management is not simply the maintenance of a building, but the preservation of a lifestyle."
+                </blockquote>
+</div>
+</section>
+<!-- Gallery / Visual Break -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-margin-desktop py-stack-lg bg-paper">
+<div class="aspect-[4/5] bg-cover bg-center" data-alt="A sun-drenched, airy Mediterranean-style courtyard with clean white stucco walls and a cobblestone street. Palm trees sway gently under a clear blue sky. The scene is bright and highlights a quiet, luxurious neighborhood vibe. High-key lighting emphasizes the textures of the stone and the softness of the architectural shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTz_ZOS6KvsjID7GScmO8IFYeiN1UbIKYWDx1cDGb0KcAlL0LkiF1qiqagodUmv9vcugPgdy1nJYKbQxE4hbCF6o_VXNzopotjGsiTqzO7uP0738QB4o4Q2BdE6KhawtYFuAVvhjr9kmYvq35Sbrfqp-J7-9Vyeucs6reOrVIqVemC1uXpASTETMKhNbJ8Y_9WEhgF0s95vS6Axoi_2oiw5jWuB_1ALTMURvxdf5Heo6TjjwMB-O5_sg')"></div>
+<div class="flex flex-col justify-end pb-12">
+<p class="font-label-caps text-label-caps text-ink/40 mb-8">CASE STUDY — 30A ESTATE</p>
+<h4 class="font-headline-md text-headline-md text-ink mb-8 leading-tight">A legacy of hospitality in every detail.</h4>
+<div class="editorial-line w-24 mb-8"></div>
+<p class="font-body-md text-body-md text-ink/70 max-w-sm">Discover how we transitioned an private estate into a top-performing rental asset without compromising its architectural soul.</p>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-stack-lg px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-secondary-container dark:bg-secondary-container border-t border-outline-variant">
+<div class="flex flex-col gap-6">
+<div class="font-headline-md text-headline-md text-on-secondary-container">SCENIC STAYS</div>
+<p class="font-body-md text-body-md text-on-secondary-container/80">
+                PO Box 5383,<br/>
+                Destin, Florida 32540
+            </p>
+<p class="font-body-md text-body-md text-on-secondary-container/80">
+                850-390-7511
+            </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-on-secondary-container/50">NAVIGATE</span>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">VACATION RENTALS</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">GUIDES</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container font-bold transition-all duration-200" href="#">PROPERTY MANAGEMENT</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">REAL ESTATE</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-on-secondary-container/50">LEGAL &amp; SOCIAL</span>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">JOURNAL</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">PRIVACY</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">TERMS</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4 transition-all duration-200" href="#">ACCESSIBILITY</a>
+</div>
+<div class="flex flex-col justify-between">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-on-secondary-container/50">CONNECT</span>
+<div class="flex gap-4">
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">INSTAGRAM</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">FACEBOOK</a>
+<a class="font-label-caps text-label-caps text-on-secondary-container/80 hover:underline decoration-hairline underline-offset-4" href="#">PINTEREST</a>
+</div>
+</div>
+<div class="mt-12 md:mt-0 font-label-caps text-[9px] text-on-secondary-container/40">
+                © 2024 SCENIC STAYS. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for smooth scrolling between spread sections
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple reveal animation on scroll for headlines
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('h1, h2, h3, blockquote').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fdf8f7",
+                    "secondary": "#615e57",
+                    "primary": "#5f5e5b",
+                    "secondary-container": "#FAF7F2", /* Custom cream overlay color */
+                    "tertiary-container": "#fdf6f2",
+                    "surface-container": "#f1edec",
+                    "tertiary": "#615e5b",
+                    "on-secondary-fixed": "#1d1c16",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e8e1dd",
+                    "surface-tint": "#5f5e5b",
+                    "primary-fixed": "#e5e2dd",
+                    "surface-container-high": "#ebe7e6",
+                    "inverse-on-surface": "#f4f0ef",
+                    "surface-container-highest": "#e5e2e0",
+                    "outline-variant": "#c8c7be",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#faf7f2",
+                    "secondary-fixed": "#e7e2d8",
+                    "on-surface": "#141210", /* Custom near-black */
+                    "on-tertiary-fixed": "#1d1b19",
+                    "on-primary-fixed": "#1c1c19",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#67645c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "background": "#FAF7F2",
+                    "on-tertiary-fixed-variant": "#494643",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#474743",
+                    "inverse-surface": "#313030",
+                    "surface-dim": "#ddd9d8",
+                    "on-background": "#141210",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#c8c6c2",
+                    "primary-fixed-dim": "#c8c6c2",
+                    "outline": "#141210", /* Using near-black for hairlines */
+                    "surface-container-low": "#f7f3f1",
+                    "on-secondary-fixed-variant": "#494740",
+                    "on-primary-container": "#72716d",
+                    "surface": "#FAF7F2",
+                    "on-tertiary-container": "#74706d",
+                    "on-surface-variant": "#474741",
+                    "surface-variant": "#e5e2e0",
+                    "tertiary-fixed-dim": "#cbc5c2",
+                    "gold": "#C5A059" /* Aesthetic accent */
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "40px",
+                    "margin-desktop": "80px",
+                    "margin-mobile": "24px",
+                    "stack-lg": "80px",
+                    "stack-xl": "160px",
+                    "hairline": "1px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-italic": ["Bodoni Moda"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "display-xl": ["Bodoni Moda"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Bodoni Moda"],
+                    "headline-lg-mobile": ["Bodoni Moda"]
+            },
+            "fontSize": {
+                    "headline-lg-italic": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                    "headline-lg": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "display-xl": ["120px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                    "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["40px", {"lineHeight": "1.1", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #FAF7F2;
+    color: #141210;
+    overflow: hidden;
+    /* Menu is full screen */
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDZhAZvpI-90pl6R84C1hlRjGQEUI9hOEa7Z2mi3xImSiTieZqTv7CjiECdqa7SVbX08ge9lmhmh3I6gHj3fq0mv0bHYQbJMKj06KPQsKjre_dWGfosPqlfePsiLj2WGbdkE28lUx9aPx2wV4RkydEjUnKJNfCn_2-79xJCNxcqe8jqh_k0LC3ByMYEqF2QjiWME_j_GGaJOfT7vamfbj9tPog6N1C5g5vepVxBYfW892zkLQTS6I6DfQ)
+    }
+.nav-link {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease
+    }
+.nav-link:active {
+    transform: translatex(12px);
+    opacity: 0.7
+    }
+.hairline-separator {
+    height: 1px;
+    background-color: #141210;
+    width: 100%;
+    opacity: 0.15
+    }</style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Global Grain Texture -->
+<div class="grain-overlay"></div>
+<!-- Mobile Navigation Drawer / Menu Overlay -->
+<main class="fixed inset-0 z-50 bg-secondary-container flex flex-col pt-12 pb-stack-md px-margin-mobile" id="navigation-overlay">
+<!-- Top Bar with Close Label -->
+<header class="flex justify-end items-center mb-16">
+<button class="font-label-caps text-label-caps text-on-surface tracking-[0.3em] cursor-pointer hover:opacity-50 transition-opacity">
+                CLOSE
+            </button>
+</header>
+<!-- Main Navigation Items Stack -->
+<nav class="flex flex-col flex-grow">
+<div class="hairline-separator"></div>
+<a class="nav-link py-8 flex justify-between items-center group" href="#">
+<span class="font-headline-lg-mobile text-headline-lg-mobile">Vacation Rentals</span>
+</a>
+<div class="hairline-separator"></div>
+<a class="nav-link py-8 flex justify-between items-center group" href="#">
+<span class="font-headline-lg-mobile text-headline-lg-mobile">Guides</span>
+</a>
+<div class="hairline-separator"></div>
+<a class="nav-link py-8 flex justify-between items-center group" href="#">
+<span class="font-headline-lg-mobile text-headline-lg-mobile">Vacation Deals</span>
+</a>
+<div class="hairline-separator"></div>
+<a class="nav-link py-8 flex justify-between items-center group" href="#">
+<span class="font-headline-lg-mobile text-headline-lg-mobile">Property Management</span>
+</a>
+<div class="hairline-separator"></div>
+<a class="nav-link py-8 flex justify-between items-center group" href="#">
+<span class="font-headline-lg-mobile text-headline-lg-mobile">Real Estate</span>
+</a>
+<div class="hairline-separator"></div>
+</nav>
+<!-- Footer / Contact Info -->
+<footer class="mt-stack-md flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<span class="font-headline-md text-[24px] leading-none">850-390-7511</span>
+<a class="font-label-caps text-label-caps text-gold underline decoration-hairline underline-offset-4 tracking-[0.25em]" href="#">
+                    INQUIRE
+                </a>
+</div>
+<!-- Branding Subtle Detail -->
+<div class="mt-8">
+<p class="font-label-caps text-[9px] opacity-40 uppercase tracking-widest">Scenic Stays • Editorial Edition 2024</p>
+</div>
+</footer>
+</main>
+<!-- Background Content Simulation (Blurred/Invisible behind overlay) -->
+<section class="opacity-10 pointer-events-none select-none">
+<div class="h-screen w-full bg-surface">
+<div class="p-8">
+<h1 class="font-display-xl text-display-xl">Scenic</h1>
+</div>
+</div>
+</section>
+<script>
+        // Micro-interaction: Subtle slide-in effect for nav links on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach((link, index) => {
+                link.style.opacity = '0';
+                link.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    link.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateY(0)';
+                }, 100 + (index * 80));
+            });
+        });
+
+        // Simple Close Toggle Mockup
+        const closeBtn = document.querySelector('button');
+        closeBtn.addEventListener('click', () => {
+            const overlay = document.getElementById('navigation-overlay');
+            overlay.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            overlay.style.opacity = '0';
+            overlay.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                alert("Menu closed. (UI Prototype Only)");
+                overlay.style.opacity = '1';
+                overlay.style.transform = 'scale(1)';
+            }, 500);
+        });
+    </script>
+</body></html>
